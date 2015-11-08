@@ -2,5 +2,5 @@
 __pycache__/*
 
 classes/__pycache__/*
-
+checkers/*
 *.pyc
