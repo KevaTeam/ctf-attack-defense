@@ -1,5 +1,6 @@
 from functions import ConsoleColors as colors
-import os, stat
+import os, stat, json
+from urllib.request import urlopen
 
 class Initialize:
     db = {}
@@ -8,46 +9,18 @@ class Initialize:
 
     filename_checkers = 'check'
 
-    teams = [
-        {
-            'name': 'Keva',
-            'host': '192.168.0.1'
-        },
-        {
-            'name': 'Life',
-            'host': '192.168.0.2'
-        },
-        {
-            'name': 'Yozik',
-            'host': '192.168.0.3'
-        },
-        {
-            'name': 'Hetto',
-            'host': '192.168.0.4'
-        }
-    ]
+    teams = []
 
-    services = [
-        {
-            'name': '1 service',
-            'program': '#!/usr/bin/perl \n print \'911\'; \n exit 101;'
-        },
-        {
-            'name': '2 service',
-            'program': '#!/usr/bin/perl \n print \'911\'; \n exit 101;'
-        },
-        {
-            'name': '3 service',
-            'program': '#!/usr/bin/perl \n print \'911\'; \n exit 101;'
-        },
-        {
-            'name': '4 service',
-            'program': '#!/usr/bin/perl \n print \'911\'; \n exit 101;'
-        }
-    ]
+    services = []
 
     def __init__(self, db):
         self.db = db
+        response = urlopen("http://api.keva.su/method/jury.get").read().decode('utf8')
+        data = json.loads(response)
+
+        self.settings = data["response"]["settings"]
+        self.teams = data["response"]["teams"]
+        self.services = data["response"]["services"]
 
         print(colors.OKGREEN + 'Generate teams' + colors.ENDC)
         self.create_teams()
@@ -64,9 +37,9 @@ class Initialize:
         for e in self.teams:
             self.db.teams.insert_one(e)
 
-            # Check teams
-            # for e in self.db.teams.find():
-            #     print(e)
+        # Check teams
+        # for e in self.db.teams.find():
+        #     print(e)
 
 
     def create_service(self):
@@ -80,8 +53,8 @@ class Initialize:
 
             self.create_program(str(insert_result.inserted_id), e['program'])
             # Check teams
-            # for e in self.db.services.find():
-            #     print(e)
+        # for e in self.db.services.find():
+        #     print(e)
 
     def create_program(self, service_id, program):
         path = self.path_to_checkers + self.filename_checkers + '_' + service_id
