@@ -1,5 +1,5 @@
 from functions import ConsoleColors as colors
-import os, stat, json
+import os, stat, json, sys
 from urllib.request import urlopen
 
 class Initialize:
@@ -13,20 +13,37 @@ class Initialize:
 
     services = []
 
+    settings = []
+
     def __init__(self, db):
         self.db = db
-        response = urlopen("http://api.keva.su/method/jury.get").read().decode('utf8')
+        try:
+            response = urlopen("http://api.keva.su/method/jury.get").read().decode('utf8')
+        except Exception:
+            print(colors.FAIL + 'Error with requests in response' + colors.ENDC)
+            sys.exit(0)
+
         data = json.loads(response)
 
-        self.settings = data["response"]["settings"]
-        self.teams = data["response"]["teams"]
-        self.services = data["response"]["services"]
+        try:
+            self.settings = data["response"]["settings"]
+            self.teams = data["response"]["teams"]
+            self.services = data["response"]["services"]
+        except Exception:
+            print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
+            sys.exit(0)
 
         print(colors.OKGREEN + 'Generate teams' + colors.ENDC)
         self.create_teams()
 
         print(colors.OKGREEN + 'Generate services' + colors.ENDC)
         self.create_service()
+
+        self.output = {
+            'teams': self.teams,
+            'services': self.services,
+            'settings': self.settings,
+        }
 
     def create_teams(self):
 
