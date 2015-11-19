@@ -1,0 +1,82 @@
+<style type="text/css">
+	html, body, div {
+		width: 100%;
+		height: 100%;
+	}
+	body {
+		background: url('https://pacdn.500px.org/5046/e1a4004def680446f36ece11d5a6111676649b7a/cover_2048.jpg?12');
+	}
+	.form-signin {
+		text-align: center;
+	}
+
+	.border {
+		margin: 10px 0;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.login-bar {
+		padding-top: 150px;
+		background: #fff;
+	}
+</style>
+<div class="row">
+	<div class="col-md-4 login-bar">
+		<form class="form-signin" role="form">
+			<div class="form-login">
+			    <h2 class="form-signin-heading">Вход</h2>
+			    <div class="alert alert-danger message" role="alert" style="display: none;">Произошла ошибка</div>
+			    <div class="form-group">
+			    	<label for="inputEmail" class="sr-only">Логин</label>
+			    	<input type="text" id="inputEmail" class="form-control" placeholder="Логин" value="" autofocus>
+			    </div>
+			    
+			    <div class="form-group">
+			    	<label for="inputPassword" class="sr-only">Пароль</label>
+			    	<input type="password" id="inputPassword" class="form-control" placeholder="Пароль" value="">
+			    </div>
+			    
+
+			    <button class="btn btn-success" type="button" id="submit" data-type="login">Войти</button> <br />
+			    <div class="border"></div>
+			    <button class="btn btn-primary" type="button" id="button-signup">У меня нет аккаунта</button>
+		    </div>
+		    <div class="form-signup" style="display: none;">
+			    <h2 class="form-signin-heading">Регистрация</h2>
+			    <div class="alert alert-danger message" role="alert" style="display: none;">Произошла ошибка</div>
+
+
+			    <div class="form-group">
+			    	<label for="inputLogin" class="sr-only">Login</label>
+			    	<input type="text" id="inputSignupLogin" class="form-control" placeholder="Введите логин" value="" name="inputSignupLogin" autofocus>
+			    </div>
+			    
+			    <div class="form-group">
+			    	<label for="inputEmail" class="sr-only">Email</label>
+			    	<input type="text" id="inputSignupEmail" class="form-control" placeholder="Введите E-Mail" value="" name="inputSignupEmail" >
+			    </div>
+
+				<div class="form-group">
+					<label for="inputEmail" class="sr-only">ВУЗ</label>
+					<input type="text" id="inputSignupUniversity" class="form-control" placeholder="Введите свой ВУЗ (e.g. ТУСУР)" value="" name="inputSignupUniversity" >
+				</div>
+			    
+			    <div class="form-group">
+			    	<label for="inputPassword" class="sr-only">Пароль</label>
+			    	<input type="password" id="inputSignupPassword" class="form-control" placeholder="Введите пароль" value="" name="inputSignupPassword">
+			    </div>
+			    
+
+			    <button class="btn btn-primary" id="submit" type="button" data-type="signup">Зарегистрироваться</button> <br />
+			    <div class="border"></div>
+			    <button class="btn btn-success" type="button" id="button-login">Назад ко входу</button>
+		    </div>
+		</form>
+		 
+
+	</div>
+	<div class="col-md-8">
+		
+	</div>
+</div>
+

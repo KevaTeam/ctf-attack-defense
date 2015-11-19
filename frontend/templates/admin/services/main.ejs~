@@ -1,0 +1,97 @@
+<div class="row" style="margin-left: 20px">
+<h1>Управление сервисами <button type="button" class="btn btn-sm btn-success glyphicon glyphicon-plus quest-add" data-id=""></button></h1>
+<div class="col-md-6 col-xs-6" style="background: #fff">
+    <table class="table table-hover">
+        <caption>В базе находится <span class="count_quest"></span></caption>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Очки</th>
+            <th>Категория</th>
+            <th style="text-align: right">Действия</th>
+        </tr>
+        </thead>
+        <tbody id="quest-list"></tbody>
+    </table>
+</div>
+<div class="col-md-5 col-xs-5 col-md-offset-1 affix sidebar" id="quest-form" style="right: 50px; top: 10px;"></div>
+<div class="modalWindow"></div>
+
+<script type="text/template" id="modal-template">
+    <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Удалить сервис?</h4>
+                </div>
+                <div class="modal-body">
+                    Вы действительно хотите удалить сервис?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-close" data-dismiss="modal">Я передумал</button>
+                    <button type="button" class="btn btn-danger btn-submit" data-id="<%- questId %>">Да, хочу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="quest-form-template">
+    <h2><% if(title=='') { %>Добавление<% } else { %>Редактирование<% } %> сервиса</h2>
+    <div class="alert alert-danger form-message" role="alert" style="display:none">Произошла ошибка</div>
+    <div class="form-group">
+        <label for="inputName">Название</label>
+        <input type="email" class="form-control" id="inputName" placeholder="Введите название" value="<%- title %>">
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="inputSection">Категория</label>
+            <select class="form-control" id="inputSection">
+                <% for(var i=0; i < listSection.length; i++) { %>
+                    <option value="<%- listSection[i].id %>" <% if(listSection[i].id == section.id) { %>selected<% } %>><%- listSection[i].title %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputScore">Очки</label>
+            <input type="text" class="form-control" id="inputScore" placeholder="Введите количество очков" value="<%- score %>">
+        </div>
+        <div class="col-md-4">
+            <label for="inputAuthor">Автор</label>
+            <input type="text" class="form-control" id="inputAuthor" placeholder="Введите автора" value="<%- author %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAnswer">Ответ</label>
+        <input type="text" class="form-control" id="inputAnswer" placeholder="Введите ответ" value="<%- answer %>">
+    </div>
+    <div class="form-group">
+        <label for="inputShortDescription">Краткое описание</label>
+        <input type="text" class="form-control" id="inputShortDescription" placeholder="Введите краткое описание" value="<%- short_text %>">
+    </div>
+    <div class="form-group">
+        <label for="inputDescription">Полное описание</label>
+        <textarea class="form-control" id="inputDescription" rows="3"><%- full_text %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="inputSolution">Решение от автора</label>
+        <textarea class="form-control" id="inputSolution" rows="4"><%- full_text %></textarea>
+    </div>
+    <input type="hidden" id="inputType" value="<%- type %>" />
+    <input type="hidden" id="inputId" value="<%- id %>" />
+    <button type="button" class="btn btn-success"><% if(type=='add') { %>Добавить<% } else { %>Редактировать<% } %></button>
+</script>
+
+<script type="text/template" id="quest-template">
+    <th scope="row"><%- id %></th>
+    <td><%- title %></td>
+    <td><%- score %></td>
+    <td><%- section.title %></td>
+    <td style="text-align: right">
+        <button type="button" class="btn btn-info btn-sm edit-quest" data-id="<%- id %>"><span class="glyphicon glyphicon-pencil"></span></button>
+        <button type="button" class="btn btn-danger btn-sm delete-quest" data-id="<%- id %>"><span class="glyphicon glyphicon-remove"></span></button>
+    </td>
+</script>
+</div>  

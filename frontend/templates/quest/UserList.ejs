@@ -1,0 +1,23 @@
+<div class="btn-group nav" role="group" aria-label="Menu">
+    <button type="button" class="btn btn-primary rating">Рейтинг</button>
+    <button type="button" class="btn btn-success news">Новости</button>
+    <button type="button" class="btn btn-danger logout">Выход</button>
+</div>
+<div class="block block-rating">
+    <ul class="nav-sidebar">
+        <% for(var i=0; i<user.length; i++) { %>
+        <li>
+            <div class="col-md-2 no-padding number"><%= i+1 %></div>
+            <div class="col-md-10 row">
+                <div class="col-md-12"><h3 class="nickname"><%= user[i].nick %></h3></div>
+                <div class="col-md-12"><p><%= user[i].rating %> points</p></div>
+            </div>
+        </li>
+        <% } %>
+        <% if(myRole == '2') { %><div class="col-md-12" style="bottom:20px; position: absolute"><a href="admin_require.html">Админпанель</a></div><% } %>
+    </ul>
+</div>
+<div class="block block-news">
+    <!-- VK Widget -->
+    <div id="vk_groups" style="margin: 0 auto;"></div>
+</div>

@@ -1,0 +1,23 @@
+.container {
+	width: 100%;
+	padding-left: 80px;
+}
+
+.answer_block {
+	word-wrap: break-word;
+	text-overflow: ellipsis;
+}
+
+.sidebar {
+	right: 0px;
+	display: block;
+	overflow-y: auto;
+	overflow-x: hidden;
+	top: 0px;
+	height: 100%;
+	bottom: 0;
+}
+
+.sidebar__white {
+	background: #fff;
+}

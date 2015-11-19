@@ -1,0 +1,26 @@
+{
+  "name": "fhq-mini",
+  "version": "0.0.1",
+  "homepage": "https://github.com/shipko/fhq-mini",
+  "authors": [
+    "Dmitry Mukovkin <mukovkin@yandex.ru>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.2",
+    "bootstrap": "~3.3.5",
+    "eonasdan-bootstrap-datetimepicker": "~4.15.35",
+    "jquery": "~2.1.4",
+    "jquery.cookie": "jquery-cookie#~1.4.1",
+    "moment": "~2.10.6",
+    "requirejs": "https://github.com/jrburke/requirejs.git#~2.1.20"
+  }
+}

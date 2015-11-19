@@ -1,0 +1,31 @@
+<h1 class="page-header">Quests</h1>
+
+<div class="row placeholders">
+    <% for(var i=0; i<sections.length; i++) { %>
+    <div class="col-xs-6 col-sm-4 placeholder" style="height: 300px; padding: 0">
+        <button class="btn btn-default btn-xs btn-success"><%= sections[i].title %></button>
+        <% for(var j=0; j < arr[sections[i].id].length; j++) { %>
+        <div class="col-md-12" style="padding: 5px 0;">
+            <h4>
+            <% if(arr[sections[i].id][j].passed) { %><s><% } %>
+            <a href="#" data-toggle="modal" data-target="#myModal" class="quest_title" id="<%= arr[sections[i].id][j].id %>"><%= arr[sections[i].id][j].title %> (<%= arr[sections[i].id][j].score %>)</a>
+            <% if(arr[sections[i].id][j].passed) { %> </s><% } %>
+                &nbsp;
+                <button class="btn btn-default btn-xs btn-info"><%= arr[sections[i].id][j].count %></button>
+            </h4>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+</div>
+<div id="timerEnd">
+    Осталось
+    <span class="hours">-</span>
+    <span class="text-hours">часа</span>
+    <span class="minutes">--</span>
+    <span class="text-minutes">минуты</span>
+    <span class="seconds" style="display: none">--</span>
+    <span class="text-seconds" style="display: none">секунд</span>
+    <div class="col-md-6" style="float: right; text-align: right;">Сделано с любовью в Keva</div>
+</div>
+

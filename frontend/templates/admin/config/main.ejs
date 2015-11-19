@@ -1,0 +1,33 @@
+<div class="row config" style="margin-left: 20px">
+    <h1>Настройки</h1>
+    <div class="col-md-8 col-xs-8" style="background: #fff">
+        <h3>Начало и окончание</h3>
+        <h5>Сейчас на сайте <span class="current-time">2 июня 2015 года 23:59</span></h5>
+        <div class="alert alert-success success-message" style="display: none" role="alert">Изменения успешно сохранены</div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="inputSection">Начало</label>
+                    <div class='input-group date' id='datetime_start'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputScore">Окончание</label>
+                    <div class='input-group date' id='datetime_end'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success submit-datetime">Сохранить</button>        
+    </div>
+</div>
+
+<link rel="stylesheet" href="/css/datetimepicker.css">
