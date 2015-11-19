@@ -41,17 +41,38 @@ class Round:
     def generate_flags(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
 
+    def generate_flag_ids(self):
+        return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(10))
+
     def to_service(self, team, service):
         flag = self.generate_flags()
+        flag_id = self.generate_flag_ids()
 
         self.db.flags.insert_one({
             'round': self.round_count,
             'flag': flag,
-            'flag_id': 'test_flag_id',
+            'flag_id': flag_id,
             'teams': team['_id'],
             'service': service['_id'],
             'timestamp': time.time()
         })
+
         path = self.path_to_checkers + self.filename_checkers + '_' + str(service['_id'])
-        self.checker.get(team['host'], path, flag, 'test_flag_id')
+
+        try:
+            self.checker.check(team['host'], 'checkers/test.py')
+
+            print('check - ok')
+
+            self.checker.put(team['host'], 'checkers/test.py', flag, flag_id)
+
+            print('put - ok')
+            self.checker.get(team['host'], 'checkers/test.py', flag, flag_id)
+
+        except Exception as error:
+            print('------------------------------------------------------')
+            print(colors.FAIL + 'ERROR in service ' + str(service['name']) + colors.ENDC)
+            print(error)
+            print('------------------------ END ---------------------------')
+            # print('This is corrupt' + error)
 
