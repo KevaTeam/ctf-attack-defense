@@ -12,5 +12,5 @@ db = client.jury
 config = Initialize(db)
 
 round = Round(db, config)
-
-functions.set_interval(round.next, 6)
+round.next()
+functions.set_interval(round.next, config.output['settings']['round_length'])
