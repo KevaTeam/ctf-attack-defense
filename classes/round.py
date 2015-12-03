@@ -48,7 +48,8 @@ class Round:
     def to_service(self, team, service):
         flag = self.generate_flags()
         flag_id = self.generate_flag_ids()
-
+        print (flag)
+        print (flag_id)
         self.db.flags.insert_one({
             'round': self.round_count,
             'flag': flag,
