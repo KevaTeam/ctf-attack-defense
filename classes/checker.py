@@ -14,11 +14,11 @@ class Checker:
     def __init__(self):
         pass
 
-    def status(self, code):
-        if code == self.STATUS_CODE['SUCCESS']:
+    def status(self, popen):
+        if popen.returncode == self.STATUS_CODE['SUCCESS']:
             return True
 
-        raise Exception(code)
+        raise Exception(popen.returncode, popen.stdout.read())
 
     def get(self, host, path_to_program, flag, flag_id):
         args = (path_to_program, "get", host, flag_id, flag)
@@ -29,7 +29,7 @@ class Checker:
         # TODO: сделать запись в лог переменной output
         output = popen.stdout.read()
 
-        return self.status(popen.returncode)
+        return self.status(popen)
 
     def check(self, host, path_to_program):
         args = (path_to_program, "check", host)
