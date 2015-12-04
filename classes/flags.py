@@ -19,8 +19,13 @@ class Flags:
 		#s = 'close'
 		while True:
 				data = conn.recv(1024)
+				data = str(data.rstrip().decode('utf-8'))
 				print (data)
-				data1 = self.db.flags.find({"flag": data})
+				data1 = self.db.flags.find({'flag': data})
+				print(data1.count())
+				# 	print('Flag is not found')
+				# else:
+				# 	print('Flag found')
 				for e in data1:
 					print (e)
 				#print (data1)
