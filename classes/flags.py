@@ -23,16 +23,10 @@ class Flags:
 				print (data)
 				data1 = self.db.flags.find({'flag': data})
 				print(data1.count())
-				# 	print('Flag is not found')
-				# else:
-				# 	print('Flag found')
-				for e in data1:
-					print (e)
-				#print (data1)
-      # if data == s:
-      #  conn.send(('goodbye').encode())
-      #  break
-				conn.send(('received\n').encode())
+				if data1.count() != 0:
+					conn.send(('received\n').encode())
+				else:
+					conn.send(('not found\n').encode())
 		return data
 
 		conn.close()
