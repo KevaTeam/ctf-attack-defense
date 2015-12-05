@@ -36,6 +36,7 @@ class Round:
         for team in self.teams:
             print(team['name'])
             for service in self.services:
+                # TODO: make async call
                 self.to_service(team, service)
 
     def generate_flags(self):
@@ -61,14 +62,18 @@ class Round:
         path = self.path_to_checkers + self.filename_checkers + '_' + str(service['_id'])
 
         try:
-            self.checker.check(team['host'], 'checkers/test.py')
+            self.checker.check(team['host'], path)
 
             print('check - ok')
 
-            self.checker.put(team['host'], 'checkers/test.py', flag, flag_id)
+            self.checker.put(team['host'], path, flag, flag_id)
 
             print('put - ok')
-            self.checker.get(team['host'], 'checkers/test.py', flag, flag_id)
+            self.checker.get(team['host'], path, flag, flag_id)
+
+            # TODO: make 2 get for old flag
+
+            # self.db.scoreboard.update_one({'team':  })
 
         except Exception as error:
             print('------------------------------------------------------')

@@ -39,6 +39,8 @@ class Initialize:
         print(colors.OKGREEN + 'Generate services' + colors.ENDC)
         self.create_service()
 
+        self.generate_scoreboard()
+
         self.output = {
             'teams': self.teams,
             'services': self.services,
@@ -84,3 +86,14 @@ class Initialize:
         # Выставляем права на выполнение
         os.chmod(path, stat.S_IRWXU)
 
+    def generate_scoreboard(self):
+        for team in self.teams:
+            for service in self.services:
+                # print(team)
+                self.db.scoreboard.insert_one({
+                    'team': team,
+                    'service': service,
+                    'status': 'UP'
+                })
+
+        print(self.db.scoreboard.find({}))
