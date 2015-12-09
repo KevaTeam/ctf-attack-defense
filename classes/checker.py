@@ -37,11 +37,7 @@ class Checker:
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()
 
-        output = popen.stdout.read()
-
-        print('output ' + str(popen.returncode))
-
-        return self.status(popen.returncode)
+        return self.status(popen)
 
     def put(self, host, path_to_program, flag, flag_id):
         args = (path_to_program, "put", host, flag_id, flag)
@@ -51,4 +47,4 @@ class Checker:
 
         output = popen.stdout.read()
 
-        return self.status(popen.returncode)
+        return self.status(popen)

@@ -5,6 +5,7 @@ from classes.checker import Checker
 import random
 import string
 import time
+import threading
 
 class Round:
     db = {}
@@ -30,14 +31,24 @@ class Round:
 
     def next(self):
         self.round_count += 1
-
+        self.tasks = []
         print('Round: ' + str(self.round_count))
-
+        sc = self.db.scoreboard.find()
+        for s in sc:
+            print(s['service']['name'] + ' team ' + s['team']['name'] + ' status ' + s['status'])
         for team in self.teams:
             print(team['name'])
+
             for service in self.services:
                 # TODO: make async call
-                self.to_service(team, service)
+                self.tasks.append(threading.Thread(target=self.to_service, args=(team, service, )))
+                self.tasks[-1].daemon = True
+                self.tasks[-1].start()
+                # self.to_service(team, service)
+
+        for e, j in enumerate(self.tasks):
+            j.join(timeout=2)
+            print(e, j)
 
     def generate_flags(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
@@ -73,12 +84,33 @@ class Round:
 
             # TODO: make 2 get for old flag
 
-            # self.db.scoreboard.update_one({'team':  })
+            self.update_scoreboard(team, service, 101)
 
         except Exception as error:
             print('------------------------------------------------------')
-            print(colors.FAIL + 'ERROR in service ' + str(service['name']) + colors.ENDC)
-            print(error)
+            print(colors.FAIL + 'ERROR in service ' + str(service['name']) + ' for team ' + team['name'] + colors.ENDC)
+            code, message = error.args
+            print(code)
+            self.update_scoreboard(team, service, code)
             print('------------------------ END ---------------------------')
             # print('This is corrupt' + error)
 
+
+    def update_scoreboard(self, team, service, status_code):
+        codes = {
+            101: 'UP',
+            102: 'CORRUPT',
+            103: 'MUMBLE',
+            104: 'DOWN'
+        }
+        self.db.scoreboard.update_one(
+            {
+                'team': team,
+                'service': service
+            },
+            {
+                "$set": {
+                    "status": codes[status_code]
+                }
+            }
+        )
