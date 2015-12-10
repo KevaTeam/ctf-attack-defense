@@ -1,4 +1,5 @@
-_author__ = 'dmitry'
+import subprocess
+__author__ = 'dmitry'
 
 
 class Checker:

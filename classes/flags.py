@@ -26,11 +26,11 @@ class Flags:
 			sys.exit(0)
 		life = self.lifetime*self.round_lenght
 
-    def recv(self):
-        sock = socket.socket()
-        sock.bind(('', 9090))
-        sock.listen(1)
-        conn, addr = sock.accept()
+	def recv(self):
+		sock = socket.socket()
+		sock.bind(('', 9090))
+		sock.listen(1)
+		conn, addr = sock.accept()
 
 		print('connected:', addr) # Возможно лишнее
 
