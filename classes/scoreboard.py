@@ -1,7 +1,18 @@
 import os
 import socket
 import time
+from flask import Flask
 
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+
+    
 def send_answer(conn, status='200 OK', typ='text/html; charset=utf-8', data=''):
 	data = data.encode('utf-8')
 	conn.send(b'HTTP/1.1 ' + status.encode('utf-8') + b'\r\n')
@@ -19,6 +30,7 @@ data = {
 def getIndex():
 	with open('index.html', 'r') as file:
 		content = file.read()
+		file.close()
 		return content.format(**data)
 
 
