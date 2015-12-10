@@ -31,31 +31,37 @@ class Flags:
 		sock = socket.socket()
 		sock.bind(('', 9090))
 		sock.listen(1)
-		self.conn, addr = sock.accept()
+		self.conn, self.addr = sock.accept()
 
-		print('connected:', addr) # Возможно лишнее
+		print('connected:', self.addr) # Возможно лишнее
 		
 
 		while True:
-				data = self.conn.recv(1024)
-				data = str(data.rstrip().decode('utf-8'))
-				print (data)                                #Лишнее
-				# print (self.lifetime)		#Lishnee
-				# print (self.round_length)	#lishnee
-				vremia = time.time()
-				# print (time)
-				data1 = self.db.flags.find_one({'flag': data})
-				print(data1)
-				print(bool(data1))
-				if bool(data1):
-					lt = data1["timestamp"]
-					lt = lt+self.life
-					if lt >= vremia:
-						self.conn.send(('received\n').encode())
-					else:
-						self.conn.send(('your flag is too old\n').encode())
+				print(self.addr[0])
+				team = self.db.teams.find({'host': self.addr[0]})
+				if not bool(team):
+					self.conn.send(('Who are you?\n Goodbye').encode())
+					self.conn.close()
 				else:
-					self.conn.send(('not found\n').encode())
+					ip = self.addr[0]
+					self.conn.send(('hello team ' + ip).encode())
+					data = self.conn.recv(1024)
+					data = str(data.rstrip().decode('utf-8'))
+					print (data)                                #Лишнее
+					vremia = time.time()
+					data1 = self.db.flags.find_one({'flag': data})
+					data2 = self.db.scoarboard.find_one
+					print(data1)
+					print(bool(data1))
+					if bool(data1):
+						lt = data1["timestamp"]
+						lt = lt+self.life
+						if lt >= vremia:
+							self.conn.send(('received\n').encode())
+						else:
+							self.conn.send(('your flag is too old\n').encode())
+					else:
+						self.conn.send(('not found\n').encode())
 
 		self.conn.close()
 		return data
