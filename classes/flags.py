@@ -18,16 +18,16 @@ class Flags:
         print ('connected:', addr)
         #s = 'close'
         while True:
-                data = conn.recv(1024)
-                print (data)
-                data1 = self.db.flags.find({"flag": data})
-                for e in data1:
-                    print (e)
-                #print (data1)
-      # if data == s:
-      #  conn.send(('goodbye').encode())
-      #  break
+            data = conn.recv(1024)
+            data = str(data.rstrip().decode('utf-8'))
+            print (data)
+            data1 = self.db.flags.find({'flag': data})
+            print(data1.count())
+            if data1.count() != 0:
                 conn.send(('received\n').encode())
-        return data
+            else:
+                conn.send(('not found\n').encode())
 
         conn.close()
+        return data
+
