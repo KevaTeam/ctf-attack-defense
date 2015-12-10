@@ -6,6 +6,7 @@ from classes.round import Round
 from urllib.request import urlopen
 from functions import ConsoleColors as colors
 
+
 class Flags:
 	def __init__(self, db):
 		self.db = db
@@ -25,14 +26,13 @@ class Flags:
 			sys.exit(0)
 		life = self.lifetime*self.round_lenght
 
+    def recv(self):
+        sock = socket.socket()
+        sock.bind(('', 9090))
+        sock.listen(1)
+        conn, addr = sock.accept()
 
-	def recv(self):
-		sock = socket.socket()
-		sock.bind(('', 9090))
-		sock.listen(1)
-		conn, addr = sock.accept()
-
-		print ('connected:', addr) # Возможно лишнее
+		print('connected:', addr) # Возможно лишнее
 
 		while True:
 				data = conn.recv(1024)
@@ -52,7 +52,6 @@ class Flags:
 				else:
 					conn.send(('not found\n').encode())
 				for e in data1: #ЛИШНЕЕ
-					print (e)
-		return data
-
+					print(e)
 		conn.close()
+		return data
