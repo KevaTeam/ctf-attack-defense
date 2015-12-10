@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scoreboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Scoreboard</h2>
+  <p>Look at my scoreboard! My scoreboard is amazing</p>            
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Team</th>
+        {% for team in scoreboard %}
+        	{% if loop.index == 1 %}
+	        	{% for service in scoreboard[team] %}
+	        		<th>{{ service }}</th>
+	        	{% endfor %}
+        	{% endif %}
+    	{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    	{% for team in scoreboard %}
+    	<tr>
+    		<td>{{ team }}</td>
+        	{% for service in scoreboard[team] %}
+
+        		<td class={{ color[scoreboard[team][service].status] }}>{{ scoreboard[team][service].status }}</td>
+        	{% endfor %}
+    	</tr>
+    	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
