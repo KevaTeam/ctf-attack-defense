@@ -33,6 +33,7 @@ class Initialize:
             print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
             sys.exit(0)
 
+        self.db.scoreboard.delete_many({})
         print(colors.OKGREEN + 'Generate teams' + colors.ENDC)
         self.create_teams()
 
@@ -93,7 +94,8 @@ class Initialize:
                 self.db.scoreboard.insert_one({
                     'team': team,
                     'service': service,
-                    'status': 'UP'
+                    'status': 'UP',
+                    'message': ''
                 })
 
         print(self.db.scoreboard.find({}))

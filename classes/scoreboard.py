@@ -3,55 +3,60 @@ import socket
 import time
 from flask import Flask
 
-app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+class Scoreboard:
 
-if __name__ == "__main__":
-    app.run()
-
-    
-def send_answer(conn, status='200 OK', typ='text/html; charset=utf-8', data=''):
-	data = data.encode('utf-8')
-	conn.send(b'HTTP/1.1 ' + status.encode('utf-8') + b'\r\n')
-	conn.send(b'Server: simplehttp\r\n')
-	conn.send(b'Connection: close\r\n')
-	conn.send(b'Content-Type: ' + typ.encode('utf-8') + b'\r\n')
-	conn.send(b'Content-Length: ' + bytes(len(data)) + b'\r\n')
-	conn.send(b'\r\n')
-	conn.send(data)
-
-data = {
-	'score': 124
-}
-
-def getIndex():
-	with open('index.html', 'r') as file:
-		content = file.read()
-		file.close()
-		return content.format(**data)
+    def __init__(self, db):
+        self.db = db
+        self.app = Flask(__name__)
 
 
-def get_on(conn, addr):
-	send_answer(conn, data=getIndex())
+    def start(self):
+        @self.app.route("/")
+        def index():
+            return "Hello World!"
 
-
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(('', 8000))
-s.listen(10000)
-
-
-try:
-	while 1:
-		conn, addr = s.accept()
-		print('New connection from ' + addr[0])
-		try:
-			get_on(conn, addr)
-		except:
-			send_answer(conn, '500 Internal Server Error', data='<center><h1>500 Internal Server Error</h1></center>')
-		finally:
-			conn.close()
-finally: s.close()
+        self.app.debug = True
+        self.app.run()
+#
+# def send_answer(conn, status='200 OK', typ='text/html; charset=utf-8', data=''):
+# 	data = data.encode('utf-8')
+# 	conn.send(b'HTTP/1.1 ' + status.encode('utf-8') + b'\r\n')
+# 	conn.send(b'Server: simplehttp\r\n')
+# 	conn.send(b'Connection: close\r\n')
+# 	conn.send(b'Content-Type: ' + typ.encode('utf-8') + b'\r\n')
+# 	conn.send(b'Content-Length: ' + bytes(len(data)) + b'\r\n')
+# 	conn.send(b'\r\n')
+# 	conn.send(data)
+#
+# data = {
+# 	'score': 124
+# }
+#
+# def getIndex():
+# 	with open('index.html', 'r') as file:
+# 		content = file.read()
+# 		return content.format(**data)
+#
+#
+# def get_on(conn, addr):
+# 	send_answer(conn, data=getIndex())
+#
+#
+#
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# s.bind(('', 8000))
+# s.listen(10000)
+#
+#
+# try:
+# 	while 1:
+# 		conn, addr = s.accept()
+# 		print('New connection from ' + addr[0])
+# 		try:
+# 			get_on(conn, addr)
+# 		except:
+# 			send_answer(conn, '500 Internal Server Error', data='<center><h1>500 Internal Server Error</h1></center>')
+# 		finally:
+# 			conn.close()
+# finally: s.close()
