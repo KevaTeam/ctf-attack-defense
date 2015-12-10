@@ -65,8 +65,8 @@ class Round:
             'round': self.round_count,
             'flag': flag,
             'flag_id': flag_id,
-            'teams': team['_id'],
-            'service': service['_id'],
+            'team': team,
+            'service': service,
             'timestamp': time.time()
         })
 
