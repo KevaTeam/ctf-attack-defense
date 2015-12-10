@@ -77,10 +77,13 @@ class Initialize:
         #     print(e)
 
     def create_program(self, service_id, program):
+
         path = self.path_to_checkers + self.filename_checkers + '_' + service_id
 
-        file = open(path, 'w')
+        if not os.path.exists(self.path_to_checkers):
+            os.mkdir(self.path_to_checkers, mode=0o777)
 
+        file = open(path, 'w')
         file.write(program)
         file.close()
 
