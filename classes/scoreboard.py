@@ -30,7 +30,7 @@ class Scoreboard:
             return render_template('index.html', scoreboard=sc, color=color)
 
         self.app.debug = True
-        self.app.run()
+        self.app.run(host="0.0.0.0", port=80)
 #
 # def send_answer(conn, status='200 OK', typ='text/html; charset=utf-8', data=''):
 # 	data = data.encode('utf-8')

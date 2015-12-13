@@ -48,7 +48,6 @@ class Round:
 
         for e, j in enumerate(self.tasks):
             j.join(timeout=2)
-            print(e, j)
 
     def generate_flags(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
@@ -91,6 +90,7 @@ class Round:
             print(colors.FAIL + 'ERROR in service ' + str(service['name']) + ' for team ' + team['name'] + colors.ENDC)
             code, message = error.args
             print(code)
+            print(message)
             self.update_scoreboard(team, service, code)
             print('------------------------ END ---------------------------')
             # print('This is corrupt' + error)

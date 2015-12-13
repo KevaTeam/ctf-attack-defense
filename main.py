@@ -24,7 +24,7 @@ def init():
 
 def flags():
     flags = Flags(db)
-    flags.recv()
+    flags.start()
 
 
 def scoreboard():
