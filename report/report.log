@@ -1,0 +1,1389 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.16)  16 DEC 2015 14:20
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+(./config.tex (/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdtext.cls
+Document Class: eskdtext 2010/01/14 v0.98 Textual Documentation
+(/usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls
+Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 2007/10/29 v2.1h Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+\big@size=\dimen102
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdlang.sty
+Package: eskdlang 2010/01/14 v0.98 Language
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
+Language: russian 2013/04/13 1.3a Russian support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
+\babel@savecnt=\count87
+\U@D=\dimen104
+)
+
+Package babel Warning: No Cyrillic font encoding has been loaded so far.
+(babel)                A font encoding should be declared before babel.
+(babel)                Default `T2A' encoding will be loaded  on input line 111
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+)
+
+Package babel Warning: No input encoding specified for Russian language on inpu
+t line 146.
+
+Package babel Info: Making " an active character on input line 147.
+)) (/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdrussian.def
+File: eskdrussian.def 2010/01/17 v0.98 Language File
+\ESKDexplanWidth=\skip43
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdstamp.sty
+Package: eskdstamp 2011/05/06 v0.98 Stamp GOST 2.104-68
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count88
+\calc@Bcount=\count89
+\calc@Adimen=\dimen105
+\calc@Bdimen=\dimen106
+\calc@Askip=\skip44
+\calc@Bskip=\skip45
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count90
+\calc@Cskip=\skip46
+)
+\ESKD@margin@si=\skip47
+\ESKD@margin@so=\skip48
+\ESKD@margin@t=\skip49
+\ESKD@margin@b=\skip50
+\ESKDlineThick=\skip51
+\ESKDlineThin=\skip52
+\ESKD@padding@h=\skip53
+\ESKD@padding@v=\skip54
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count91
+\Gm@cntv=\count92
+\c@Gm@tempcnt=\count93
+\Gm@bindingoffset=\dimen107
+\Gm@wd@mp=\dimen108
+\Gm@odd@mp=\dimen109
+\Gm@even@mp=\dimen110
+\Gm@layoutwidth=\dimen111
+\Gm@layoutheight=\dimen112
+\Gm@layouthoffset=\dimen113
+\Gm@layoutvoffset=\dimen114
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/lastpage/lastpage.sty
+Package: lastpage 2013/01/28 v1.2l Refers to last page's name (HMM; JPG)
+)
+\ESKD@tmpdima=\skip55
+\ESKD@tmpdimb=\skip56
+\ESKD@tmpdimc=\skip57
+\ESKD@tmpcnta=\count94
+\ESKD@tmpcntb=\count95
+\ESKD@zonelabel@hc=\count96
+\ESKD@zonelabel@vc=\count97
+\ESKD@zonelabel@hs=\skip58
+\ESKD@zonelabel@vs=\skip59
+\ESKD@zonelabel@cnt=\count98
+\ESKD@origin@x=\skip60
+\ESKD@origin@y=\skip61
+\ESKDframeX=\skip62
+\ESKDframeY=\skip63
+\ESKDframeW=\skip64
+\ESKDframeH=\skip65
+\ESKDstampX=\skip66
+\ESKDstampY=\skip67
+
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdfont.sty
+Package: eskdfont 2010/01/14 v0.98 Font Definitions
+)
+(/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count99
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count100
+\rotFPtop=\skip68
+\rotFPbot=\skip69
+\rot@float@box=\box26
+\rot@mess@toks=\toks16
+)
+\ESKD@frame@box=\box27
+\ESKD@stamp@i@box=\box28
+\ESKD@stamp@ii@box=\box29
+\ESKD@stamp@ii@a@box=\box30
+\ESKD@stamp@ii@b@box=\box31
+\ESKD@columns@xix@box=\box32
+
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdhash.sty
+Package: eskdhash 2010/01/14 v0.98 Hash Routines
+)
+\ESKD@hash@c@@style@draw@empty=\count101
+\ESKD@hash@p@@style@draw@empty=\count102
+\ESKD@hash@c@@style@draw@title=\count103
+\ESKD@hash@p@@style@draw@title=\count104
+\ESKD@hash@c@@style@draw@formI=\count105
+\ESKD@hash@p@@style@draw@formI=\count106
+\ESKD@hash@c@@style@draw@formII=\count107
+\ESKD@hash@p@@style@draw@formII=\count108
+\ESKD@hash@c@@style@draw@formIIab=\count109
+\ESKD@hash@p@@style@draw@formIIab=\count110
+\ESKD@curpad@h=\skip70
+\ESKD@curpad@v=\skip71
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/changepage/chngpage.sty
+Package: chngpage 2009/10/20 v1.2b change page layout
+\c@cp@cnt=\count111
+\c@cp@tempcnt=\count112
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdinfo.sty
+Package: eskdinfo 2010/01/14 v0.98 Document Information
+
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdafterpkg.sty
+Package: eskdafterpkg 2010/01/14 v0.98 Apply Commands After Package
+)
+After Package Info: Collect commands for hyperref on input line 99
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdindent.sty
+Package: eskdindent 2010/01/14 v0.98 Paragraph Indent
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdlist.sty
+Package: eskdlist 2010/01/14 v0.98 List
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdsect.sty
+Package: eskdsect 2010/01/14 v0.98 Sectioning
+\ESKDsectionSkipBefore=\skip72
+\ESKDsectionSkipAfter=\skip73
+\ESKDsubsectionSkipBefore=\skip74
+\ESKDsubsectionSkipAfter=\skip75
+\ESKDsubsubsectionSkipBefore=\skip76
+\ESKDsubsubsectionSkipAfter=\skip77
+\c@point=\count113
+\c@subpoint=\count114
+\c@subsubpoint=\count115
+\c@appendix=\count116
+\ESKDappendixSkip=\skip78
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdcap.sty
+Package: eskdcap 2010/01/14 v0.98 Captions
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen117
+\captionmargin@=\dimen118
+\captionwidth=\dimen119
+\caption@tempdima=\dimen120
+\caption@indent=\dimen121
+\caption@parindent=\dimen122
+\caption@hangindent=\dimen123
+)
+\c@ContinuedFloat=\count117
+Package caption Info: rotating package is loaded.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdfootnote.sty
+Package: eskdfootnote 2010/01/14 v0.98 Footnote Settings
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip79
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen124
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen125
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count118
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count119
+\leftroot@=\count120
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count121
+\DOTSCASE@=\count122
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box33
+\strutbox@=\box34
+\big@size=\dimen126
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count123
+\c@MaxMatrixCols=\count124
+\dotsspace@=\muskip10
+\c@parentequation=\count125
+\dspbrk@lvl=\count126
+\tag@help=\toks18
+\row@=\count127
+\column@=\count128
+\maxfields@=\count129
+\andhelp@=\toks19
+\eqnshift@=\dimen127
+\alignsep@=\dimen128
+\tagshift@=\dimen129
+\tagwidth@=\dimen130
+\totwidth@=\dimen131
+\lineht@=\dimen132
+\@envbody=\toks20
+\multlinegap=\skip80
+\multlinetaggap=\skip81
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-perpage.sty
+Package: zref-perpage 2012/04/04 v2.24 Module perpage for zref (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+Package: zref-base 2012/04/04 v2.24 Module base for zref (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 759.
+Package zref Info: New property: default on input line 760.
+Package zref Info: New property: page on input line 761.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+Package: zref-abspage 2012/04/04 v2.24 Module abspage for zref (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+)
+\c@abspage=\count130
+Package zref Info: New property: abspage on input line 62.
+)
+Package zref Info: New property: pagevalue on input line 54.
+Package zref Info: New property list: perpage on input line 55.
+\c@zpage=\count131
+\c@zref@unique=\count132
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdbiblist.sty
+Package: eskdbiblist 2010/01/14 v0.98 Bibliography List
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdexplan.sty
+Package: eskdexplan 2010/01/19 v0.98 ESKD Explanation
+\ESKDexplanIndent=\skip82
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdtitlebase.sty
+Package: eskdtitlebase 2010/01/14 v0.98 Base Title Commands
+\ESKD@title@agreed@cnt=\count133
+\ESKD@title@designed@cnt=\count134
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdtitle.sty
+Package: eskdtitle 2010/01/14 v0.98 Title GOST 2.105
+))
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdplain.sty
+Package: eskdplain 2011/05/09 v0.98 Plain Page Style
+\ESKD@hash@c@@style@draw@plain=\count135
+\ESKD@hash@p@@style@draw@plain=\count136
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count137
+\uc@combtoks=\toks24
+\uc@combtoksb=\toks25
+\uc@temptokena=\toks26
+)
+(/usr/share/texmf/tex/latex/scalable-cyrfonts-tex/cyrtimes.sty
+Package: cyrtimes 2001/02/08 scalable-cyrfonts
+)
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip83
+\enit@outerparindent=\dimen133
+\enit@toks=\toks27
+\enit@inbox=\box35
+\enitdp@description=\count138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
+\ttl@box=\box36
+\beforetitleunit=\skip84
+\aftertitleunit=\skip85
+\ttl@plus=\dimen134
+\ttl@minus=\dimen135
+\ttl@toksa=\toks28
+\titlewidth=\dimen136
+\titlewidthlast=\dimen137
+\titlewidthfirst=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip86
+\LTright=\skip87
+\LTpre=\skip88
+\LTpost=\skip89
+\LTchunksize=\count139
+\LTcapwidth=\dimen139
+\LT@head=\box37
+\LT@firsthead=\box38
+\LT@foot=\box39
+\LT@lastfoot=\box40
+\LT@cols=\count140
+\LT@rows=\count141
+\c@LT@tables=\count142
+\c@LT@chunks=\count143
+\LT@p@ftn=\toks29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen140
+\extrarowheight=\dimen141
+\NC@list=\toks30
+\extratabsurround=\skip90
+\backup@length=\skip91
+)
+\TX@col@width=\dimen142
+\TX@old@table=\dimen143
+\TX@old@col=\dimen144
+\TX@target=\dimen145
+\TX@delta=\dimen146
+\TX@cols=\count144
+\TX@ftn=\toks31
+)
+(/usr/share/texlive/texmf-dist/tex/latex/eskdx/eskdtotal.sty
+Package: eskdtotal 2010/01/14 v0.98 Total number of tables, figures, etc
+\c@ESKD@figure=\count145
+\c@ESKD@table=\count146
+\c@ESKD@bibitem=\count147
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count148
+\lst@gtempboxa=\box41
+\lst@token=\toks32
+\lst@length=\count149
+\lst@currlwidth=\dimen147
+\lst@column=\count150
+\lst@pos=\count151
+\lst@lostspace=\dimen148
+\lst@width=\dimen149
+\lst@newlines=\count152
+\lst@lineno=\count153
+\lst@maxwidth=\dimen150
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+\c@lstnumber=\count154
+\lst@skipnumbers=\count155
+\lst@framebox=\box42
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/08/26 1.5b listings configuration
+))
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
+) (./report.aux
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 5.
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+))
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Try loading font information for OT1+ftm on input line 3.
+
+(/usr/share/texmf/tex/latex/scalable-cyrfonts-tex/ot1ftm.fd
+File: ot1ftm.fd 2014/01/03 Fontinst v1.933 font definitions for OT1/ftm.
+)
+LaTeX Font Info:    Try loading font information for T2A+ftm on input line 3.
+
+(/usr/share/texmf/tex/latex/scalable-cyrfonts-tex/t2aftm.fd
+File: t2aftm.fd 2014/01/03 Fontinst v1.933 font definitions for T2A/ftm.
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(65.44131pt, 509.30438pt, 22.76218pt)
+* v-part:(T,H,B)=(42.67911pt, 759.68863pt, 42.67911pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=509.30438pt
+* \textheight=759.68863pt
+* \oddsidemargin=-6.82867pt
+* \evensidemargin=-6.82867pt
+* \topmargin=-29.59088pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=12.0pt
+* \footskip=0.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package lastpage Info: Please have a look at the pageslts package at
+(lastpage)             http://www.ctan.org/tex-archive/ 
+(lastpage)             macros/latex/contrib/pageslts/ 
+(lastpage)             or
+(lastpage)             http://www.ctan.org/tex-archive/ 
+(lastpage)             install/macros/latex/contrib/pageslts.tds.zip
+(lastpage)             ! on input line 3.
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count156
+\scratchdimen=\dimen151
+\scratchbox=\box43
+\nofMPsegments=\count157
+\nofMParguments=\count158
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count159
+\MPscratchDim=\dimen152
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
+\everyMPtoPDFconversion=\toks34
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+! Undefined control sequence.
+\ESKDcolumnXVIname ->\No 
+                         \ \cyr \cyrd \cyro \cyrk \cyru \cyrm .
+l.3 \begin{document}
+                    
+? 
+! Undefined control sequence.
+\ESKDcolumnXVIname ->\No 
+                         \ \cyr \cyrd \cyro \cyrk \cyru \cyrm .
+l.3 \begin{document}
+                    
+? q
+OK, entering \batchmode...
+! Undefined control sequence.
+\ESKDcolumnXVIname ->\No 
+                         \ \cyr \cyrd \cyro \cyrk \cyru \cyrm .
+l.3 \begin{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\ESKDcolumnXVIname ->\No 
+                         \ \cyr \cyrd \cyro \cyrk \cyru \cyrm .
+l.3 \begin{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\ESKDcolumnXIXname ->\cyr \CYRI \cyrn \cyrv . \No 
+                                                  \ \cyrp \cyro \cyrd \cyrl .
+l.3 \begin{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\ESKDcolumnXXIname ...m . \cyri \cyrn \cyrv . \No 
+                                                  
+l.3 \begin{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\ESKDcolumnXXIIname ...yr \CYRI \cyrn \cyrv . \No 
+                                                  \ \cyrd \cyru \cyrb \cyrl .
+l.3 \begin{document}
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+ ABD: EveryShipout initializing macros
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: Incompatible package detected (regarding \@caption).
+(caption)             \@caption = \long macro:#1[#2]#3->\stepcounter {ESKD@#1}\
+ESKD@old@caption {#1}[#2]{#3}.
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box44
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+\c@lstlisting=\count162
+ (./title.tex
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
+File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
+)) (./referat.tex [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 6380) in paragraph at lines 7--8
+[]\T2A/ftm/m/n/12  ќћѕ№ё“≈–Ќјя Ё —-ѕ≈–-“»-«ј, ‘ќ-–≈Ќ-«»- ј, Ћќ-√», QT, XML, GIT
+, LATEX,
+ []
+
+) [2] [3] (./report.toc [4])
+\tf@toc=\write3
+\openout3 = `report.toc'.
+
+ [5] (./intro.tex
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+LaTeX Font Info:    Font shape `T2A/ftm/bx/n' in size <12> not available
+(Font)              Font shape `T2A/ftm/b/n' tried instead on input line 1.
+
+LaTeX Warning: Citation `fedotovforenzika' on page 6 undefined on input line 1.
+
+
+) (./problem_form.tex [6]) (./git.tex
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+
+LaTeX Warning: Citation `progit' on page 7 undefined on input line 3.
+
+) (./tex.tex
+
+LaTeX Warning: Citation `lvovskyi' on page 7 undefined on input line 3.
+
+ [7]
+
+LaTeX Warning: Citation `latexrus' on page 8 undefined on input line 5.
+
+) (./python.tex
+
+LaTeX Warning: Citation `python_wiki' on page 8 undefined on input line 1.
+
+) (./trackingtime.tex) (./individual_reports/qt_doc.tex
+Underfull \hbox (badness 2790) in paragraph at lines 1--2
+[]\T2A/ftm/m/n/12 Qt --- это крос-сплат-фор-мен-на€ биб-лио-те-ка C++ клас-сов 
+дл€ со-зда-ни€ гра-фи-че-ских
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 1--2
+\T2A/ftm/m/n/12 поль-зо-ва-тель-ских ин-тер-фей-сов (GUI) от фир-мы Digia. Ёта 
+биб-лио-те-ка пол-но-стью объектно-
+ []
+
+ [8]
+
+LaTeX Warning: Citation `qtdoc' on page 9 undefined on input line 38.
+
+ [9]
+
+LaTeX Warning: Citation `qtcross' on page 10 undefined on input line 52.
+
+
+LaTeX Warning: Citation `qtcross' on page 10 undefined on input line 70.
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 69--71
+[]\T2A/ftm/m/n/12  ласс QCryptographicHash предо-став-л€-ет спо-соб ге-не-ра-ци
+и крип-то-гра-фи-че-ских хэ-шей.
+ []
+
+
+Underfull \hbox (badness 1796) in paragraph at lines 76--77
+[]\T2A/ftm/m/n/12 ƒл€ ска-ни-ро-ва-ни€ об-ра-за на на-ли-чие ин-те-ре-су-ю-щих 
+лог фай-лов ис-поль-зо-вал-с€ класс
+ []
+
+ [10]) (./individual_reports/technical_attributes.tex) (./xml.tex
+
+LaTeX Warning: Citation `xml' on page 11 undefined on input line 3.
+
+LaTeX Font Info:    Try loading font information for T2A+fcr on input line 8.
+
+(/usr/share/texmf/tex/latex/scalable-cyrfonts-tex/t2afcr.fd
+File: t2afcr.fd 2014/01/03 Fontinst v1.933 font definitions for T2A/fcr.
+)) [11] (./individual_reports/architech.tex <images/architech.png, id=41, 664.4
+825pt x 242.9075pt>
+File: images/architech.png Graphic file (type png)
+ <use images/architech.png>
+Package pdftex.def Info: images/architech.png used on input line 9.
+(pdftex.def)             Requested size: 458.37083pt x 167.56186pt.
+ <images/alg_main.png, id=42, 435.6275pt x 694.595pt>
+File: images/alg_main.png Graphic file (type png)
+ <use images/alg_main.png>
+Package pdftex.def Info: images/alg_main.png used on input line 17.
+(pdftex.def)             Requested size: 305.58572pt x 487.24126pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [12 <./images/architech.png (PNG copy)>]
+Package epstopdf Info: Source file: <images/UML.eps>
+(epstopdf)                    date: 2015-11-27 16:58:58
+(epstopdf)                    size: 405573 bytes
+(epstopdf)             Output file: <images/UML-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-11-27 16:58:58
+(epstopdf)                    size: 99444 bytes
+(epstopdf)             Command: <repstopdf --outfile=images/UML-eps-converted-t
+o.pdf images/UML.eps>
+(epstopdf)             \includegraphics on input line 41.
+Package epstopdf Info: Output file is already uptodate.
+
+<images/UML-eps-converted-to.pdf, id=46, 1090.0725pt x 675.52374pt>
+File: images/UML-eps-converted-to.pdf Graphic file (type pdf)
+ <use images/UML-eps-converted-to.pdf>
+Package pdftex.def Info: images/UML-eps-converted-to.pdf used on input line 41.
+
+(pdftex.def)             Requested size: 458.37083pt x 284.04788pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [13 <./images/alg_main.png>] [14 <./images/UML-eps-converted-to.pdf>]) (./indi
+vidual_reports/shipovskoy.tex
+Underfull \hbox (badness 8170) in paragraph at lines 63--64
+[]\T2A/ftm/m/n/12 date_created --- да-та со-хра-не-ни€, пред-став-лен-на€ в сле
+-ду-ю-щем ви-де (при-мер):
+ []
+
+ [15
+
+] <images/ship_1.JPG, id=60, 779.16093pt x 105.39375pt>
+File: images/ship_1.JPG Graphic file (type jpg)
+ <use images/ship_1.JPG>
+Package pdftex.def Info: images/ship_1.JPG used on input line 67.
+(pdftex.def)             Requested size: 458.37083pt x 62.00165pt.
+ <images/ship_2.JPG, id=61, 622.57594pt x 109.91063pt>
+File: images/ship_2.JPG Graphic file (type jpg)
+ <use images/ship_2.JPG>
+Package pdftex.def Info: images/ship_2.JPG used on input line 87.
+(pdftex.def)             Requested size: 458.37083pt x 80.92168pt.
+ <images/ship_3.JPG, id=62, 285.31593pt x 419.31656pt>
+File: images/ship_3.JPG Graphic file (type jpg)
+ <use images/ship_3.JPG>
+Package pdftex.def Info: images/ship_3.JPG used on input line 93.
+(pdftex.def)             Requested size: 254.65219pt x 374.25266pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/ship_4.JPG, id=63, 657.95813pt x 500.62032pt>
+File: images/ship_4.JPG Graphic file (type jpg)
+ <use images/ship_4.JPG>
+Package pdftex.def Info: images/ship_4.JPG used on input line 99.
+(pdftex.def)             Requested size: 356.5115pt x 271.26288pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [16 <./images/ship_1.JPG> <./images/ship_2.JPG>] [17 <./images/ship_3.JPG> <./
+images/ship_4.JPG>] <images/ship_5.JPG, id=70, 422.32782pt x 295.1025pt>
+File: images/ship_5.JPG Graphic file (type jpg)
+ <use images/ship_5.JPG>
+Package pdftex.def Info: images/ship_5.JPG used on input line 112.
+(pdftex.def)             Requested size: 305.58572pt x 213.5318pt.
+ <images/ship_6.JPG, id=71, 455.45157pt x 406.51875pt>
+File: images/ship_6.JPG Graphic file (type jpg)
+ <use images/ship_6.JPG>
+Package pdftex.def Info: images/ship_6.JPG used on input line 118.
+(pdftex.def)             Requested size: 305.58572pt x 272.75693pt.
+ <images/ship_7.JPG, id=72, 432.86719pt x 494.59781pt>
+File: images/ship_7.JPG Graphic file (type jpg)
+ <use images/ship_7.JPG>
+Package pdftex.def Info: images/ship_7.JPG used on input line 124.
+(pdftex.def)             Requested size: 407.44505pt x 465.57103pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [18
+
+ <./images/ship_5.JPG> <./images/ship_6.JPG>] [19 <./images/ship_7.JPG>]
+Underfull \hbox (badness 2111) in paragraph at lines 130--131
+[]\T2A/ftm/m/n/12 »звлечение под-стро-ки из стро-ки осу-ществ-л€-ет-с€ с по-мо-
+щью ре-гу-л€р-но-го вы-ра-же-ни€
+ []
+
+ <images/ship_8.JPG, id=80, 536.0025pt x 410.2828pt>
+File: images/ship_8.JPG Graphic file (type jpg)
+ <use images/ship_8.JPG>
+Package pdftex.def Info: images/ship_8.JPG used on input line 135.
+(pdftex.def)             Requested size: 356.5115pt x 272.89098pt.
+ <images/ship_9.JPG, id=81, 490.83376pt x 162.6075pt>
+File: images/ship_9.JPG Graphic file (type jpg)
+ <use images/ship_9.JPG>
+Package pdftex.def Info: images/ship_9.JPG used on input line 150.
+(pdftex.def)             Requested size: 356.5115pt x 118.11195pt.
+ <images/ship_10.JPG, id=82, 478.03593pt x 261.22594pt>
+File: images/ship_10.JPG Graphic file (type jpg)
+ <use images/ship_10.JPG>
+Package pdftex.def Info: images/ship_10.JPG used on input line 158.
+(pdftex.def)             Requested size: 407.44505pt x 222.64894pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/ship_11.JPG, id=83, 511.9125pt x 188.20313pt>
+File: images/ship_11.JPG Graphic file (type jpg)
+ <use images/ship_11.JPG>
+Package pdftex.def Info: images/ship_11.JPG used on input line 166.
+(pdftex.def)             Requested size: 407.44505pt x 149.79593pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [20
+
+ <./images/ship_8.JPG> <./images/ship_9.JPG>] [21 <./images/ship_10.JPG> <./ima
+ges/ship_11.JPG>] <images/ship_12.JPG, id=90, 475.02469pt x 213.79875pt>
+File: images/ship_12.JPG Graphic file (type jpg)
+ <use images/ship_12.JPG>
+Package pdftex.def Info: images/ship_12.JPG used on input line 194.
+(pdftex.def)             Requested size: 356.5115pt x 160.4661pt.
+) [22
+
+ <./images/ship_12.JPG>] (./individual_reports/kucher.tex
+<images/kucher_1.png, id=94, 308.65312pt x 177.66376pt>
+File: images/kucher_1.png Graphic file (type png)
+ <use images/kucher_1.png>
+Package pdftex.def Info: images/kucher_1.png used on input line 15.
+(pdftex.def)             Requested size: 203.71864pt x 117.26657pt.
+
+<images/kucher_2.png, id=95, 307.90031pt x 177.66376pt>
+File: images/kucher_2.png Graphic file (type png)
+ <use images/kucher_2.png>
+Package pdftex.def Info: images/kucher_2.png used on input line 21.
+(pdftex.def)             Requested size: 203.71864pt x 117.55121pt.
+ <images/kucher_3.png, id=96, 395.97937pt x 163.3603pt>
+File: images/kucher_3.png Graphic file (type png)
+ <use images/kucher_3.png>
+Package pdftex.def Info: images/kucher_3.png used on input line 27.
+(pdftex.def)             Requested size: 356.5115pt x 147.08023pt.
+
+<images/kucher_4.png, id=97, 393.72093pt x 216.05719pt>
+File: images/kucher_4.png Graphic file (type png)
+ <use images/kucher_4.png>
+Package pdftex.def Info: images/kucher_4.png used on input line 33.
+(pdftex.def)             Requested size: 305.58572pt x 167.68983pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [23 <./images/kucher_1.png> <./images/kucher_2.png> <./images/kucher_3.png>]
+<images/kucher_5.png, id=101, 453.19313pt x 287.57437pt>
+File: images/kucher_5.png Graphic file (type png)
+ <use images/kucher_5.png>
+Package pdftex.def Info: images/kucher_5.png used on input line 59.
+(pdftex.def)             Requested size: 305.58572pt x 193.91125pt.
+
+<images/kucher_6.png, id=102, 468.24937pt x 303.38344pt>
+File: images/kucher_6.png Graphic file (type png)
+ <use images/kucher_6.png>
+Package pdftex.def Info: images/kucher_6.png used on input line 65.
+(pdftex.def)             Requested size: 305.58572pt x 198.00238pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_7.png, id=103, 461.47406pt x 188.95593pt>
+File: images/kucher_7.png Graphic file (type png)
+ <use images/kucher_7.png>
+Package pdftex.def Info: images/kucher_7.png used on input line 71.
+(pdftex.def)             Requested size: 305.58572pt x 125.12648pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_8.png, id=104, 316.93407pt x 197.23688pt>
+File: images/kucher_8.png Graphic file (type png)
+ <use images/kucher_8.png>
+Package pdftex.def Info: images/kucher_8.png used on input line 77.
+(pdftex.def)             Requested size: 305.58572pt x 190.18791pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [24 <./images/kucher_4.png> <./images/kucher_5.png>] [25 <./images/kucher_6.pn
+g> <./images/kucher_7.png> <./images/kucher_8.png>] (./individual_reports/kuche
+r_dir_1.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--85
+
+ []
+
+ (./individual_reports/kucher_dir_2.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--88
+
+ []
+
+ [26
+
+] (./individual_reports/kucher_dir_3.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--91
+
+ []
+
+ [27] (./individual_reports/kucher_dir_4.tex
+! Undefined control sequence.
+l.23 ...Program Files (x86)\textbackslashReference
+                                                   Assemblies \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 1--94
+
+ []
+
+ [28] [29] (./individual_reports/kucher_dir_5.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--97
+
+ []
+
+ [30] (./individual_reports/kucher_dir_6.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--100
+
+ []
+
+ [31] [32]
+<images/kucher_9.png, id=134, 267.24844pt x 333.49594pt>
+File: images/kucher_9.png Graphic file (type png)
+ <use images/kucher_9.png>
+Package pdftex.def Info: images/kucher_9.png used on input line 104.
+(pdftex.def)             Requested size: 254.65219pt x 317.79129pt.
+
+<images/kucher_10.png, id=135, 484.05844pt x 1087.81406pt>
+File: images/kucher_10.png Graphic file (type png)
+ <use images/kucher_10.png>
+Package pdftex.def Info: images/kucher_10.png used on input line 110.
+(pdftex.def)             Requested size: 305.58572pt x 686.77057pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/kucher_11.png, id=136, 566.86781pt x 746.79pt>
+File: images/kucher_11.png Graphic file (type png)
+ <use images/kucher_11.png>
+Package pdftex.def Info: images/kucher_11.png used on input line 116.
+(pdftex.def)             Requested size: 407.44505pt x 536.78816pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_18.png, id=137, 566.86781pt x 716.6775pt>
+File: images/kucher_18.png Graphic file (type png)
+ <use images/kucher_18.png>
+Package pdftex.def Info: images/kucher_18.png used on input line 122.
+(pdftex.def)             Requested size: 407.44505pt x 515.14351pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [33 <./images/kucher_9.png>]
+
+LaTeX Warning: Text page 34 contains only floats.
+
+ [34 <./images/kucher_10.png>] [35 <./images/kucher_11.png>] [36 <./images/kuch
+er_18.png>]
+<images/kucher_12.PNG, id=150, 542.77782pt x 420.82219pt>
+File: images/kucher_12.PNG Graphic file (type png)
+ <use images/kucher_12.PNG>
+Package pdftex.def Info: images/kucher_12.PNG used on input line 135.
+(pdftex.def)             Requested size: 254.65219pt x 197.43327pt.
+
+<images/kucher_13.PNG, id=152, 520.19344pt x 430.60875pt>
+File: images/kucher_13.PNG Graphic file (type png)
+ <use images/kucher_13.PNG>
+Package pdftex.def Info: images/kucher_13.PNG used on input line 141.
+(pdftex.def)             Requested size: 254.65219pt x 210.79643pt.
+
+<images/kucher_14.PNG, id=153, 555.57562pt x 415.5525pt>
+File: images/kucher_14.PNG Graphic file (type png)
+ <use images/kucher_14.PNG>
+Package pdftex.def Info: images/kucher_14.PNG used on input line 147.
+(pdftex.def)             Requested size: 254.65219pt x 190.47166pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_15.PNG, id=154, 562.35094pt x 431.36156pt>
+File: images/kucher_15.PNG Graphic file (type png)
+ <use images/kucher_15.PNG>
+Package pdftex.def Info: images/kucher_15.PNG used on input line 153.
+(pdftex.def)             Requested size: 254.65219pt x 195.33516pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_16.PNG, id=155, 508.14844pt x 427.5975pt>
+File: images/kucher_16.PNG Graphic file (type png)
+ <use images/kucher_16.PNG>
+Package pdftex.def Info: images/kucher_16.PNG used on input line 159.
+(pdftex.def)             Requested size: 254.65219pt x 214.28757pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/kucher_17.PNG, id=156, 523.20468pt x 436.63126pt>
+File: images/kucher_17.PNG Graphic file (type png)
+ <use images/kucher_17.PNG>
+Package pdftex.def Info: images/kucher_17.PNG used on input line 165.
+(pdftex.def)             Requested size: 407.44505pt x 340.03134pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [37
+
+ <./images/kucher_12.PNG> <./images/kucher_13.PNG>] [38 <./images/kucher_14.PNG
+> <./images/kucher_15.PNG> <./images/kucher_16.PNG>] [39 <./images/kucher_17.PN
+G>]) (./individual_reports/seryakov.tex
+Underfull \hbox (badness 2591) in paragraph at lines 12--14
+[]\T2A/ftm/m/n/12 —ообщени€, син-хро-ни-зи-ро-ван-ные с Outlook, име-ют са-мой 
+про-грам-ме сле-ду-ю-щий вид
+ []
+
+ <images/ser_1.JPG, id=173, 305.64188pt x 319.94531pt>
+File: images/ser_1.JPG Graphic file (type jpg)
+ <use images/ser_1.JPG>
+Package pdftex.def Info: images/ser_1.JPG used on input line 16.
+(pdftex.def)             Requested size: 305.58572pt x 319.90057pt.
+ <images/ser_2.png, id=174, 660.4675pt x 441.65pt>
+File: images/ser_2.png Graphic file (type png)
+ <use images/ser_2.png>
+Package pdftex.def Info: images/ser_2.png used on input line 22.
+(pdftex.def)             Requested size: 407.44505pt x 272.46562pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/ser_3.png, id=175, 492.84125pt x 413.545pt>
+File: images/ser_3.png Graphic file (type png)
+ <use images/ser_3.png>
+Package pdftex.def Info: images/ser_3.png used on input line 28.
+(pdftex.def)             Requested size: 407.44505pt x 341.9045pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [40
+
+ <./images/ser_1.JPG>] [41 <./images/ser_2.png> <./images/ser_3.png>] <images/s
+er_4.png, id=182, 388.45125pt x 666.49pt>
+File: images/ser_4.png Graphic file (type png)
+ <use images/ser_4.png>
+Package pdftex.def Info: images/ser_4.png used on input line 77.
+(pdftex.def)             Requested size: 305.58572pt x 524.32466pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/ser_5.png, id=183, 318.18875pt x 736.7525pt>
+File: images/ser_5.png Graphic file (type png)
+ <use images/ser_5.png>
+Package pdftex.def Info: images/ser_5.png used on input line 83.
+(pdftex.def)             Requested size: 254.65219pt x 589.62764pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [42
+
+] [43 <./images/ser_4.png>] [44 <./images/ser_5.png>]) (./individual_reports/te
+reshenko.tex
+Underfull \hbox (badness 2460) in paragraph at lines 8--9
+[]\T2A/ftm/m/n/12 profile_name --- мо-жет быть лю-бым и ге-не-ри-ру-ет-с€ са-мо
+й про-грам-мой (на-при-мер,
+ []
+
+! Undefined control sequence.
+<inserted text> ...pData & INBOX & \textampersand 
+                                                  BB4EQgQ,BEAEMAQ\\ & \textb...
+l.30 \end{tabularx}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<inserted text> ...pData & INBOX & \textampersand 
+                                                  BB4EQgQ,BEAEMAQ\\ & \textb...
+l.30 \end{tabularx}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 5105) in paragraph at lines 30--30
+[]|\T2A/ftm/m/n/12 ‘айл с ис-хо-д€-щи-ми
+ []
+
+! Undefined control sequence.
+<inserted text> ...pData & INBOX & \textampersand 
+                                                  BB4EQgQ,BEAEMAQ\\ & \textb...
+l.30 \end{tabularx}
+                   
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+ [45
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+[]\T2A/ftm/m/n/12 <<\\nContent-Transfer-Encoding: 8bit\\s*(\\S.*\\S)\\s*[0-3]\\
+d\\.[01]\\d\\.\\d4 [0-2]\\d:[0-5]\\d,
+ []
+
+
+<images/teresh_1.png, id=199, 685.56125pt x 543.02875pt>
+File: images/teresh_1.png Graphic file (type png)
+ <use images/teresh_1.png>
+Package pdftex.def Info: images/teresh_1.png used on input line 74.
+(pdftex.def)             Requested size: 458.37083pt x 363.08162pt.
+ [46 <./images/teresh_1.png>]
+<images/teresh_2.png, id=203, 1471.4975pt x 605.26125pt>
+File: images/teresh_2.png Graphic file (type png)
+ <use images/teresh_2.png>
+Package pdftex.def Info: images/teresh_2.png used on input line 90.
+(pdftex.def)             Requested size: 458.37083pt x 188.53412pt.
+) [47
+
+ <./images/teresh_2.png>] (./individual_reports/bokov.tex <images/bokov_1.png, 
+id=207, 190.46156pt x 614.295pt>
+File: images/bokov_1.png Graphic file (type png)
+ <use images/bokov_1.png>
+Package pdftex.def Info: images/bokov_1.png used on input line 44.
+(pdftex.def)             Requested size: 152.79286pt x 492.81454pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/bokov_2.png, id=208, 1191.7022pt x 509.65407pt>
+File: images/bokov_2.png Graphic file (type png)
+ <use images/bokov_2.png>
+Package pdftex.def Info: images/bokov_2.png used on input line 50.
+(pdftex.def)             Requested size: 305.58572pt x 130.68718pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [48] [49 <./images/bokov_1.png> <./images/bokov_2.png>]
+<images/bokov_4.png, id=218, 1206.75844pt x 544.28343pt>
+File: images/bokov_4.png Graphic file (type png)
+ <use images/bokov_4.png>
+Package pdftex.def Info: images/bokov_4.png used on input line 97.
+(pdftex.def)             Requested size: 356.5115pt x 160.79475pt.
+
+<images/bokov_3.png, id=219, 199.49532pt x 631.60968pt>
+File: images/bokov_3.png Graphic file (type png)
+ <use images/bokov_3.png>
+Package pdftex.def Info: images/bokov_3.png used on input line 103.
+(pdftex.def)             Requested size: 203.71864pt x 645.01399pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [50
+
+ <./images/bokov_4.png>] [51 <./images/bokov_3.png>] <images/bokov_5.png, id=22
+7, 381.67593pt x 861.2175pt>
+File: images/bokov_5.png Graphic file (type png)
+ <use images/bokov_5.png>
+Package pdftex.def Info: images/bokov_5.png used on input line 185.
+(pdftex.def)             Requested size: 254.65219pt x 574.59477pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+<images/bokov_6.png, id=228, 1155.56718pt x 507.39563pt>
+File: images/bokov_6.png Graphic file (type png)
+ <use images/bokov_6.png>
+Package pdftex.def Info: images/bokov_6.png used on input line 191.
+(pdftex.def)             Requested size: 203.71864pt x 89.4459pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [52
+
+]
+
+LaTeX Warning: Text page 53 contains only floats.
+
+ [53 <./images/bokov_5.png> <./images/bokov_6.png>] [54]) (./individual_reports
+/lobanov.tex
+
+LaTeX Warning: Citation `registry' on page 55 undefined on input line 18.
+
+
+LaTeX Warning: Citation `msdn' on page 55 undefined on input line 20.
+
+ <images/lob_1.PNG, id=239, 553.31718pt x 176.91093pt>
+File: images/lob_1.PNG Graphic file (type png)
+ <use images/lob_1.PNG>
+Package pdftex.def Info: images/lob_1.PNG used on input line 25.
+(pdftex.def)             Requested size: 458.37083pt x 146.55258pt.
+ <images/lob_2.PNG, id=240, 493.845pt x 228.855pt>
+File: images/lob_2.PNG Graphic file (type png)
+ <use images/lob_2.PNG>
+Package pdftex.def Info: images/lob_2.PNG used on input line 31.
+(pdftex.def)             Requested size: 458.37083pt x 212.4139pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [55
+
+ <./images/lob_1.PNG>] <images/lob_3.PNG, id=246, 657.2053pt x 558.58687pt>
+File: images/lob_3.PNG Graphic file (type png)
+ <use images/lob_3.PNG>
+Package pdftex.def Info: images/lob_3.PNG used on input line 50.
+(pdftex.def)             Requested size: 458.37083pt x 389.59328pt.
+ <images/lob_4.png, id=247, 122.4575pt x 497.86pt>
+File: images/lob_4.png Graphic file (type png)
+ <use images/lob_4.png>
+Package pdftex.def Info: images/lob_4.png used on input line 56.
+(pdftex.def)             Requested size: 101.85931pt x 414.1277pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [56 <./images/lob_2.PNG> <./images/lob_3.PNG>] <images/lob_5.png, id=253, 344.
+28625pt x 550.055pt>
+File: images/lob_5.png Graphic file (type png)
+ <use images/lob_5.png>
+Package pdftex.def Info: images/lob_5.png used on input line 66.
+(pdftex.def)             Requested size: 203.71864pt x 325.47806pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/lob_6.PNG, id=254, 541.27219pt x 418.56375pt>
+File: images/lob_6.PNG Graphic file (type png)
+ <use images/lob_6.PNG>
+Package pdftex.def Info: images/lob_6.PNG used on input line 72.
+(pdftex.def)             Requested size: 356.5115pt x 275.69727pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ <images/lob_7.PNG, id=255, 617.30624pt x 422.32782pt>
+File: images/lob_7.PNG Graphic file (type png)
+ <use images/lob_7.PNG>
+Package pdftex.def Info: images/lob_7.PNG used on input line 78.
+(pdftex.def)             Requested size: 356.5115pt x 243.91278pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [57 <./images/lob_4.png>] [58 <./images/lob_5.png> <./images/lob_6.PNG>] [59 <
+./images/lob_7.PNG>]) [60
+
+] (./report.bbl) 
+AED: lastpage setting LastPage
+ [61
+
+] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 10188 strings out of 493304
+ 150505 string characters out of 6139870
+ 221368 words of memory out of 5000000
+ 13275 multiletter control sequences out of 15000+600000
+ 22994 words of font info for 46 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 52i,10n,42p,1808b,634s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/scalable-cyrfonts-tex/6r.enc}{/usr/share/te
+xlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/publ
+ic/scalable-cyrfonts-tex/fcrr6w.pfb></usr/share/texmf/fonts/type1/public/scalab
+le-cyrfonts-tex/ftmb6w.pfb></usr/share/texmf/fonts/type1/public/scalable-cyrfon
+ts-tex/ftmr6w.pfb></usr/share/texmf/fonts/type1/public/scalable-cyrfonts-tex/ft
+mr8a.pfb>
+Output written on report.pdf (61 pages, 3475879 bytes).
+PDF statistics:
+ 295 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 266 words of extra memory for PDF output out of 10000 (max. 10000000)
+
