@@ -1,0 +1,13 @@
+.idea/*
+__pycache__/*
+
+classes/__pycache__/*
+checkers/*
+*.pyc
+*.toc
+*.tex~
+report/report.*
+!report/report.pdf
+*.log
+*.pdf
+api/protected/config/main.php
