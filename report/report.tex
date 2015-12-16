@@ -1,0 +1,107 @@
+\input{config}
+
+\begin{document}
+ \input{title}
+ \input{referat}
+ 
+ \newpage
+ \ESKDthisStyle{empty}
+ \section*{Список исполнителей}
+ 
+Лобанов О.В. -- программист, ответственный исполнитель, ответственный за разработку функций сбора информации из реестра. 
+
+Шиповской В.В. -- программист, ответственный за написание части системы для сбора и обработки информации из браузера Google Chrome.
+
+Серяков А.В. -- программист, ответственный за написание части системы для сбора информации из почтового клиента MS Outlook.
+
+Боков И.М. -- программист, ответственный за написание части системы для для нахождения медиа-файлов (аудио, видео, изображение) и извлечения мета-данных из них.
+
+Кучер М.В. -- программист, ответственный за написание части системы для сбора информации об установленном ПО по остаточным файлам.
+
+Терещенко Ю.А. -- программист, ответственный за написание части системы для сбора информации из почтового клиента Mozilla Thunderbird.
+
+Мейта М.В. -- документатор, ответсвенный за верстку необходимой документации в системе \LaTeX.
+
+ 
+ % - содержание
+ \newpage
+ \ESKDstyle{plain}
+ \tableofcontents
+
+ \newpage
+ \ESKDstyle{plain}
+ \section*{Введение}
+ \addcontentsline{toc}{section}{Введение}
+ \input{intro}
+
+ \section{Назначение и область применения}
+Разрабатываемый комплекс предназначен для автоматизации процесса сбора информации с исследуемого образа жёсткого диска.
+\section{Постановка задачи}
+\setcounter{figure}{0}
+\input{problem_form}
+\section{Инструменты}
+\setcounter{figure}{0}
+\subsection{Система контроля версий Git}
+\input{git}
+\subsection{Система компьютерной вёрстки \TeX}
+\input{tex}
+\subsection{Система документирования Doxygen}
+\input{doxygen}
+\subsection{Qt - кроссплатформенный инструментарий разработки ПО}
+\input{individual_reports/qt_doc}
+
+\section{Технические характеристики}
+\input{individual_reports/technical_attributes}
+\subsection{Выбор единого формата выходных файлов}
+\input{xml}
+
+\section{Разработка программного обеспечения}
+\setcounter{figure}{0}
+ 
+\subsection{Архитектура}
+\input{individual_reports/architech}
+
+\newpage
+\subsection{Сбор информации из браузера Google Chrome} % - Отчёт Влада
+\input{individual_reports/shipovskoy}
+
+\newpage
+\subsection{Плагин SearchProgram} % - Отчёт Макса
+\input{individual_reports/kucher}
+
+\newpage
+\subsection{Cбор информации из почтового клиента MS Outlook} % - Отчет Андрея
+\input{individual_reports/seryakov}
+
+\newpage
+\subsection{Cбор информации из почтового клиента Mozilla Thunderbird}  % - Отчет Юры
+\input{individual_reports/tereshenko}
+
+\newpage
+\subsection{Поиск медиа-файлов и извлечение мета-данных} % - Отчет Ильи
+\input{individual_reports/bokov}
+
+\newpage 
+\subsection{Сбор и анализ информации из реестра ОС MS Windows} % - Отчет Олега
+\input{individual_reports/lobanov}
+
+\newpage
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+В данном семестре нашей группой была выполнена часть работы по созданию автоматизированного программного комплекса для проведения компьютерной экспертизы, проанализированы дальнейшие перспективы и поставлены цели для дальнейшего развития проекта.
+ 
+ 
+ \newpage
+ \renewcommand{\refname}{Список использованных источников}
+ \bibliography{lit}
+
+ \ESKDappendix{Обязательное}{\normalfont Компакт-диск}
+ Компакт-диск содержит: 
+ \begin{itemize}
+ \item электронную версию пояснительной записки в форматах *.tex и *.pdf;
+ \item актуальную версию программного комплекса для проведения компьютерной экспертизы;
+ \item тестовые данные для работы с программным комплексом;
+ \item документацию к проекту в html-формате.
+ \end{itemize}
+ 
+\end{document}

@@ -1,0 +1,83 @@
+\documentclass[12pt]{eskdtext}
+\usepackage[numbertop, numbercenter]{eskdplain}
+\usepackage[utf8x]{inputenc}
+
+% - Подключаем шрифты из пакета scalable-cyrfonts-tex
+\usepackage{cyrtimes}
+
+% - Отступ красной строки
+\setlength{\parindent}{1.25cm}
+
+% - Убирает точку в списке литературы
+\makeatletter
+\def\@biblabel#1{#1 }
+
+% - Точки для всех пунктов в оглавлении
+\renewcommand*{\l@section}{\@dottedtocline{1}{1.5em}{2.3em}}
+\renewcommand*{\l@subsection}{\@dottedtocline{1}{1.5em}{2.3em}}
+\renewcommand*{\l@subsubsection}{\@dottedtocline{1}{1.5em}{2.3em}}
+
+% - Для переопределения списков
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\makeatother
+
+\usepackage{enumitem}
+\setlist{nolistsep, itemsep=0.3cm,parsep=0pt}
+
+% - ГОСТ списка литературы
+\bibliographystyle{utf8gost705u}
+
+% - Верикальные отступы заголовков 
+\ESKDsectSkip{section}{1em}{1em}
+\ESKDsectSkip{subsection}{1em}{1em}
+\ESKDsectSkip{subsubsection}{1em}{1em}
+
+% - Изменение заголовков
+\usepackage{titlesec}
+\titleformat{\section}{\centering\normalfont\normalsize}{\thesection}{1.0em}{}
+\titleformat{\subsection}{\centering\normalfont\normalsize}{\thesubsection}{1.0em}{}
+\titleformat{\subsubsection}{\centering\normalfont\normalsize}{\thesubsubsection}{1.0em}{}
+\titleformat{\paragraph}{\centering\normalsize}{\theparagraph}{1.0em}{}
+
+% - Оставим место под ТЗ 
+%\setcounter{page}{4}
+
+% - Для больших таблиц
+\usepackage{longtable}
+\usepackage{tabularx}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+
+% - Используем графику в документе
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+% - Счётчики
+\usepackage{eskdtotal}
+
+% - Выравнивание по ширине
+\sloppy
+
+% - Разрешить перенос двух последних букв слова
+\righthyphenmin=2
+
+\RequirePackage{enumitem}
+\renewcommand{\alph}[1]{\asbuk{#1}}
+\setlist{nolistsep}
+\setitemize[1]{label=--, fullwidth, itemindent=\parindent, 
+  listparindent=\parindent}% для дефисного списка
+\setenumerate[1]{label=\arabic*), fullwidth, itemindent=\parindent, 
+  listparindent=\parindent}% для нумерованного списка
+\setenumerate[2]{label=\alph*), fullwidth, itemindent=\parindent, 
+  listparindent=\parindent, leftmargin=\parindent}% для списка 2-ой ступени, который будет нумероваться а), б) и т.д.
+
+% - Оформляем листинг кода (не использовать комментарии на русском!)
+\usepackage{listings}  
+\lstset{basicstyle=\ttfamily\small}
+\lstset{extendedchars=\true}
+
+% - выводим текст как есть с размером шрифта scriptsize
+\makeatletter
+\def\verbatim{\scriptsize\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother

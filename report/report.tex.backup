@@ -1,0 +1,59 @@
+\input{config}
+
+\begin{document}
+ \input{title}
+ \input{referat}
+ 
+ \newpage
+ \ESKDthisStyle{empty}
+ \section*{Список исполнителей}
+
+ \textbf{ДОПИЛИТЬ}
+ 
+ % - содержание
+ \newpage
+ \ESKDstyle{plain}
+ \tableofcontents
+
+ \newpage
+ \ESKDstyle{plain}
+ \section*{Введение}
+ \addcontentsline{toc}{section}{Введение}
+ \input{intro}
+
+ \section{Назначение и область применения}
+Разрабатываемый комплекс предназначен для автоматизации процесса сбора информации с исследуемого образа жёсткого диска.
+\section{Постановка задачи}
+\setcounter{figure}{0}
+\input{problem_form}
+\section{Инструменты}
+\setcounter{figure}{0}
+\subsection{Система контроля версий Git}
+\input{git}
+\subsection{Система компьютерной вёрстки \TeX}
+\input{tex}
+\subsection{Qt - кроссплатформенный инструментарий разработки ПО}
+\input{individual_reports/qt_doc}
+
+\section{Технические характеристики}
+\input{individual_reports/technical_attributes}
+\subsection{Выбор единого формата выходных файлов}
+\input{xml}
+
+\section{Разработка программного обеспечения}
+\setcounter{figure}{0}
+ 
+ \newpage
+ \renewcommand{\refname}{Список использованных источников}
+ \bibliography{lit}
+
+ \ESKDappendix{Обязательное}{\normalfont Компакт-диск}
+ Компакт-диск содержит: 
+ \begin{itemize}
+ \item электронную версию пояснительной записки в форматах *.tex и *.pdf;
+ \item актуальную версию программного комплекса для проведения компьютерной экспертизы;
+ \item тестовые данные для работы с программным комплексом.
+ \end{itemize}
+ 
+\end{document}
+
