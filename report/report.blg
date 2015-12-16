@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+=======
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+>>>>>>> cf9217648d587e4063297a628f0b16a33f1c5699
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 I found no \citation commands---while reading file report.aux

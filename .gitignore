@@ -5,4 +5,8 @@ classes/__pycache__/*
 checkers/*
 *.pyc
 *.toc
+*.tex~
+*.aux
+*.log
+*.pdf
 api/protected/config/main.php
