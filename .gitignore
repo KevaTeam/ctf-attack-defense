@@ -4,5 +4,5 @@ __pycache__/*
 classes/__pycache__/*
 checkers/*
 *.pyc
-
+*.tex~
 api/protected/config/main.php
