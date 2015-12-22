@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.16)  16 DEC 2015 14:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2015.12.16)  16 DEC 2015 14:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -736,18 +736,19 @@ File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )) (./tex.tex [7]) (./doxygen.tex) (./individual_reports/qt_doc.tex [8] [9] [10
-]) (./individual_reports/technical_attributes.tex) (./xml.tex
+]) (./mongo.tex) [11] (./individual_reports/technical_attributes.tex) (./xml.te
+x
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)) [11] (./individual_reports/architech.tex <images/architech.png, id=40, 664.4
+)) (./individual_reports/architech.tex [12] <images/architech.png, id=43, 664.4
 825pt x 242.9075pt>
 File: images/architech.png Graphic file (type png)
  <use images/architech.png>
 Package pdftex.def Info: images/architech.png used on input line 9.
 (pdftex.def)             Requested size: 458.37083pt x 167.56186pt.
- <images/alg_main.png, id=41, 435.6275pt x 694.595pt>
+ <images/alg_main.png, id=44, 435.6275pt x 694.595pt>
 File: images/alg_main.png Graphic file (type png)
  <use images/alg_main.png>
 Package pdftex.def Info: images/alg_main.png used on input line 17.
@@ -755,7 +756,7 @@ Package pdftex.def Info: images/alg_main.png used on input line 17.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- [12 <./images/architech.png (PNG copy)>] [13 <./images/alg_main.png>]
+ [13 <./images/architech.png (PNG copy)>]
 Package epstopdf Info: Source file: <images/UML.eps>
 (epstopdf)                    date: 2015-12-16 13:07:06
 (epstopdf)                    size: 399436 bytes
@@ -773,8 +774,11 @@ File: images/UML-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: images/UML-eps-converted-to.pdf used on input line 41.
 
 (pdftex.def)             Requested size: 458.37083pt x 284.04788pt.
- [14 <./images/UML-eps-converted-to.pdf>] [15]) (./individual_reports/shipovsko
-y.tex [16
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+ [14 <./images/alg_main.png>] [15 <./images/UML-eps-converted-to.pdf>]) (./indi
+vidual_reports/shipovskoy.tex [16
 
 ] <images/ship_1.JPG, id=62, 779.16093pt x 105.39375pt>
 File: images/ship_1.JPG Graphic file (type jpg)
@@ -1357,8 +1361,8 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 10146 strings out of 493085
- 150127 string characters out of 6136916
+ 10149 strings out of 493085
+ 150152 string characters out of 6136916
  223937 words of memory out of 5000000
  13274 multiletter control sequences out of 15000+600000
  14778 words of font info for 36 fonts, out of 8000000 for 9000
@@ -1368,7 +1372,7 @@ Here is how much of TeX's memory you used:
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-sup
 er/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0800.pfb>
-Output written on report.pdf (63 pages, 3507883 bytes).
+Output written on report.pdf (63 pages, 3509975 bytes).
 PDF statistics:
  300 PDF objects out of 1000 (max. 8388607)
  157 compressed objects within 2 object streams
