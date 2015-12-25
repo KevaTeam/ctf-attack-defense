@@ -3,7 +3,7 @@
 \subsubsection{Принцип работы}
 Игра делится на раунды, каждый раунд, обычно, длится 1 минуту (настраивается при инициализации). Интерфейс для работы модуля с сервисом называется чекер. За этот период модуль опрашивает с помощью чекеров все сервисы команд-участников.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \center{\includegraphics[width=1.0\linewidth]{images/module_round_structure.png}}
 \caption{Структура взаимодействия модуля с сервисами}
 \end{figure}
@@ -17,7 +17,7 @@
 
 На каждом этапе модуль ожидает в ответ один из четырех чисел: 101, 102, 103, 104. Эти числа также называются статусом сервиса команды-участника.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \center{\includegraphics[width=0.25\linewidth]{images/module_round_schema.png}}
 \caption{Схема создания потоков}
 \end{figure}
@@ -31,7 +31,7 @@
 На 2 этапе каждому чекеру посылается адрес сервера, идентификатор флага и сам флаг. 
 На 3 этапе каждому чекеру посылается адрес сервера, идентификатор флага и сам флаг.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
 \center{\includegraphics[width=0.15\linewidth]{images/module_round_toservice.png}}
 \caption{Блок-схема работы с каждым сервисом каждой команды-участника}
 \end{figure}
