@@ -1,0 +1,96 @@
+\input{config}
+
+\begin{document}
+ \input{title}
+ \input{referat}
+ 
+ \newpage
+ \ESKDthisStyle{empty}
+ \section*{Список исполнителей}
+
+Муковкин Д.Е. -- программист, ответственный исполнитель.
+
+Задачи:
+\begin{itemize}
+\item выбор языка программирования;
+\item создание архитектуры ядра;
+\item развертывание инфраструктуры;
+\item разработка модуля проверки сервисов, сдача флагов;
+\item настройка и тестирование платформы.
+\end{itemize}
+
+Койшинов Т.С. -- программист.
+
+Задачи:
+\begin{itemize}
+\item разработка структуры БД в API;
+\item доработка панели администратора;
+\item разработка API функций;
+\item разработка модуля таблицы результатов.
+\end{itemize}
+ 
+ % - содержание
+ \newpage
+ \ESKDstyle{plain}
+ \tableofcontents
+
+ \newpage
+ \ESKDstyle{plain}
+ \section*{Введение}
+ \addcontentsline{toc}{section}{Введение}
+ \input{intro}
+ \newpage
+ \section{Назначение и область применения}
+Разрабатываемый программно-аппаратный комплекс предназначен для проведения игр в области информационной безопасности Capture the flag по типу Attack-Defense.
+\section{Постановка задачи}
+\setcounter{figure}{0}
+\input{problem_form}
+\section{Инструменты}
+\setcounter{figure}{0}
+\subsection{Система контроля версий Git}
+\input{git}
+\subsection{Система компьютерной вёрстки \TeX}
+\input{tex}
+\subsection{Язык программирования Python}
+\input{python}
+\subsection{База данных MongoDB}
+\input{mongo}
+\subsection{TrackingTime - Система управления проектами и задачами}
+\input{trackingtime}
+\subsection{Flask - микрофреймворк для Python}
+\input{flask}
+
+\newpage
+\section{Технические характеристики}
+\input{technical_attributes}
+
+\section{Разработка программного обеспечения}
+\setcounter{figure}{0}
+ 
+\subsection{Архитектура}
+\input{individual_reports/architech}
+
+\newpage
+\section{Планы на будущее}
+\input{plani}
+
+\newpage
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+В данном семестре нашей группой была выполнена часть работы по созданию платформы для проведения соревнований в области информационной безопасности, определены основные векторы развития и поставлены задачи для дальнейшего развития платформы.
+ 
+ 
+ \newpage
+ % \renewcommand{\refname}{Список использованных источников}
+ \bibliography{lit}
+
+ \ESKDappendix{Обязательное}{\normalfont Компакт-диск}
+ Компакт-диск содержит: 
+ \begin{itemize}
+ \item электронную версию пояснительной записки в форматах *.tex и *.pdf;
+ \item актуальную версию программного комплекса для проведения компьютерной экспертизы;
+ \item тестовые данные для работы с программным комплексом;
+ \item документацию к проекту в html-формате.
+ \end{itemize}
+ 
+\end{document}
