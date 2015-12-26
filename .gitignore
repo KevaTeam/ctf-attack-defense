@@ -12,5 +12,4 @@ report/report.aux
 report/report.*
 !report/report.pdf
 *.log
-*.pdf
 api/protected/config/main.php
