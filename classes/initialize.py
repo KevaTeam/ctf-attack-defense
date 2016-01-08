@@ -1,6 +1,7 @@
 from functions import ConsoleColors as colors
 import os, stat, json, sys
 from urllib.request import urlopen
+from functions import get_data_from_api
 
 class Initialize:
     db = {}
@@ -17,13 +18,8 @@ class Initialize:
 
     def __init__(self, db):
         self.db = db
-        try:
-            response = urlopen("http://api.keva.su/method/jury.get").read().decode('utf8')
-        except Exception:
-            print(colors.FAIL + 'Error with requests in response' + colors.ENDC)
-            sys.exit(0)
-
-        data = json.loads(response)
+        
+        data = get_data_from_api()
 
         try:
             self.settings = data["response"]["settings"]
@@ -40,6 +36,7 @@ class Initialize:
         print(colors.OKGREEN + 'Generate services' + colors.ENDC)
         self.create_service()
 
+        print(colors.OKGREEN + 'Generate scoreboard' + colors.ENDC)
         self.generate_scoreboard()
 
         self.output = {
@@ -57,13 +54,12 @@ class Initialize:
         for e in self.teams:
             self.db.teams.insert_one(e)
 
-        # Check teams
+        # # Check teams
         # for e in self.db.teams.find():
         #     print(e)
 
 
     def create_service(self):
-
         # Delete all teams
         self.db.services.delete_many({})
 
@@ -91,14 +87,13 @@ class Initialize:
         os.chmod(path, stat.S_IRWXU)
 
     def generate_scoreboard(self):
-        for team in self.teams:
-            for service in self.services:
-                # print(team)
+        self.db.scoreboard.delete_many({})
+
+        for team in self.db.teams.find({}):
+            for service in self.db.services.find({}):
                 self.db.scoreboard.insert_one({
                     'team': team,
                     'service': service,
                     'status': 'UP',
                     'message': ''
                 })
-
-        print(self.db.scoreboard.find({}))

@@ -40,7 +40,8 @@ if __name__ == '__main__':
         elif argv[1] == 'scoreboard':
             scoreboard()
     else:
-        print("Please, enter command (init, etc)")
+        print("Please, enter command")
+        print('\n'.join(['init', 'flags', 'scoreboard']))
 
 
 

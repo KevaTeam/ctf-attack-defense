@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Scoreboard</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
+{% extends "layout.html" %}
 
+{% block title %}Таблица результатов{% endblock %}
+{% block body %}
 <div class="container">
   <h2>Scoreboard</h2>
-  <p>Look at my scoreboard! My scoreboard is amazing</p>            
+  <p>Look at my scoreboard! My scoreboard is amazing</p>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -33,12 +25,12 @@
         	{% for service in scoreboard[team] %}
 
         		<td class={{ color[scoreboard[team][service].status] }}>{{ scoreboard[team][service].status }}</td>
+            {% else %}
+            Some problem
         	{% endfor %}
     	</tr>
     	{% endfor %}
     </tbody>
   </table>
 </div>
-
-</body>
-</html>
+{% endblock %}

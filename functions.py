@@ -1,5 +1,7 @@
 from threading import Timer
+from sys import exit
 
+import requests
 
 def set_interval(func, sec):
     def func_wrapper():
@@ -11,6 +13,41 @@ def set_interval(func, sec):
     return t
 
 
+def get_data_from_api():
+    try:
+        return requests.get("http://api.keva.su/method/jury.get").json()
+    except Exception:
+        Message.fail('Error with requests in response')
+        exit(0)
+
+
+
+# Some methods for print message
+class ConsoleMessage:
+    def __init__(self):
+        pass
+
+
+    def success(self, str):
+        print(ConsoleColors.OKGREEN + str + ConsoleColors.ENDC)
+
+
+    def info(self, str):
+        print(ConsoleColors.OKBLUE + str + ConsoleColors.ENDC)
+
+
+    def warning(self, str):
+        print(ConsoleColors.WARNING + str + ConsoleColors.ENDC)
+
+
+    def fail(self, str):
+        print(ConsoleColors.FAIL + str + ConsoleColors.ENDC)
+
+
+Message = ConsoleMessage()
+
+
+# Colors for console
 class ConsoleColors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'

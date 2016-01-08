@@ -6,83 +6,104 @@ import socket, json, sys, time
 from classes.round import Round
 from urllib.request import urlopen
 from functions import ConsoleColors as colors
-
-
+from functions import get_data_from_api
 
 
 class Flags:
-	def __init__(self, db):
-		self.db = db
-		try:
-			response = urlopen("http://api.keva.su/method/jury.get").read().decode('utf8')
-		except Exception:
-			print(colors.FAIL + 'Error with requests in response' + colors.ENDC)
-			sys.exit(0)
+    def __init__(self, db):
+        self.db = db
+        print(colors.OKGREEN + 'Class is init' + colors.ENDC)
+        print(colors.HEADER + 'Get data from api' + colors.ENDC)
 
-		data = json.loads(response)
+        data = get_data_from_api()
+        
+        try:
+            lifetime = data["response"]["settings"]["flags"]["lifetime"]
+            round_length = data["response"]["settings"]["round_length"]
+        except Exception:
+            print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
+            sys.exit(0)
+        self.life = lifetime*round_length
 
-		try:
-			lifetime = data["response"]["settings"]["flags"]["lifetime"]
-			round_length = data["response"]["settings"]["round_length"]
-		except Exception:
-			print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
-			sys.exit(0)
-		self.life = lifetime*round_length
+    def start(self):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.bind(('0.0.0.0', 9090))
+        self.socket.listen(1)
 
-	def start(self):
-		self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.socket.bind(('0.0.0.0', 9090))
-		self.socket.listen(1)
+        while True:
+            conn, address = self.socket.accept()
+            print('connected:', address) # Возможно лишнее!!!
+            process = multiprocessing.Process(target=self.recv, args=(conn, address))
+            process.daemon = True
+            process.start()
 
-		while True:
-			conn, address = self.socket.accept()
-			print('connected:', address) # Возможно лишнее!!!
-			process = multiprocessing.Process(target=self.recv, args=(conn, address))
-			process.daemon = True
-			process.start()
+    def recv(self, connection, address):
+        team = self.db.teams.find_one({'host': address[0]})
+        
+        if not bool(team):
+            connection.send(('Who are you?\n Goodbye\n').encode())
+            connection.close()    
 
-	def recv(self, connection, address):
-		team = self.db.teams.find_one({'host': address[0]})
+        try:
+            self.process_one_team(connection, team)
+        except KeyboardInterrupt:
+            print('ok, bye')
+            connection.close()
+            sys.exit(0)
+            
 
-		if not bool(team):
-				connection.send(('Who are you?\n Goodbye\n').encode())
-				connection.close()
-		else:		
+            
+        # except:
+        #     print('Something went wrong')
+        #     connection.close()
 
-			connection.send(('hello team ' + team["name"] + '\n').encode())
+    def process_one_team(self, connection, team):
+        connection.send(('Welcome! \nYour team - ' + team["name"] + '\n').encode())
 
-			while True:
-				data = connection.recv(1024)
-				data = str(data.rstrip().decode('utf-8'))
+        try:
+            while True:
+                data = connection.recv(1024)
+                data = str(data.rstrip().decode('utf-8'))
 
-				flag = self.db.flags.find_one({'flag': data})
-				if not bool(flag):
-					connection.send(('not found\n').encode())
-					continue
+                flag = self.db.flags.find_one({'flag': data})
+                if not bool(flag):
+                    connection.send(('Flag is not found\n').encode())
+                    continue
 
-				if flag['team']['name'] == team["name"]:
-					connection.send(('It`s your flag, fox\n').encode())
-					continue
+                if flag['team']['name'] == team["name"]:
+                    connection.send(('It`s your flag\n').encode())
+                    continue
 
-				realtime = time.time()
-				self.life = self.life+flag["timestamp"]
-				if self.life <= realtime:
-					connection.send(('this flag is too old\n').encode())
-					continue
+                realtime = time.time()
+                self.life = self.life+flag["timestamp"]
 
-				# status = self.db.scoreboard.find_one({ 
-				# 	'team': team, 
-				# 	'service': {
-				# 		'name': flag['service']['name']
-				# 	}
-				# })				
-				# if status["status"] != 'up':
-				# 	connection.send(('Up this service & try again later\n').encode())
+                # print(realtime, self.life)
 
-				connection.send(('recived\n').encode())
+                if self.life <= realtime:
+                    connection.send(('This flag is too old\n').encode())
+                    continue
 
-			connection.close()
-			return True
-		# except:
-		# 	print('Something went wrong')
-		# 	connection.close()
+                print(flag['service']['name'])
+                print(team)
+                print('-------------------')
+                for e in self.db.scoreboard.find({}):
+                    print(e['team'])
+
+                status = self.db.scoreboard.find_one({ 
+                    'team': {
+                        'name': "Dima"
+                    }
+                    # 'service': {
+                    #     'name': flag['service']['name']
+                    # }
+                })
+                print(status)
+                if status["status"] != 'up':
+                    connection.send(('Up this service and try again later\n').encode())
+
+                connection.send(('received\n').encode())
+        except KeyboardInterrupt:
+            print('ok, bye')
+            connection.close()
+            sys.exit(0)
+            
