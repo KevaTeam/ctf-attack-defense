@@ -6,26 +6,32 @@ import socket, json, sys, time
 from classes.round import Round
 from urllib.request import urlopen
 from functions import ConsoleColors as colors
-from functions import get_data_from_api
+from functions import get_data_from_api, Message
 
 
 class Flags:
+    db = None
+    socket = None
+
     def __init__(self, db):
         self.db = db
-        print(colors.OKGREEN + 'Class is init' + colors.ENDC)
-        print(colors.HEADER + 'Get data from api' + colors.ENDC)
+        Message.success('Class is initializing')
 
+        Message.info('Get data from api')
         data = get_data_from_api()
         
         try:
             lifetime = data["response"]["settings"]["flags"]["lifetime"]
             round_length = data["response"]["settings"]["round_length"]
         except Exception:
-            print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
+            Message.fail('Error with parse in response')
             sys.exit(0)
-        self.life = lifetime*round_length
+
+        self.life = lifetime * round_length
 
     def start(self):
+        Message.success('Class is initialized. Starting')
+
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.bind(('0.0.0.0', 9090))
         self.socket.listen(1)
@@ -48,14 +54,8 @@ class Flags:
             self.process_one_team(connection, team)
         except KeyboardInterrupt:
             print('ok, bye')
-            connection.close()
+            self.socket.close()
             sys.exit(0)
-            
-
-            
-        # except:
-        #     print('Something went wrong')
-        #     connection.close()
 
     def process_one_team(self, connection, team):
         connection.send(('Welcome! \nYour team - ' + team["name"] + '\n').encode())
@@ -70,40 +70,30 @@ class Flags:
                     connection.send(('Flag is not found\n').encode())
                     continue
 
-                if flag['team']['name'] == team["name"]:
+                if flag['team']['_id'] == team['_id']:
                     connection.send(('It`s your flag\n').encode())
                     continue
 
-                realtime = time.time()
-                self.life = self.life+flag["timestamp"]
+                self.life += flag["timestamp"]
 
-                # print(realtime, self.life)
-
-                if self.life <= realtime:
+                if self.life <= time.time():
                     connection.send(('This flag is too old\n').encode())
                     continue
 
-                print(flag['service']['name'])
-                print(team)
-                print('-------------------')
-                for e in self.db.scoreboard.find({}):
-                    print(e['team'])
-
                 status = self.db.scoreboard.find_one({ 
-                    'team': {
-                        'name': "Dima"
-                    }
-                    # 'service': {
-                    #     'name': flag['service']['name']
-                    # }
+                    'team._id': team['_id'],
+                    'service._id': flag['service']['_id']
                 })
-                print(status)
-                if status["status"] != 'up':
-                    connection.send(('Up this service and try again later\n').encode())
+
+                if status["status"] != 'UP':
+                    connection.send(('Your service '+ flag['service']['name'] +' is not working\n').encode())
+                    continue
 
                 connection.send(('received\n').encode())
+                # Добавляем очки
+
         except KeyboardInterrupt:
             print('ok, bye')
-            connection.close()
+            self.socket.close()
             sys.exit(0)
             
