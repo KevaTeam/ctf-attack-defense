@@ -91,12 +91,11 @@ class Round:
             code, message = error.args
             print(code)
             print(message)
-            self.update_scoreboard(team, service, code)
+            self.update_scoreboard(team, service, code, message)
             print('------------------------ END ---------------------------')
-            # print('This is corrupt' + error)
 
 
-    def update_scoreboard(self, team, service, status_code):
+    def update_scoreboard(self, team, service, status_code, message=''):
         codes = {
             101: 'UP',
             102: 'CORRUPT',
@@ -110,7 +109,8 @@ class Round:
             },
             {
                 "$set": {
-                    "status": codes[status_code]
+                    "status": codes[status_code],
+                    'message': message
                 }
             }
         )

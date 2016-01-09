@@ -23,8 +23,7 @@
     	<tr>
     		<td>{{ team }}</td>
         	{% for service in scoreboard[team] %}
-
-        		<td class={{ color[scoreboard[team][service].status] }}>{{ scoreboard[team][service].status }}</td>
+        		<td class="{{ color[scoreboard[team][service].status] }}" alt="{{ scoreboard[team][service].message }}">{{ scoreboard[team][service].status }}</td>
             {% else %}
             Some problem
         	{% endfor %}

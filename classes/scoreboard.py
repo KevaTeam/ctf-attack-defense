@@ -24,12 +24,12 @@ class Scoreboard:
             sc = {}
             color = {'UP':'success', 'DOWN':'danger', 'CORRUPT':'warning' ,'MUMBLE':'info'}
             for item in scoreboard:
-
                 if item['team']['name'] not in sc:
                        sc[item['team']['name']] = {}
 
                 sc[item['team']['name']][item['service']['name']] = {
-                    'status': item['status']
+                    'status': item['status'],
+                    'message': str(item['message'])
                 }
             print(sc)
             return render_template('index.html', scoreboard=sc, color=color)

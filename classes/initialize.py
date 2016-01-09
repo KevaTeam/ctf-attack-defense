@@ -1,7 +1,7 @@
 from functions import ConsoleColors as colors
 import os, stat, json, sys
 from urllib.request import urlopen
-from functions import get_data_from_api
+from functions import get_data_from_api, Message
 
 class Initialize:
     db = {}
@@ -26,17 +26,19 @@ class Initialize:
             self.teams = data["response"]["teams"]
             self.services = data["response"]["services"]
         except Exception:
-            print(colors.FAIL + 'Error with parse in response' + colors.ENDC)
+            Message.fail('Error with parse in response')
             sys.exit(0)
 
-        self.db.scoreboard.delete_many({})
-        print(colors.OKGREEN + 'Generate teams' + colors.ENDC)
+        Message.success('Clear old data')
+        self.delete_old_data()
+
+        Message.success('Generate teams')
         self.create_teams()
 
-        print(colors.OKGREEN + 'Generate services' + colors.ENDC)
+        Message.success('Generate services')
         self.create_service()
 
-        print(colors.OKGREEN + 'Generate scoreboard' + colors.ENDC)
+        Message.success('Generate scoreboard')
         self.generate_scoreboard()
 
         self.output = {
@@ -45,35 +47,23 @@ class Initialize:
             'settings': self.settings,
         }
 
-    def create_teams(self):
-
-        # Delete all teams
+    def delete_old_data(self):
         self.db.teams.delete_many({})
+        self.db.services.delete_many({})
+        self.db.scoreboard.delete_many({})
+        self.db.flags.delete_many({})
 
-        # Create teams
+    def create_teams(self):
         for e in self.teams:
             self.db.teams.insert_one(e)
 
-        # # Check teams
-        # for e in self.db.teams.find():
-        #     print(e)
-
-
     def create_service(self):
-        # Delete all teams
-        self.db.services.delete_many({})
-
-        # Create teams
         for e in self.services:
             insert_result = self.db.services.insert_one(e)
 
             self.create_program(str(insert_result.inserted_id), e['program'])
-            # Check teams
-        # for e in self.db.services.find():
-        #     print(e)
 
     def create_program(self, service_id, program):
-
         path = self.path_to_checkers + self.filename_checkers + '_' + service_id
 
         if not os.path.exists(self.path_to_checkers):
@@ -87,8 +77,6 @@ class Initialize:
         os.chmod(path, stat.S_IRWXU)
 
     def generate_scoreboard(self):
-        self.db.scoreboard.delete_many({})
-
         for team in self.db.teams.find({}):
             for service in self.db.services.find({}):
                 self.db.scoreboard.insert_one({
