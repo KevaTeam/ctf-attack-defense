@@ -102,10 +102,11 @@ class Round:
             103: 'MUMBLE',
             104: 'DOWN'
         }
+        
         self.db.scoreboard.update_one(
             {
-                'team': team,
-                'service': service
+                'team._id': team['_id'],
+                'service._id': service['_id']
             },
             {
                 "$set": {
