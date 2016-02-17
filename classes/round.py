@@ -115,7 +115,7 @@ class Round:
                     'message': message
                 },
                 '$inc': {
-                    'up_round': 1 if status_code == 101
+                    'up_round': 1 if status_code == 101 else 0
                 }
             }
         )
