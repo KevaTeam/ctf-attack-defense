@@ -96,7 +96,7 @@ class Round:
 
 
     def update_scoreboard(self, team, service, status_code, message=''):
-
+        print(status_code);
         codes = {
             101: 'UP',
             102: 'CORRUPT',

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import multiprocessing
-import socket, json, sys, time
+import socket, json, sys, time, re
 from classes.round import Round
 from urllib.request import urlopen
 from functions import ConsoleColors as colors
@@ -64,6 +64,10 @@ class Flags:
             while True:
                 data = connection.recv(1024)
                 data = str(data.rstrip().decode('utf-8'))
+
+                if not re.match('^\w{33}$',data):
+                	connection.send(('this is not flag\n').encode())
+                	continue
 
                 flag = self.db.flags.find_one({'flag': data})
                 if not bool(flag):
