@@ -83,5 +83,8 @@ class Initialize:
                     'team': team,
                     'service': service,
                     'status': 'UP',
-                    'message': ''
+                    'message': '',
+                    'up_round': 0,
+                    'attack': 0,
+                    'defense': 0
                 })

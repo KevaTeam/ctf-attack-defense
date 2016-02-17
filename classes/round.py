@@ -96,6 +96,7 @@ class Round:
 
 
     def update_scoreboard(self, team, service, status_code, message=''):
+
         codes = {
             101: 'UP',
             102: 'CORRUPT',
@@ -112,6 +113,9 @@ class Round:
                 "$set": {
                     "status": codes[status_code],
                     'message': message
+                },
+                '$inc': {
+                    'up_round': 1 if status_code == 101
                 }
             }
         )
