@@ -8,11 +8,11 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Team</th>
+        <td align="center"><b>Team</b></td>
         {% for team in scoreboard %}
         	{% if loop.index == 1 %}
 	        	{% for service in scoreboard[team] %}
-	        		<th>{{ service }}</th>
+	        		<td align="center"><b>{{ service }}</b></td>
 	        	{% endfor %}
         	{% endif %}
     	{% endfor %}
@@ -21,9 +21,16 @@
     <tbody>
     	{% for team in scoreboard %}
     	<tr>
-    		<td>{{ team }}</td>
+    		<td align="center">{{ team }}</td>
         	{% for service in scoreboard[team] %}
-        		<td class="{{ color[scoreboard[team][service].status] }}" alt="{{ scoreboard[team][service].message }}">{{ scoreboard[team][service].status }}</td>
+        		<td class="{{ color[scoreboard[team][service].status] }}" 
+                alt="{{ scoreboard[team][service].message }}"
+                align="center">
+            Status: {{ scoreboard[team][service].status }}<br>
+            Up round: {{ scoreboard[team][service].up_round }}<br>
+            Attack: {{ scoreboard[team][service].attack }}<br>
+            Defense: {{ scoreboard[team][service].defense }}
+            </td>
             {% else %}
             Some problem
         	{% endfor %}
