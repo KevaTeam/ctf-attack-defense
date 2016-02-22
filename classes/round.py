@@ -25,17 +25,18 @@ class Round:
         self.db = db
         self.teams = config.teams
         self.services = config.services
-
+        self.tasks = []
         self.checker = Checker()
 
 
     def next(self):
+        self.summary_statistic()
+
         self.round_count += 1
         self.tasks = []
         print('Round: ' + str(self.round_count))
         sc = self.db.scoreboard.find()
-        for s in sc:
-            print(s['service']['name'] + ' team ' + s['team']['name'] + ' status ' + s['status'])
+
         for team in self.teams:
             print(team['name'])
 
@@ -49,6 +50,28 @@ class Round:
         for e, j in enumerate(self.tasks):
             j.join(timeout=2)
 
+    def summary_statistic(self):
+        for team in self.teams:
+            for service in self.services:
+                count = self.db.stolen_flags.find({
+                    'team._id': team['_id'],
+                    'flag.service._id': service['_id'],
+                    'round': self.round_count
+                }).count()
+
+                self.db.scoreboard.update_one(
+                    {
+                        'team._id': team['_id'],
+                        'service._id': service['_id']
+                    },
+                    {
+                        '$inc': {
+                            'attack': count,
+                            'defense': (1 - count)
+                        }
+                    }
+                )
+
     def generate_flags(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
 
@@ -59,13 +82,14 @@ class Round:
         flag = self.generate_flags()
         flag_id = self.generate_flag_ids()
         print (flag)
-        print (flag_id)
+        #print (flag_id)
         self.db.flags.insert_one({
             'round': self.round_count,
-            'flag': flag,
-            'flag_id': flag_id,
             'team': team,
             'service': service,
+            'flag': flag,
+            'flag_id': flag_id,
+            'stolen': False,
             'timestamp': time.time()
         })
 
@@ -94,9 +118,7 @@ class Round:
             self.update_scoreboard(team, service, code, message)
             print('------------------------ END ---------------------------')
 
-
     def update_scoreboard(self, team, service, status_code, message=''):
-        print(status_code);
         codes = {
             101: 'UP',
             102: 'CORRUPT',

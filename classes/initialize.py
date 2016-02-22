@@ -52,6 +52,7 @@ class Initialize:
         self.db.services.delete_many({})
         self.db.scoreboard.delete_many({})
         self.db.flags.delete_many({})
+        self.db.stolen_flags.delete_many({})
 
     def create_teams(self):
         for e in self.teams:

@@ -3,6 +3,7 @@
 
 import multiprocessing
 import socket, json, sys, time, re
+import pymongo
 from classes.round import Round
 from urllib.request import urlopen
 from functions import ConsoleColors as colors
@@ -66,8 +67,8 @@ class Flags:
                 data = str(data.rstrip().decode('utf-8'))
 
                 if not re.match('^\w{33}$',data):
-                	connection.send(('this is not flag\n').encode())
-                	continue
+                    connection.send(('this is not flag\n').encode())
+                    continue
 
                 flag = self.db.flags.find_one({'flag': data})
                 if not bool(flag):
@@ -93,6 +94,12 @@ class Flags:
                     connection.send(('Your service '+ flag['service']['name'] +' is not working\n').encode())
                     continue
 
+                self.db.stolen_flags.insert_one({
+                    'team': team,
+                    'flag': flag,
+                    'round': self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round'],
+                    'timestamp': time.time()
+                })
                 connection.send(('received\n').encode())
                 # Добавляем очки
 
