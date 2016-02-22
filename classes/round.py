@@ -53,10 +53,17 @@ class Round:
     def summary_statistic(self):
         for team in self.teams:
             for service in self.services:
-                count = self.db.stolen_flags.find({
+                count_attack = self.db.stolen_flags.find({
                     'team._id': team['_id'],
                     'flag.service._id': service['_id'],
                     'round': self.round_count
+                }).count()
+
+                count_defense = self.db.flags.find({
+                    'team._id': team['_id'],
+                    'service._id': service['_id'],
+                    'round': self.round_count,
+                    'stolen': False
                 }).count()
 
                 self.db.scoreboard.update_one(
@@ -66,8 +73,8 @@ class Round:
                     },
                     {
                         '$inc': {
-                            'attack': count,
-                            'defense': (1 - count)
+                            'attack': count_attack,
+                            'defense': count_defense
                         }
                     }
                 )

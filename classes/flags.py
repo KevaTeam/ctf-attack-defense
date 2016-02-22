@@ -100,6 +100,13 @@ class Flags:
                     'round': self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round'],
                     'timestamp': time.time()
                 })
+
+                self.db.flags.update_one({'flag': data},
+                {
+                    "$set": {
+                        "stolen": True,
+                    },
+                })
                 connection.send(('received\n').encode())
                 # Добавляем очки
 
