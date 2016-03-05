@@ -3,7 +3,7 @@
 {% block title %}Таблица результатов{% endblock %}
 {% block body %}
 <div class="container">
-  <h2>Scoreboard</h2>
+  <h2>Таблица результатов тренировочной игры</h2>
     <h3>Round: {{ round }}</h3>
   <p>Look at my scoreboard! My scoreboard is amazing</p>
   <table class="table table-bordered">
@@ -22,15 +22,21 @@
     <tbody>
     	{% for team_name, team  in scoreboard %}
     	<tr>
-    		<td align="center">{{ team_name }}<br />
+    		<td align="center">
+                <img src="{{ teams[team_name].logo }}" width="100" style="float: left"/>{{ team_name }}<br />
                 <a href="http://{{ teams[team_name].host }}">{{ teams[team_name].host }}</a></a><br />
                 Score: {{ teams[team_name].score }}
             </td>
 
         	{% for service in team %}
+            use default
         		<td class="{{ color[team[service].status] }}" alt="{{ team[service].message }}" align="center">
-                    Status: {{ team[service].status }}<br>
-                    Up round: {{ team[service].up_round }}<br>
+                    {% if team[service].up_round %}
+                        Uptime: {{ ((round / team[service].up_round) * 100)|int() }}%
+                    {% else %}
+                        Uptime: 0%
+                    {% endif %}
+                    <br>
                     Attack: {{ team[service].attack }}<br>
                     Defense: {{ team[service].defense }}
                 </td>
@@ -42,4 +48,18 @@
     </tbody>
   </table>
 </div>
+<style type="text/css">
+    .success {
+        background-color: #8BC34A !important;
+    }
+    .danger {
+        background-color: #F44336 !important;
+    }
+    .info {
+        background-color: #2196F3 !important;
+    }
+    .warning {
+        background-color: #FFC107 !important;
+    }
+</style>
 {% endblock %}

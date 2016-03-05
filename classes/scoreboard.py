@@ -48,7 +48,7 @@ class Scoreboard:
                     'message': str(item['message']),
                     'attack': str(item['attack']),
                     'defense': str(item['defense']),
-                    'up_round': str(item['up_round'])
+                    'up_round': int(item['up_round'])
                 }
 
                 teams[item['team']['name']]['score'] += (item['attack'] + item['defense'])
