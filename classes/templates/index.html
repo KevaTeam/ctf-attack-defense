@@ -10,9 +10,9 @@
     <thead>
       <tr>
         <td align="center"><b>Team</b></td>
-        {% for team in scoreboard %}
+        {% for team_name, team in scoreboard %}
         	{% if loop.index == 1 %}
-	        	{% for service in scoreboard[team] %}
+	        	{% for service in team %}
 	        		<td align="center"><b>{{ service }}</b></td>
 	        	{% endfor %}
         	{% endif %}
@@ -20,18 +20,20 @@
       </tr>
     </thead>
     <tbody>
-    	{% for team in scoreboard %}
+    	{% for team_name, team  in scoreboard %}
     	<tr>
-    		<td align="center">{{ team }} <br /> {{ teams[team].host }}</td>
-        	{% for service in scoreboard[team] %}
-        		<td class="{{ color[scoreboard[team][service].status] }}" 
-                alt="{{ scoreboard[team][service].message }}"
-                align="center">
-            Status: {{ scoreboard[team][service].status }}<br>
-            Up round: {{ scoreboard[team][service].up_round }}<br>
-            Attack: {{ scoreboard[team][service].attack }}<br>
-            Defense: {{ scoreboard[team][service].defense }}
+    		<td align="center">{{ team_name }}<br />
+                <a href="http://{{ teams[team_name].host }}">{{ teams[team_name].host }}</a></a><br />
+                Score: {{ teams[team_name].score }}
             </td>
+
+        	{% for service in team %}
+        		<td class="{{ color[team[service].status] }}" alt="{{ team[service].message }}" align="center">
+                    Status: {{ team[service].status }}<br>
+                    Up round: {{ team[service].up_round }}<br>
+                    Attack: {{ team[service].attack }}<br>
+                    Defense: {{ team[service].defense }}
+                </td>
             {% else %}
             Some problem
         	{% endfor %}
