@@ -1,6 +1,7 @@
 __author__ = 'dmitry'
 
 from functions import ConsoleColors as colors
+from functions import Message
 from classes.checker import Checker
 import random
 import string
@@ -20,14 +21,13 @@ class Round:
 
     filename_checkers = 'check'
 
-
     def __init__(self, db, config):
         self.db = db
-        self.teams = config.teams
-        self.services = config.services
+        self.teams = config['teams']
+        self.services = config['services']
         self.tasks = []
         self.checker = Checker()
-
+        self.status_service = {}
 
     def next(self):
         self.summary_statistic()
@@ -35,14 +35,12 @@ class Round:
         self.round_count += 1
         self.tasks = []
         print('Round: ' + str(self.round_count))
-        sc = self.db.scoreboard.find()
 
         for team in self.teams:
-            print(team['name'])
-
             for service in self.services:
                 # TODO: make async call
-                self.tasks.append(threading.Thread(target=self.to_service, args=(team, service, )))
+
+                self.tasks.append(threading.Thread(name=team['name'] + ' ' + service['name'], target=self.to_service, args=(team, service, )))
                 self.tasks[-1].daemon = True
                 self.tasks[-1].start()
                 # self.to_service(team, service)
@@ -59,12 +57,15 @@ class Round:
                     'round': self.round_count
                 }).count()
 
-                count_defense = self.db.flags.find({
-                    'team._id': team['_id'],
-                    'service._id': service['_id'],
-                    'round': self.round_count,
-                    'stolen': False
-                }).count()
+                if team['name'] + '_' + service['name'] in self.status_service and self.status_service[team['name'] + '_' + service['name']] == 101:
+                    count_defense = self.db.flags.find({
+                        'team._id': team['_id'],
+                        'service._id': service['_id'],
+                        'round': self.round_count,
+                        'stolen': False
+                    }).count()
+                else:
+                    count_defense = 0
 
                 self.db.scoreboard.update_one(
                     {
@@ -88,7 +89,7 @@ class Round:
     def to_service(self, team, service):
         flag = self.generate_flags()
         flag_id = self.generate_flag_ids()
-        print (flag)
+        print (team['name'] + ' ' + service['name'] + ' ' + flag)
         #print (flag_id)
         self.db.flags.insert_one({
             'round': self.round_count,
@@ -104,12 +105,11 @@ class Round:
 
         try:
             self.checker.check(team['host'], path)
-
-            print('check - ok')
+            print(team['name'] + ' ' + service['name'] + ' => check - ok')
 
             self.checker.put(team['host'], path, flag, flag_id)
 
-            print('put - ok')
+            print(team['name'] + ' ' + service['name'] + ' => put - ok')
             self.checker.get(team['host'], path, flag, flag_id)
 
             # TODO: make 2 get for old flag
@@ -117,13 +117,10 @@ class Round:
             self.update_scoreboard(team, service, 101)
 
         except Exception as error:
-            print('------------------------------------------------------')
-            print(colors.FAIL + 'ERROR in service ' + str(service['name']) + ' for team ' + team['name'] + colors.ENDC)
             code, message = error.args
-            print(code)
-            print(message)
+
+            Message.fail(team['name'] + ' ' + service['name'] + ' => error (message: ' + str(message) + ')')
             self.update_scoreboard(team, service, code, message)
-            print('------------------------ END ---------------------------')
 
     def update_scoreboard(self, team, service, status_code, message=''):
         codes = {
@@ -132,7 +129,13 @@ class Round:
             103: 'MUMBLE',
             104: 'DOWN'
         }
-        
+
+        self.status_service[team['name'] + '_' + service['name']] = status_code
+
+        if status_code not in codes:
+            Message.fail(service['name'] + ' checker is not valid')
+            exit(0)
+
         self.db.scoreboard.update_one(
             {
                 'team._id': team['_id'],

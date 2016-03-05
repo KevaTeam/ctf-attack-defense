@@ -3,6 +3,7 @@ import os, stat, json, sys
 from urllib.request import urlopen
 from functions import get_data_from_api, Message
 
+
 class Initialize:
     db = {}
 
@@ -29,16 +30,12 @@ class Initialize:
             Message.fail('Error with parse in response')
             sys.exit(0)
 
-        Message.success('Clear old data')
         self.delete_old_data()
 
-        Message.success('Generate teams')
         self.create_teams()
 
-        Message.success('Generate services')
         self.create_service()
 
-        Message.success('Generate scoreboard')
         self.generate_scoreboard()
 
         self.output = {
@@ -48,6 +45,8 @@ class Initialize:
         }
 
     def delete_old_data(self):
+        Message.success('Clear old data')
+
         self.db.teams.delete_many({})
         self.db.services.delete_many({})
         self.db.scoreboard.delete_many({})
@@ -55,10 +54,14 @@ class Initialize:
         self.db.stolen_flags.delete_many({})
 
     def create_teams(self):
+        Message.success('Generate teams')
+
         for e in self.teams:
             self.db.teams.insert_one(e)
 
     def create_service(self):
+        Message.success('Generate services')
+
         for e in self.services:
             insert_result = self.db.services.insert_one(e)
 
@@ -78,6 +81,8 @@ class Initialize:
         os.chmod(path, stat.S_IRWXU)
 
     def generate_scoreboard(self):
+        Message.success('Generate scoreboard')
+
         for team in self.db.teams.find({}):
             for service in self.db.services.find({}):
                 self.db.scoreboard.insert_one({

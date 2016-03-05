@@ -14,16 +14,21 @@ db = client.jury
 
 
 def init():
-    config = Initialize(db)
-    # scoreboard = Scoreboard(db)
+    Initialize(db)
+
+
+def start():
+    config = functions.get_config(db)
+
     round = Round(db, config)
     round.next()
 
-    functions.set_interval(round.next, config.output['settings']['round_length'])
-
+    functions.set_interval(round.next, config['settings']['round_length'])
 
 def flags():
-    flags = Flags(db)
+    config = functions.get_config(db)
+
+    flags = Flags(db, config)
     flags.start()
 
 
@@ -35,13 +40,15 @@ if __name__ == '__main__':
     if len(argv) > 1:
         if argv[1] == "init":
             init()
+        elif argv[1] == "start":
+            start()
         elif argv[1] == "flags":
             flags()
         elif argv[1] == 'scoreboard':
             scoreboard()
     else:
         print("Please, enter command")
-        print('\n'.join(['init', 'flags', 'scoreboard']))
+        print('\n'.join(['init', 'start', 'flags', 'scoreboard']))
 
 
 

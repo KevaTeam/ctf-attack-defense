@@ -2,50 +2,59 @@
 # -*- coding: utf-8 -*-
 
 import multiprocessing
-import socket, sys, time, re
+import socket
+import sys
+import time
+import re
 import pymongo
-from classes.round import Round
-from urllib.request import urlopen
+
 from functions import get_data_from_api, Message
 
 
 class Flags:
-    db = None
     socket = None
 
-    def __init__(self, db):
+    def __init__(self, db, config):
         self.db = db
+        self.conn = None
+        self.address = None
+
         Message.success('Class is initializing')
 
         Message.info('Get data from api')
         data = get_data_from_api()
         
         try:
-            lifetime = data["response"]["settings"]["flags"]["lifetime"]
-            round_length = data["response"]["settings"]["round_length"]
-        except Exception:
+            settings = data["response"]["settings"]
+
+            lifetime = settings["flags"]["lifetime"]
+            round_length = settings["round_length"]
+        except KeyError:
             Message.fail('Error with parse in response')
             sys.exit(0)
 
         self.life = lifetime * round_length
+        self.port = settings['flags']['port']
 
     def start(self):
         Message.success('Class is initialized. Starting')
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.socket.bind(('0.0.0.0', 9090))
+            self.socket.bind(('0.0.0.0', self.port))
             self.socket.listen(1)
 
             while True:
-                conn, address = self.socket.accept()
-                print('connected:', address) # Возможно лишнее!!!
-                process = multiprocessing.Process(target=self.recv, args=(conn, address))
+                self.conn, self.address = self.socket.accept()
+                Message.info('connected:' + self.address[0])
+
+                process = multiprocessing.Process(target=self.recv, args=(self.conn, self.address))
                 process.daemon = True
                 process.start()
+
         except KeyboardInterrupt:
             print('Module flags is shutdown')
-            self.socket.close()
-            sys.exit(0)
+            self.conn.close()
+            exit(0)
 
     def recv(self, connection, address):
         team = self.db.teams.find_one({'host': address[0]})
@@ -80,9 +89,8 @@ class Flags:
                 connection.send(('It`s your flag\n').encode())
                 continue
 
-            self.life += flag["timestamp"]
 
-            if self.life <= time.time():
+            if (self.life + flag["timestamp"]) <= time.time():
                 connection.send(('This flag is too old\n').encode())
                 continue
 
@@ -98,12 +106,11 @@ class Flags:
             round = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round']
 
             is_stolen = self.db.stolen_flags.find_one({
-                'team': team,
-                'flag': flag,
+                'team._id': team['_id'],
+                'flag._id': flag['_id'],
                 'round': round
             })
-            # kosyak
-            print(is_stolen)
+
             if is_stolen:
                 connection.send(('You are already pass this flag\n').encode())
                 continue
@@ -114,8 +121,7 @@ class Flags:
                 'round': round,
                 'timestamp': time.time()
             })
-            print('writed')
-            print(flag['stolen'])
+
             if not(flag['stolen']):
                 self.db.flags.update_one({'flag': data}, {"$set": {"stolen": True}})
 

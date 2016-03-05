@@ -21,6 +21,23 @@ def get_data_from_api():
         exit(0)
 
 
+def get_config(db):
+    data = get_data_from_api()
+
+    teams = []
+    for team in db.teams.find():
+        teams.append(team)
+
+    services = []
+    for service in db.services.find():
+        services.append(service)
+
+
+    return {
+        'teams': teams,
+        'services': services,
+        'settings': data["response"]["settings"]
+    }
 
 # Some methods for print message
 class ConsoleMessage:

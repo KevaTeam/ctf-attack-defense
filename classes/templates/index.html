@@ -4,6 +4,7 @@
 {% block body %}
 <div class="container">
   <h2>Scoreboard</h2>
+    <h3>Round: {{ round }}</h3>
   <p>Look at my scoreboard! My scoreboard is amazing</p>
   <table class="table table-bordered">
     <thead>
@@ -21,7 +22,7 @@
     <tbody>
     	{% for team in scoreboard %}
     	<tr>
-    		<td align="center">{{ team }}</td>
+    		<td align="center">{{ team }} <br /> {{ teams[team].host }}</td>
         	{% for service in scoreboard[team] %}
         		<td class="{{ color[scoreboard[team][service].status] }}" 
                 alt="{{ scoreboard[team][service].message }}"
