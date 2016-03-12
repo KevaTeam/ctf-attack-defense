@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import jsonify
+from flask import request
 
 import pymongo
 import json
@@ -37,15 +38,18 @@ class Scoreboard:
 
             color = {'UP':'success', 'DOWN':'danger', 'CORRUPT':'warning' ,'MUMBLE':'info'}
 
+            visitor_team = self.db.teams.find_one({'host': request.remote_addr})
+
             for item in scoreboard:
                 if item['team']['name'] not in sc:
-                        sc[item['team']['name']] = {}
-                        teams[item['team']['name']] = item['team']
-                        teams[item['team']['name']]['score'] = 0
+                    sc[item['team']['name']] = {}
+                    teams[item['team']['name']] = item['team']
+                    teams[item['team']['name']]['score'] = 0
 
                 sc[item['team']['name']][item['service']['name']] = {
                     'status': item['status'],
-                    'message': str(item['message']),
+                    'own': item['team']['_id'] == visitor_team['_id'],
+                    'message': item['message'],
                     'attack': str(item['attack']),
                     'defense': str(item['defense']),
                     'up_round': int(item['up_round'])

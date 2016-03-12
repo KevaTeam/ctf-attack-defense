@@ -1,3 +1,6 @@
+Для развертывания жюрейки необходимо сделать:
+ь
+
 Порядок действий:
 python3 main.py init 
 python3 main.py scoreboard

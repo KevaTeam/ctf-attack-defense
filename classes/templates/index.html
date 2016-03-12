@@ -4,7 +4,7 @@
 {% block body %}
 <div class="container">
   <h2>Таблица результатов тренировочной игры</h2>
-    <h3>Round: {{ round }}</h3>
+    <h3>Сейчас идет {{ round }} раунд</h3>
   <p>Look at my scoreboard! My scoreboard is amazing</p>
   <table class="table table-bordered">
     <thead>
@@ -22,23 +22,29 @@
     <tbody>
     	{% for team_name, team  in scoreboard %}
     	<tr>
-    		<td align="center">
-                <img src="{{ teams[team_name].logo }}" width="100" style="float: left"/>{{ team_name }}<br />
-                <a href="http://{{ teams[team_name].host }}">{{ teams[team_name].host }}</a></a><br />
-                Score: {{ teams[team_name].score }}
+    		<td align="center" class="team">
+                <div class="back_img" style="background-image: url('{{teams[team_name].logo}}')">&nbsp;</div>
+                <div style="height: 80px;">
+                    <div class="place"><span>{{ loop.index }}</span></div>
+                    <div class="inform">
+                        <div class="team_name">{{ team_name }}</div>
+                        <div class="score">Score: {{ teams[team_name].score }}</div>
+                        <a href="http://{{ teams[team_name].host }}">{{ teams[team_name].host }}</a></a><br />
+                    </div>
+                </div>
             </td>
 
         	{% for service in team %}
-            use default
-        		<td class="{{ color[team[service].status] }}" alt="{{ team[service].message }}" align="center">
-                    {% if team[service].up_round %}
-                        Uptime: {{ ((round / team[service].up_round) * 100)|int() }}%
-                    {% else %}
-                        Uptime: 0%
-                    {% endif %}
-                    <br>
-                    Attack: {{ team[service].attack }}<br>
-                    Defense: {{ team[service].defense }}
+        		<td class="{{ color[team[service].status] }} service" alt="" align="center" {% if team[service].own and team[service].status !="UP" %}data-toggle="popover" title="Описание ошибки сервиса {{ service }}" data-content="{{ team[service].message|default('Неизвестная ошибка', true) }}"{% endif %}>
+                    <div class="uptime" data-toggle="tooltip" data-placement="bottom" title="Uptime сервиса">
+                        {% if team[service].up_round %}{{ ((round / team[service].up_round) * 100)|int() }}{% else %}0{% endif %}%
+                    </div>
+                    <div class="attack_defense">
+                        <div class="block" data-toggle="tooltip" data-placement="bottom" title="Очки атаки"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> {{ team[service].attack }}</div>
+                        <div class="block" data-toggle="tooltip" data-placement="bottom" title="Очки защиты"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> {{ team[service].defense }}</div>
+                    </div>
+
+
                 </td>
             {% else %}
             Some problem
@@ -49,17 +55,87 @@
   </table>
 </div>
 <style type="text/css">
+    .team {
+        position: relative;
+        color: #000;
+        width: 250px;
+    }
+    .back_img {
+        opacity: 0.4;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: no-repeat center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        max-width: 250px;
+    }
+    .place {
+        float: left;
+        width: 20%;
+        height: 100%;
+        font-size: 20pt;
+        display: table;
+    }
+        .place span {
+            vertical-align:middle;
+            display: table-cell;
+        }
+
+    .inform {
+        float: left;
+        height: 100%;
+        width: 80%;
+    }
+    .team_name {
+        width: 60%;
+        float: left;
+        font-size: 16pt;
+        width: 100%;
+    }
+
+    .service {
+        width: 220px;
+    }
+
+    .uptime {
+        width: 100%;
+        height: 30px;
+        font-size: 20pt;
+    }
+    .attack_defense {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        font-size: 12pt;
+        font-weight: bold;
+    }
+    .attack_defense .block {
+        width: 50%;
+        float: left;
+    }
     .success {
-        background-color: #8BC34A !important;
+        background-color: #4CAF50 !important;
     }
     .danger {
         background-color: #F44336 !important;
+        color: #fff;
     }
     .info {
         background-color: #2196F3 !important;
     }
     .warning {
-        background-color: #FFC107 !important;
+        background-color: #F4CE43 !important;
     }
 </style>
+<script type="text/javascript">
+    $("[data-toggle='tooltip']").tooltip();
+    $("[data-toggle='popover']").popover({
+        'container': 'body',
+        'placement': 'roght'
+    });
+</script>
 {% endblock %}

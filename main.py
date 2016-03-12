@@ -25,6 +25,7 @@ def start():
 
     functions.set_interval(round.next, config['settings']['round_length'])
 
+
 def flags():
     config = functions.get_config(db)
 

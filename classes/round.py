@@ -7,6 +7,7 @@ import random
 import string
 import time
 import threading
+import pymongo
 
 class Round:
     db = {}
@@ -29,6 +30,11 @@ class Round:
         self.checker = Checker()
         self.status_service = {}
 
+        self.round_count = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)
+        print(self.round_count)
+        self.round_count = self.round_count[0]['round'] if self.round_count.count() else 0
+
+
     def next(self):
         self.summary_statistic()
 
@@ -46,7 +52,7 @@ class Round:
                 # self.to_service(team, service)
 
         for e, j in enumerate(self.tasks):
-            j.join(timeout=2)
+            j.join(timeout=1)
 
     def summary_statistic(self):
         for team in self.teams:
@@ -120,7 +126,7 @@ class Round:
             code, message = error.args
 
             Message.fail(team['name'] + ' ' + service['name'] + ' => error (message: ' + str(message) + ')')
-            self.update_scoreboard(team, service, code, message)
+            self.update_scoreboard(team, service, code, message.decode('utf-8'))
 
     def update_scoreboard(self, team, service, status_code, message=''):
         codes = {
