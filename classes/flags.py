@@ -7,6 +7,7 @@ import sys
 import time
 import re
 import pymongo
+from ipaddress import IPv4Address, IPv4Network
 
 from functions import get_data_from_api, Message
 
@@ -19,11 +20,9 @@ class Flags:
         self.conn = None
         self.address = None
 
-        Message.success('Class is initializing')
-
         Message.info('Get data from api')
         data = get_data_from_api()
-        
+
         try:
             settings = data["response"]["settings"]
 
@@ -57,8 +56,15 @@ class Flags:
             exit(0)
 
     def recv(self, connection, address):
-        team = self.db.teams.find_one({'host': address[0]})
-        
+        teams = self.db.teams.find()
+        # ip = IPv4Address()
+        print(address)
+        team = False
+        for e in teams:
+            if(e['network'] == address[0]):
+                print(e)
+                team = e
+
         if not bool(team):
             connection.send(('Who are you?\n Goodbye\n').encode())
             connection.close()    

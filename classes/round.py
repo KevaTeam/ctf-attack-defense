@@ -107,26 +107,26 @@ class Round:
             'timestamp': time.time()
         })
 
-        path = self.path_to_checkers + self.filename_checkers + '_' + str(service['_id'])
+        path = self.path_to_checkers + service['name'] + '/' + self.filename_checkers
 
+        action = ''
         try:
+            action = 'check'
             self.checker.check(team['host'], path)
-            print(team['name'] + ' ' + service['name'] + ' => check - ok')
 
+            action = 'put'
             self.checker.put(team['host'], path, flag, flag_id)
 
-            print(team['name'] + ' ' + service['name'] + ' => put - ok')
+            action = 'get'
             self.checker.get(team['host'], path, flag, flag_id)
-
-            # TODO: make 2 get for old flag
 
             self.update_scoreboard(team, service, 101)
 
         except Exception as error:
             code, message = error.args
 
-            Message.fail(team['name'] + ' ' + service['name'] + ' => error (message: ' + str(message) + ')')
-            self.update_scoreboard(team, service, code, message.decode('utf-8'))
+            Message.fail(team['name'] + ' ' + service['name'] + ' ' + action + ' => error (message: ' + str(message) + ')')
+            self.update_scoreboard(team, service, code, message)
 
     def update_scoreboard(self, team, service, status_code, message=''):
         codes = {

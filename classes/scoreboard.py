@@ -101,5 +101,5 @@ class Scoreboard:
 
             return jsonify(sc)
 
-        self.app.debug = True
+        # self.app.debug = True
         self.app.run(host="0.0.0.0", port=9000)

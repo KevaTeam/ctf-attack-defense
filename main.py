@@ -1,10 +1,12 @@
 import functions
+
 from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
 from classes.scoreboard import Scoreboard
 
-from sys import argv, exit
+import argparse
+
 from pymongo import MongoClient
 
 
@@ -23,7 +25,7 @@ def start():
     round = Round(db, config)
     round.next()
 
-    functions.set_interval(round.next, config['settings']['round_length'])
+    functions.set_interval(round.next, 10)
 
 
 def flags():
@@ -38,18 +40,26 @@ def scoreboard():
     scoreboard.start()
 
 if __name__ == '__main__':
-    if len(argv) > 1:
-        if argv[1] == "init":
-            init()
-        elif argv[1] == "start":
-            start()
-        elif argv[1] == "flags":
-            flags()
-        elif argv[1] == 'scoreboard':
-            scoreboard()
-    else:
-        print("Please, enter command")
-        print('\n'.join(['init', 'start', 'flags', 'scoreboard']))
+    parser = argparse.ArgumentParser(description='The platform for the CTF-competition (Attack-Defense)',
+                                     epilog='Order of actions: init -> start -> flags -> scoreboard')
 
+    sp = parser.add_subparsers()
+
+    sp_init = sp.add_parser('init', help='Initialize the game. Generate teams, services, statistics.')
+    sp_init.set_defaults(func=init)
+
+    sp_start = sp.add_parser('start', help='Run checkers and start the game.')
+    sp_start.set_defaults(func=start)
+
+    sp_flags = sp.add_parser('flags', help='The start of the module "flags"')
+    sp_flags.set_defaults(func=flags)
+
+    sp_scoreboard = sp.add_parser('scoreboard', help='Run scoreboard')
+    sp_scoreboard.set_defaults(func=scoreboard)
+
+    if 'func' in parser.parse_args():
+        parser.parse_args().func()
+    else:
+        parser.print_help()
 
 
