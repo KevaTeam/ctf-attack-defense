@@ -6,11 +6,6 @@ from functions import Message
 
 class Initialize:
     db = {}
-
-    path_to_checkers = 'checkers/'
-
-    filename_checkers = 'check'
-
     teams = []
     services = []
     settings = []
@@ -58,18 +53,18 @@ class Initialize:
             self.create_program(e['name'], e['program'])
 
     def create_program(self, filename, program):
-        folder = self.path_to_checkers + '/' + filename
+        folder = self.settings['path_to_checkers'] + '/' + filename
 
-        if not os.path.exists(self.path_to_checkers):
-            Message.fail('Did not exists folder with ' + self.path_to_checkers)
+        if not os.path.exists(self.settings['path_to_checkers']):
+            Message.fail('Did not exists folder with ' + self.settings['path_to_checkers'])
             sys.exit(-1);
 			
-        file_path = folder + '/' + self.filename_checkers
+        file_path = folder + '/' + self.settings['filename_checkers']
         if not os.path.exists(folder):
             os.mkdir(folder, mode=0o777)
 
         file = open(file_path, 'w')
-        file.write(program)
+        file.write(program + "\r\n")
         file.close()
 
         # Выставляем права на выполнение

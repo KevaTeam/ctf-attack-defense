@@ -46,6 +46,10 @@ class ConfigIni:
 			self.settings['admin']['login'] = config['settings']['admin_login']
 			self.checkParamInSection('settings', 'admin_pass', config);
 			self.settings['admin']['pass'] = config['settings']['admin_pass']
+			self.checkParamInSection('settings', 'filename_checkers', config);
+			self.settings['filename_checkers'] = config['settings']['filename_checkers']
+			self.checkParamInSection('settings', 'path_to_checkers', config);
+			self.settings['path_to_checkers'] = config['settings']['path_to_checkers']
 
 			self.checkParamInSection('teams', 'count', config);
 			count = int(config['teams']['count'])

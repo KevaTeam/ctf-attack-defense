@@ -13,6 +13,9 @@ class ConfigApiKevaSu:
 		try:
 			response = requests.get("http://api.keva.su/method/jury.get").json()
 			self.settings = data["response"]["settings"]
+			self.settings['path_to_checkers'] = 'checkers/';
+			self.settings['filename_checkers'] = 'check';
+
 			self.teams = data["response"]["teams"]
 			self.services = data["response"]["services"]
 			self.loaded = True
