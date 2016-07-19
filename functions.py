@@ -13,8 +13,8 @@ def set_interval(func, sec):
     return t
 
 def get_config(db):
-    data = get_data_from_api()
-
+    from classes.configsource.configjson import ConfigJson
+    config = ConfigJson('tmp.config.json');
     teams = []
     for team in db.teams.find():
         teams.append(team)
@@ -23,11 +23,10 @@ def get_config(db):
     for service in db.services.find():
         services.append(service)
 
-
     return {
         'teams': teams,
         'services': services,
-        'settings': data["response"]["settings"]
+        'settings': config.settings
     }
 
 # Some methods for print message

@@ -8,7 +8,7 @@ import time
 import re
 import pymongo
 from ipaddress import IPv4Address, IPv4Network
-
+from classes.configsource.configjson import ConfigJson
 from functions import Message
 
 
@@ -19,22 +19,16 @@ class Flags:
         self.db = db
         self.conn = None
         self.address = None
-
-        Message.info('Get data from api')
-        data = get_data_from_api()
-
+        config = ConfigJson('tmp.config.json');
         try:
-            # todo redesign in
-            settings = data["response"]["settings"]
-
-            lifetime = settings["flags"]["lifetime"]
-            round_length = settings["round_length"]
+            lifetime = config.settings["flags"]["lifetime"]
+            round_length = config.settings["round_length"]
         except KeyError:
             Message.fail('Error with parse in response')
             sys.exit(0)
 
         self.life = lifetime * round_length
-        self.port = settings['flags']['port']
+        self.port = config.settings['flags']['port']
 
     def start(self):
         Message.success('Class is initialized. Starting')

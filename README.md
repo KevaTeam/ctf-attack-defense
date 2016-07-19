@@ -11,20 +11,15 @@ The platform for the CTF-competition (Attack-Defense)
 
 ## Init game
 
-	python3 main.py init 
-	
-or 
-	
-	python3 main.py init config.ini
-	
-## Start sending flags
+	`python3 main.py init` or `python3 main.py init config.ini`
 
-	python3 main.py flags
+## 1. Start game
+`python3 main.py start`
 
-## Run scoreboard (address and port will be printed)
+## 2. Start sending flags
+`python3 main.py flags`
 
-	python3 main.py scoreboard
+## 3. Run scoreboard (address and port will be printed)
+`python3 main.py scoreboard`
 	
-## Start game
 
-	python3 main.py start

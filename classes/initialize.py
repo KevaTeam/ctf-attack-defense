@@ -2,7 +2,7 @@ from functions import ConsoleColors as colors
 import os, stat, json, sys
 from urllib.request import urlopen
 from functions import Message
-
+import json
 
 class Initialize:
     db = {}
@@ -12,14 +12,14 @@ class Initialize:
 
     def __init__(self, db, configsource):
         self.db = db
-        try:
-            self.settings = configsource.settings
-            self.teams = configsource.teams
-            self.services = configsource.services
-        except Exception:
-            Message.fail('Error with parse in response')
-            sys.exit(0)
-
+        
+        self.settings = configsource.settings
+        self.teams = configsource.teams
+        self.services = configsource.services
+        # save temporary config
+        with open('tmp.config.json', 'w') as outfile:
+            data = {'settings' : self.settings,'teams' : self.teams,'services': self.services}
+            json.dump(data, outfile)
         self.delete_old_data()
         self.create_teams()
         self.create_service()
@@ -29,7 +29,6 @@ class Initialize:
             'services': self.services,
             'settings': self.settings,
         }
-
     def delete_old_data(self):
         Message.success('Removing old data ... ')
 
@@ -58,7 +57,7 @@ class Initialize:
         if not os.path.exists(self.settings['path_to_checkers']):
             Message.fail('Did not exists folder with ' + self.settings['path_to_checkers'])
             sys.exit(-1);
-			
+
         file_path = folder + '/' + self.settings['filename_checkers']
         if not os.path.exists(folder):
             os.mkdir(folder, mode=0o777)

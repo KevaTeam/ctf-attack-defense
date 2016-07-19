@@ -39,7 +39,9 @@ class Scoreboard:
             color = {'UP':'success', 'DOWN':'danger', 'CORRUPT':'warning' ,'MUMBLE':'info'}
 
             visitor_team = self.db.teams.find_one({'host': request.remote_addr})
-
+            if visitor_team == None:
+                visitor_team = {'_id': ''}
+			
             for item in scoreboard:
                 if item['team']['name'] not in sc:
                     sc[item['team']['name']] = {}

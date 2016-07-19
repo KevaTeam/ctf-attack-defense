@@ -35,12 +35,12 @@ class ConfigIni:
 			self.checkParamInSection('settings', 'name', config);
 			self.settings['name'] = config['settings']['name']
 			self.checkParamInSection('settings', 'round_length', config);
-			self.settings['round_length'] = config['settings']['round_length']
+			self.settings['round_length'] = int(config['settings']['round_length'])
 			self.settings['flags'] = {};
 			self.checkParamInSection('settings', 'flags_lifetime', config);
-			self.settings['flags']['lifetime'] = config['settings']['flags_lifetime']
+			self.settings['flags']['lifetime'] = int(config['settings']['flags_lifetime'])
 			self.checkParamInSection('settings', 'flags_port', config);
-			self.settings['flags']['port'] = config['settings']['flags_port']
+			self.settings['flags']['port'] = int(config['settings']['flags_port'])
 			self.settings['admin'] = {};
 			self.checkParamInSection('settings', 'admin_login', config);
 			self.settings['admin']['login'] = config['settings']['admin_login']
@@ -95,78 +95,3 @@ class ConfigIni:
 	
 	def isLoaded(self):
 		return self.loaded
-			
-'''
-
-{
-  "settings":{
-	 "time":{
-		"start":,
-		"end":
-	 },
-	 "name":"ctfight-0111",
-	 "round_length":40,
-	 "flags":{
-		"lifetime":4,
-		"port":2605
-	 },
-	 "admin":{
-		"login":"root",
-		"pass":"qwe"
-	 }
-  },
-  "teams":[
-	 {
-		"name":"Dima",
-		"network":"",
-		"host":"",
-		"logo":""
-	 },
-	 {
-		"name":"Tima",
-		"network":"10.53.254.127",
-		"host":"10.53.254.127",
-		"logo":null
-	 },
-	 {
-		"name":"Dima N.",
-		"network":"10.53.254.163",
-		"host":"10.53.254.163",
-		"logo":null
-	 },
-	 {
-		"name":"Maslyata",
-		"network":"10.53.254.138",
-		"host":"10.53.254.138",
-		"logo":null
-	 },
-	 {
-		"name":"ADS",
-		"network":"10.53.254.125",
-		"host":"10.53.254.125",
-		"logo":null
-	 },
-	 {
-		"name":"Maxim",
-		"network":"10.53.254.126",
-		"host":"10.53.254.126",
-		"logo":null
-	 },
-	 {
-		"name":"Lexa",
-		"network":"10.53.254.143",
-		"host":"10.53.254.143",
-		"logo":null
-	 },
-	 {
-		"name":"Rita",
-		"network":"10.53.254.134",
-		"host":"10.53.254.134",
-		"logo":null
-	 }
-  ],
-  "services":[
-
-  ]
-}
-'''
