@@ -1,5 +1,7 @@
 # CTF-Attack-Defense System
 
+The platform for the CTF-competition (Attack-Defense)
+
 ## Requirements
 
 * `sudo apt-get install python3 pip3`
@@ -10,6 +12,10 @@
 ## Init game
 
 	python3 main.py init 
+	
+or 
+	
+	python3 main.py init config.ini
 	
 ## Start sending flags
 

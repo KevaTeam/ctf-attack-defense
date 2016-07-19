@@ -12,15 +12,6 @@ def set_interval(func, sec):
     t.start()
     return t
 
-
-def get_data_from_api():
-    try:
-        return requests.get("http://api.keva.su/method/jury.get").json()
-    except Exception:
-        Message.fail('Error with requests in response')
-        exit(0)
-
-
 def get_config(db):
     data = get_data_from_api()
 

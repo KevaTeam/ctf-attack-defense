@@ -9,7 +9,7 @@ import re
 import pymongo
 from ipaddress import IPv4Address, IPv4Network
 
-from functions import get_data_from_api, Message
+from functions import Message
 
 
 class Flags:
@@ -24,6 +24,7 @@ class Flags:
         data = get_data_from_api()
 
         try:
+            # todo redesign in
             settings = data["response"]["settings"]
 
             lifetime = settings["flags"]["lifetime"]
