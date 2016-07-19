@@ -4,7 +4,7 @@ The platform for the CTF-competition (Attack-Defense)
 
 ## Requirements
 
-* `sudo apt-get install python3 pip3`
+* `sudo apt-get install python3 pip3 python3-psutil`
 * `sudo apt install mongodb`
 * `pip3 install pymongo`
 * `pip3 install flask`
