@@ -74,6 +74,13 @@ class ConfigIni:
 				for f in servicefields:
 					self.checkParamInSection('services', servicepref + '_' + f, config);
 					srvc[f] = config['services'][servicepref + '_' + f]
+				# resolve path to checker
+				if os.path.isfile(srvc['program']):
+					with open(srvc['program'], "r") as myfile:
+						data=myfile.readlines()
+						srvc['program']	= "".join(data)
+				else:
+					srvc['program'] = "#!/bin/bash"
 				self.services.append(srvc);
 				i = i + 1
 			self.loaded = True
