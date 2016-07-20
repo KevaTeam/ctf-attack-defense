@@ -1,4 +1,4 @@
-window.ApiStat = new function (){
+window.ApiGame = new function (){
 	this.description = "API request for get statistics (Emulation)";
 	var self = this;
 	self.cache = {};
