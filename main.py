@@ -1,5 +1,6 @@
 import functions
 
+from config.main import *
 from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
@@ -8,10 +9,12 @@ from classes.scoreboard import Scoreboard
 import argparse
 
 from pymongo import MongoClient
+import pymongo
 
-
-client = MongoClient()
-
+try:
+    client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
+except pymongo.errors.ServerSelectionTimeoutError:
+    Message.fail('Couldn\'t connect to database: connection timeout')
 db = client.jury
 
 
