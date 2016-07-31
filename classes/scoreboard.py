@@ -41,12 +41,13 @@ class Scoreboard:
             visitor_team = self.db.teams.find_one({'host': request.remote_addr})
 
             for item in scoreboard:
-                if item['team']['name'] not in sc:
-                    sc[item['team']['name']] = {}
-                    teams[item['team']['name']] = item['team']
-                    teams[item['team']['name']]['score'] = 0
+                team_name = item['team']['name']
+                if team_name not in sc:
+                    sc[team_name] = {}
+                    teams[team_name] = item['team']
+                    teams[team_name]['score'] = 0
 
-                sc[item['team']['name']][item['service']['name']] = {
+                sc[team_name][item['service']['name']] = {
                     'status': item['status'],
                     'own': item['team']['_id'] == visitor_team['_id'],
                     'message': item['message'],
@@ -55,7 +56,7 @@ class Scoreboard:
                     'up_round': int(item['up_round'])
                 }
 
-                teams[item['team']['name']]['score'] += (item['attack'] + item['defense'])
+                teams[team_name]['score'] += (item['attack'] + item['defense'])
 
             sc = sorted(sc.items(), key=self.sort_team)[::-1]
 
@@ -64,8 +65,7 @@ class Scoreboard:
             return render_template('index.html',
                 scoreboard=sc,
                 color=color,
-                teams=teams
-                                   ,
+                teams=teams,
                 round=round
             )
 

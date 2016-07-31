@@ -1,6 +1,7 @@
 import functions
 
 from config.main import *
+
 from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
@@ -11,10 +12,8 @@ import argparse
 from pymongo import MongoClient
 import pymongo
 
-try:
-    client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
-except pymongo.errors.ServerSelectionTimeoutError:
-    Message.fail('Couldn\'t connect to database: connection timeout')
+client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
+
 db = client.jury
 
 
@@ -44,7 +43,8 @@ def scoreboard():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='The platform for the CTF-competition (Attack-Defense)',
-                                     epilog='Order of actions: init -> start -> flags -> scoreboard')
+                                     epilog='''Order of actions: init -> start -> flags -> scoreboard.
+                                      Good game!''')
 
     sp = parser.add_subparsers()
 
