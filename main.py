@@ -2,24 +2,32 @@ import functions
 
 from config.main import *
 
+import sys
+import argparse
+
 from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
 from classes.scoreboard import Scoreboard
-
-import argparse
+from classes.configsource.configini import ConfigIni
+from classes.configsource.configapikevasu import ConfigApiKevaSu
 
 from pymongo import MongoClient
-import pymongo
 
 client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
 
 db = client.jury
 
-
 def init():
-    Initialize(db)
-
+    if len(sys.argv) >= 2:
+        configsource = ConfigIni(sys.argv[2])
+    else:
+        configsource = ConfigApiKevaSu();
+	
+    if configsource.isLoaded() != True:
+        exit(0);
+	
+    Initialize(db, configsource)
 
 def start():
     config = functions.get_config(db)
@@ -46,9 +54,10 @@ if __name__ == '__main__':
                                      epilog='''Order of actions: init -> start -> flags -> scoreboard.
                                       Good game!''')
 
-    sp = parser.add_subparsers()
+    sp = parser.add_subparsers(help='sub-command help')
 
     sp_init = sp.add_parser('init', help='Initialize the game. Generate teams, services, statistics.')
+    sp_init.add_argument('inifile', nargs='?', help='configuration file')
     sp_init.set_defaults(func=init)
 
     sp_start = sp.add_parser('start', help='Run checkers and start the game.')

@@ -1,51 +1,36 @@
 from functions import ConsoleColors as colors
 import os, stat, json, sys
 from urllib.request import urlopen
-from functions import get_data_from_api, Message
-
+from functions import Message
+import json
 
 class Initialize:
     db = {}
-
-    path_to_checkers = 'checkers/'
-
-    filename_checkers = 'check'
-
     teams = []
-
     services = []
-
     settings = []
 
-    def __init__(self, db):
+    def __init__(self, db, configsource):
         self.db = db
         
-        data = get_data_from_api()
-
-        try:
-            self.settings = data["response"]["settings"]
-            self.teams = data["response"]["teams"]
-            self.services = data["response"]["services"]
-        except Exception:
-            Message.fail('Error with parse in response')
-            sys.exit(0)
-
+        self.settings = configsource.settings
+        self.teams = configsource.teams
+        self.services = configsource.services
+        # save temporary config
+        with open('tmp.config.json', 'w') as outfile:
+            data = {'settings' : self.settings,'teams' : self.teams,'services': self.services}
+            json.dump(data, outfile)
         self.delete_old_data()
-
         self.create_teams()
-
         self.create_service()
-
         self.generate_scoreboard()
-
         self.output = {
             'teams': self.teams,
             'services': self.services,
             'settings': self.settings,
         }
-
     def delete_old_data(self):
-        Message.success('Clear old data')
+        Message.success('Removing old data ... ')
 
         self.db.teams.delete_many({})
         self.db.services.delete_many({})
@@ -55,27 +40,30 @@ class Initialize:
 
     def create_teams(self):
         Message.success('Generate teams')
-
         for e in self.teams:
+            print("\tInit team {" + e["name"] + "} (Network: " + e["network"] + ")");
             self.db.teams.insert_one(e)
 
     def create_service(self):
         Message.success('Generate services')
-
         for e in self.services:
+            print("\tInit service {" + e["name"] + "}");
             self.db.services.insert_one(e)
-
             self.create_program(e['name'], e['program'])
 
     def create_program(self, filename, program):
-        folder = self.path_to_checkers + '/' + filename
+        folder = self.settings['path_to_checkers'] + '/' + filename
 
-        file_path = folder + '/' + self.filename_checkers
+        if not os.path.exists(self.settings['path_to_checkers']):
+            Message.fail('Did not exists folder with ' + self.settings['path_to_checkers'])
+            sys.exit(-1);
+
+        file_path = folder + '/' + self.settings['filename_checkers']
         if not os.path.exists(folder):
             os.mkdir(folder, mode=0o777)
 
         file = open(file_path, 'w')
-        file.write(program)
+        file.write(program + "\r\n")
         file.close()
 
         # Выставляем права на выполнение

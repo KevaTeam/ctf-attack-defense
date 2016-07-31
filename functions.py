@@ -12,18 +12,9 @@ def set_interval(func, sec):
     t.start()
     return t
 
-
-def get_data_from_api():
-    try:
-        return requests.get("http://api.keva.su/method/jury.get").json()
-    except Exception:
-        Message.fail('Error with requests in response')
-        exit(0)
-
-
 def get_config(db):
-    data = get_data_from_api()
-
+    from classes.configsource.configjson import ConfigJson
+    config = ConfigJson('tmp.config.json');
     teams = []
     for team in db.teams.find():
         teams.append(team)
@@ -32,11 +23,10 @@ def get_config(db):
     for service in db.services.find():
         services.append(service)
 
-
     return {
         'teams': teams,
         'services': services,
-        'settings': data["response"]["settings"]
+        'settings': config.settings
     }
 
 # Some methods for print message
