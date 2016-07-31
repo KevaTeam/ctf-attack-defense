@@ -11,4 +11,8 @@ report/report.aux
 *.tex~
 report/report.*
 !report/report.pdf
+
 *.log
+tmp.config.json
+
+starter_allinone.d/*
