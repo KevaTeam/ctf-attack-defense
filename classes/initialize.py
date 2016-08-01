@@ -1,34 +1,31 @@
 from functions import ConsoleColors as colors
+
+from classes.config.main import Config
 import os, stat, json, sys
-from urllib.request import urlopen
 from functions import Message
-import json
 
 class Initialize:
+    config = ''
     db = {}
     teams = []
     services = []
     settings = []
 
-    def __init__(self, db, configsource):
+    def __init__(self, db, type):
         self.db = db
         
-        self.settings = configsource.settings
-        self.teams = configsource.teams
-        self.services = configsource.services
+        self.config = Config(type)
+
         # save temporary config
         with open('tmp.config.json', 'w') as outfile:
-            data = {'settings' : self.settings,'teams' : self.teams,'services': self.services}
+            data = {'settings' : self.config.settings,'teams' : self.config.teams,'services': self.config.services}
             json.dump(data, outfile)
+
         self.delete_old_data()
         self.create_teams()
         self.create_service()
         self.generate_scoreboard()
-        self.output = {
-            'teams': self.teams,
-            'services': self.services,
-            'settings': self.settings,
-        }
+        
     def delete_old_data(self):
         Message.success('Removing old data ... ')
 
@@ -40,25 +37,22 @@ class Initialize:
 
     def create_teams(self):
         Message.success('Generate teams')
-        for e in self.teams:
-            print("\tInit team {" + e["name"] + "} (Network: " + e["network"] + ")");
+
+        for e in self.config.teams:
+            Message.info("Init team {" + e["name"] + "} (Network: " + e["network"] + ")");
             self.db.teams.insert_one(e)
 
     def create_service(self):
         Message.success('Generate services')
-        for e in self.services:
-            print("\tInit service {" + e["name"] + "}");
+        for e in self.config.services:
+            Message.info("\tInit service {" + e["name"] + "}");
             self.db.services.insert_one(e)
             self.create_program(e['name'], e['program'])
 
     def create_program(self, filename, program):
-        folder = self.settings['path_to_checkers'] + '/' + filename
-
-        if not os.path.exists(self.settings['path_to_checkers']):
-            Message.fail('Did not exists folder with ' + self.settings['path_to_checkers'])
-            sys.exit(-1);
-
-        file_path = folder + '/' + self.settings['filename_checkers']
+        folder = self.config.settings['path_to_checkers'] + '/' + filename
+        file_path = folder + '/' + self.config.settings['filename_checkers']
+        
         if not os.path.exists(folder):
             os.mkdir(folder, mode=0o777)
 
