@@ -9,8 +9,8 @@ from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
 from classes.scoreboard import Scoreboard
-from classes.configsource.configini import ConfigIni
-from classes.configsource.configapikevasu import ConfigApiKevaSu
+# from classes.configsource.configini import ConfigIni
+# from classes.configsource.configapikevasu import ConfigApiKevaSu
 
 from pymongo import MongoClient
 
@@ -18,18 +18,10 @@ client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
 
 db = client.jury
 
-def init():
-    if len(sys.argv) >= 2:
-        configsource = ConfigIni(sys.argv[2])
-    else:
-        configsource = ConfigApiKevaSu();
-	
-    if configsource.isLoaded() != True:
-        exit(0);
-	
-    Initialize(db, configsource)
+def init(parse):
+    Initialize(db, parse.type[0])
 
-def start():
+def start(parse):
     config = functions.get_config(db)
 
     round = Round(db, config)
@@ -38,14 +30,14 @@ def start():
     functions.set_interval(round.next, 10)
 
 
-def flags():
+def flags(parse):
     config = functions.get_config(db)
 
     flags = Flags(db, config)
     flags.start()
 
 
-def scoreboard():
+def scoreboard(parse):
     scoreboard = Scoreboard(db)
     scoreboard.start()
 
@@ -57,7 +49,7 @@ if __name__ == '__main__':
     sp = parser.add_subparsers(help='sub-command help')
 
     sp_init = sp.add_parser('init', help='Initialize the game. Generate teams, services, statistics.')
-    sp_init.add_argument('inifile', nargs='?', help='configuration file')
+    sp_init.add_argument('--type', help='type of configuration file', nargs='*', default=['api', 'json'])
     sp_init.set_defaults(func=init)
 
     sp_start = sp.add_parser('start', help='Run checkers and start the game.')
@@ -70,7 +62,7 @@ if __name__ == '__main__':
     sp_scoreboard.set_defaults(func=scoreboard)
 
     if 'func' in parser.parse_args():
-        parser.parse_args().func()
+        parser.parse_args().func(parser.parse_args())
     else:
         parser.print_help()
 
