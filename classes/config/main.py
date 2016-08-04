@@ -3,13 +3,13 @@ import requests, os, sys, json
 from functions import Message
 
 class Config:
-	loaded = False,
+	loaded = False
 
 	path_to_config_file = 'config/game.json'
 	settings = {
 		'path_to_checkers': 'checkers/',
 		'filename_checkers': 'check'
-	};
+	}
 
 	services = {},
 	teams = {},
@@ -22,7 +22,8 @@ class Config:
 			self.from_api()
 
 		if not self.loaded:
-			sys.exit(0);
+			Message.fail("Couldn't get config...Exit")
+			sys.exit(0)
 
 	def from_api(self):
 		try:

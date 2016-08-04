@@ -1,0 +1,71 @@
+{
+	"settings": {
+		"time": {
+			"start":1446314400,
+			"end":1448906400
+		},
+		"name":"",
+		"round_length":40,
+		"flags": {
+			"lifetime":4,
+			"port":2605
+		},
+		"admin":{
+			"login":"root",
+			"pass":"qwe"
+		}
+	},
+
+	"teams": [
+		{
+			"name":"Dima",
+			"network":"10.53.254.155",
+			"host":"10.53.254.155",
+			"logo":"http://localhost/images/keva.jpg"
+		},
+		{
+			"name":"Tima",
+			"network":"10.53.254.127",
+			"host":"10.53.254.127",
+			"logo":null
+		},
+		{
+			"name":"Dima N.",
+			"network":"10.53.254.163",
+			"host":"10.53.254.163",
+			"logo":null
+		},
+		{
+			"name":"Maslyata",
+			"network":"10.53.254.138",
+			"host":"10.53.254.138",
+			"logo":null
+		},
+		{
+			"name":"ADS",
+			"network":"10.53.254.125",
+			"host":"10.53.254.125",
+			"logo":null
+		},
+		{
+			"name":"Maxim",
+			"network":"10.53.254.126",
+			"host":"10.53.254.126",
+			"logo":null
+		},
+		{
+			"name":"Lexa",
+			"network":"10.53.254.143",
+			"host":"10.53.254.143",
+			"logo":null
+		},
+		{
+			"name":"Rita",
+			"network":"10.53.254.134",
+			"host":"10.53.254.134",
+			"logo":null
+		}
+	],
+
+	"services": {}
+}
