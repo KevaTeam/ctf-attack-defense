@@ -1,8 +1,6 @@
 from threading import Timer
 from sys import exit
 
-import requests
-
 def set_interval(func, sec):
     def func_wrapper():
         set_interval(func, sec)
@@ -14,7 +12,7 @@ def set_interval(func, sec):
 
 def get_config(db):
     from classes.configsource.configjson import ConfigJson
-    config = ConfigJson('tmp.config.json');
+    config = ConfigJson('tmp.config.json')
     teams = []
     for team in db.teams.find():
         teams.append(team)

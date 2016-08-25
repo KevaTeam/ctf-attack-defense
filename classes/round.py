@@ -1,20 +1,22 @@
 __author__ = 'dmitry'
 
-from functions import ConsoleColors as colors
+from config.main import CHECKER_METHOD
 from functions import Message
-from classes.checker import Checker
+
+from classes.checker.main import Checker
+from classes.checker.queue import Queue
+from classes.checker.threads import Threads
+from classes.statistic import Statistic
+from classes.config.get import ConfigGet
+
 import random
 import string
 import time
-import threading
 import pymongo
+import pika
 
 class Round:
     db = {}
-    teams = {}
-    services = {}
-
-    flags = {}
 
     round_count = 0
 
@@ -22,13 +24,20 @@ class Round:
 
     filename_checkers = 'check'
 
-    def __init__(self, db, config):
+    def __init__(self, db):
         self.db = db
-        self.teams = config['teams']
-        self.services = config['services']
-        self.tasks = []
+        self.config = ConfigGet(db)
+        self.config.get_all()
+
+        self.statistic = Statistic(self.db, self.config)
         self.checker = Checker()
+
         self.status_service = {}
+
+        if CHECKER_METHOD == 'queue':
+            self.checkerManager = Queue()
+        else:
+            self.checkerManager = Threads()
 
         self.round_count = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)
         print(self.round_count)
@@ -36,55 +45,27 @@ class Round:
 
 
     def next(self):
-        self.summary_statistic()
+        self.statistic.summary(self.round_count, self.status_service)
 
         self.round_count += 1
         self.tasks = []
         print('Round: ' + str(self.round_count))
 
-        for team in self.teams:
-            for service in self.services:
-                # TODO: make async call
+        for team in self.config.teams:
+            for service in self.config.services:
+                flag = self.generate_flags()
+                flag_id = self.generate_flag_ids()
 
-                self.tasks.append(threading.Thread(name=team['name'] + ' ' + service['name'], target=self.to_service, args=(team, service, )))
-                self.tasks[-1].daemon = True
-                self.tasks[-1].start()
-                # self.to_service(team, service)
+                print(team['name'] + ' ' + service['name'] + ' ' + flag)
 
-        for e, j in enumerate(self.tasks):
-            j.join(timeout=1)
-
-    def summary_statistic(self):
-        for team in self.teams:
-            for service in self.services:
-                count_attack = self.db.stolen_flags.find({
-                    'team._id': team['_id'],
-                    'flag.service._id': service['_id'],
-                    'round': self.round_count
-                }).count()
-
-                if team['name'] + '_' + service['name'] in self.status_service and self.status_service[team['name'] + '_' + service['name']] == 101:
-                    count_defense = self.db.flags.find({
-                        'team._id': team['_id'],
-                        'service._id': service['_id'],
-                        'round': self.round_count,
-                        'stolen': False
-                    }).count()
-                else:
-                    count_defense = 0
-
-                self.db.scoreboard.update_one(
-                    {
-                        'team._id': team['_id'],
-                        'service._id': service['_id']
-                    },
-                    {
-                        '$inc': {
-                            'attack': count_attack,
-                            'defense': count_defense
-                        }
-                    }
+                self.checkerManager.put(
+                    team = team,
+                    service = service,
+                    flag = flag,
+                    flag_id = flag_id
                 )
+
+
 
     def generate_flags(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
@@ -92,11 +73,7 @@ class Round:
     def generate_flag_ids(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(10))
 
-    def to_service(self, team, service):
-        flag = self.generate_flags()
-        flag_id = self.generate_flag_ids()
-        print (team['name'] + ' ' + service['name'] + ' ' + flag)
-        #print (flag_id)
+    def to_service(self, team, service, flag, flag_id):
         self.db.flags.insert_one({
             'round': self.round_count,
             'team': team,
@@ -127,6 +104,9 @@ class Round:
 
             Message.fail(team['name'] + ' ' + service['name'] + ' ' + action + ' => error (message: ' + str(message) + ')')
             self.update_scoreboard(team, service, code, message)
+
+    def set_queue(self, team, service):
+        pass
 
     def update_scoreboard(self, team, service, status_code, message=''):
         codes = {

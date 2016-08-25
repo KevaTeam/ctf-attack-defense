@@ -9,8 +9,6 @@ from classes.initialize import Initialize
 from classes.round import Round
 from classes.flags import Flags
 from classes.scoreboard import Scoreboard
-# from classes.configsource.configini import ConfigIni
-# from classes.configsource.configapikevasu import ConfigApiKevaSu
 
 from pymongo import MongoClient
 
@@ -21,10 +19,9 @@ db = client.jury
 def init(parse):
     Initialize(db, parse.type[0])
 
-def start(parse):
-    config = functions.get_config(db)
 
-    round = Round(db, config)
+def start(parse):
+    round = Round(db)
     round.next()
 
     functions.set_interval(round.next, 10)

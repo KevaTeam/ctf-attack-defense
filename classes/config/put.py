@@ -2,7 +2,7 @@ import requests, os, sys, json
 
 from functions import Message
 
-class Config:
+class Put:
 	loaded = False
 
 	path_to_config_file = 'config/game.json'

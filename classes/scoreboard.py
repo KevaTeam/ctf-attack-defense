@@ -11,6 +11,7 @@ class Scoreboard:
 
     def __init__(self, db):
         self.db = db
+
         self.app = Flask(__name__)
 
     def sort_team(self, service):

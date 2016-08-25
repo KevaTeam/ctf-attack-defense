@@ -1,6 +1,6 @@
 from functions import ConsoleColors as colors
 
-from classes.config.main import Config
+from classes.config.put import Put as ConfigPut
 import os, stat, json, sys
 from functions import Message
 
@@ -14,7 +14,7 @@ class Initialize:
     def __init__(self, db, type):
         self.db = db
         
-        self.config = Config(type)
+        self.config = ConfigPut(type)
 
         # save temporary config
         with open('tmp.config.json', 'w') as outfile:
