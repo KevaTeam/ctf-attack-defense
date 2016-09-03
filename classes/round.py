@@ -67,7 +67,10 @@ class Round:
 
 
     def generate_flags(self):
-        return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
+        flag = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
+        flag += '='
+
+        return flag
 
     def generate_flag_ids(self):
         return ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(10))

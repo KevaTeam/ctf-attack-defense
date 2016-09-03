@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from classes.config.get import ConfigGet
 
 import multiprocessing
 import socket
@@ -8,27 +9,28 @@ import time
 import re
 import pymongo
 from ipaddress import IPv4Address, IPv4Network
-# from classes.configsource.configjson import ConfigJson
 from functions import Message
 
 
 class Flags:
     socket = None
 
-    def __init__(self, db, config):
+    def __init__(self, db):
         self.db = db
         self.conn = None
         self.address = None
-        config = ConfigJson('tmp.config.json');
+
+        self.config = ConfigGet(self.db)
+
         try:
-            lifetime = config.settings["flags"]["lifetime"]
-            round_length = config.settings["round_length"]
+            lifetime = 4#self.config.settings["flags"]["lifetime"]
+            round_length = 10#self.config.settings["round_length"]
         except KeyError:
             Message.fail('Error with parse in response')
             sys.exit(0)
 
         self.life = lifetime * round_length
-        self.port = config.settings['flags']['port']
+        self.port = 2605#self.config.settings['flags']['port']
 
     def start(self):
         Message.success('Class is initialized. Starting')
@@ -56,19 +58,20 @@ class Flags:
         print(address)
         team = False
         for e in teams:
-            if(e['network'] == address[0]):
+            if IPv4Address(address[0]) in IPv4Network(e['network']):
                 print(e)
                 team = e
+                break
 
         if not bool(team):
             connection.send(('Who are you?\n Goodbye\n').encode())
             connection.close()    
-
-        try:
-            self.process_one_team(connection, team)
-        except BrokenPipeError:
-            print('Client is disconnected')
-            sys.exit(0)
+        else:
+            try:
+                self.process_one_team(connection, team)
+            except BrokenPipeError:
+                print('Client is disconnected')
+                sys.exit(0)
 
     def process_one_team(self, connection, team):
         connection.send(('Welcome! \nYour team - ' + team["name"] + '\n').encode())

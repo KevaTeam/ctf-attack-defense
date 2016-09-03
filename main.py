@@ -34,9 +34,7 @@ def start(parse):
 def flags(parse):
     from classes.flags import Flags
 
-    config = functions.get_config(db)
-
-    flags = Flags(db, config)
+    flags = Flags(db)
     flags.start()
 
 
