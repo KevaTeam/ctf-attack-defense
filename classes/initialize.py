@@ -1,7 +1,5 @@
-from functions import ConsoleColors as colors
-
 from classes.config.put import Put as ConfigPut
-import os, stat, json, sys
+import os, stat
 from functions import Message
 
 class Initialize:
@@ -16,18 +14,13 @@ class Initialize:
         
         self.config = ConfigPut(type)
 
-        # save temporary config
-        with open('tmp.config.json', 'w') as outfile:
-            data = {'settings' : self.config.settings,'teams' : self.config.teams,'services': self.config.services}
-            json.dump(data, outfile)
-
         self.delete_old_data()
         self.create_teams()
         self.create_service()
         self.generate_scoreboard()
         
     def delete_old_data(self):
-        Message.success('Removing old data ... ')
+        Message.info('Removing old data ... ')
 
         self.db.teams.delete_many({})
         self.db.services.delete_many({})
@@ -35,24 +28,32 @@ class Initialize:
         self.db.flags.delete_many({})
         self.db.stolen_flags.delete_many({})
 
+        Message.info('\tDone')
+
     def create_teams(self):
         Message.success('Generate teams')
 
         for e in self.config.teams:
-            Message.info("Init team {" + e["name"] + "} (Network: " + e["network"] + ")");
+            Message.info("\tInit team {" + e["name"] + "} (Network: " + e["network"] + ")");
             self.db.teams.insert_one(e)
 
     def create_service(self):
         Message.success('Generate services')
+
         for e in self.config.services:
             Message.info("\tInit service {" + e["name"] + "}");
+
             self.db.services.insert_one(e)
             self.create_program(e['name'], e['program'])
 
     def create_program(self, filename, program):
-        folder = self.config.settings['path_to_checkers'] + '/' + filename
+        path_to_checkers = self.config.settings['path_to_checkers']
+        if not os.path.exists(path_to_checkers):
+            os.mkdir(path_to_checkers, mode=0o777)
+
+        folder = path_to_checkers + '/' + filename
         file_path = folder + '/' + self.config.settings['filename_checkers']
-        
+
         if not os.path.exists(folder):
             os.mkdir(folder, mode=0o777)
 
@@ -61,7 +62,7 @@ class Initialize:
         file.close()
 
         # Выставляем права на выполнение
-        os.chmod(file_path, stat.S_IRWXU)
+        os.chmod(file_path, 0o777)
 
     def generate_scoreboard(self):
         Message.success('Generate scoreboard')

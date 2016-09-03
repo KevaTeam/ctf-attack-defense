@@ -3,7 +3,7 @@ DATABASE = {
 	'PORT': 27017
 }
 
-CHECKER_METHOD = 'queue' # Async or queue
+CHECKER_METHOD = 'async' # Async or queue
 
 QUEUE = {
 	'HOST': 'localhost'

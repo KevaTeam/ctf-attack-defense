@@ -15,7 +15,11 @@ class Threads:
     def run(self):
         self.thread = []
         for item in self.list:
-            self.thread.append(threading.Thread(name=item['team']['name'] + ' ' + item['service']['name'], target=self.to_service, args=(item['team'], item['service'],)))
+            self.thread.append(threading.Thread(
+                name=item['team']['name'] + ' ' + item['service']['name'],
+                target=item['to_service'],
+                args=(item['team'], item['service'], item['flag'], item['flag_id']))
+            )
             self.thread[-1].daemon = True
             self.thread[-1].start()
 
@@ -24,4 +28,4 @@ class Threads:
 
 
     def clear(self):
-        pass
+        self.list = []

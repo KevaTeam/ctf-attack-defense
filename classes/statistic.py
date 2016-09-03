@@ -4,9 +4,10 @@ class Statistic:
         self.config = config
         pass
 
+    # Подводим итоги последнего раунда и сохраняем в базу
     def summary(self, round, status_service):
-        for team in self.config.teams:
-            for service in self.config.services:
+        for team in self.config.get_all_teams():
+            for service in self.config.get_all_services():
                 count_attack = self.db.stolen_flags.find({
                     'team._id': team['_id'],
                     'flag.service._id': service['_id'],

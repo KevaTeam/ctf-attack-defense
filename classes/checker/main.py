@@ -14,13 +14,18 @@ class Checker:
         pass
 
     def status(self, popen):
-        if popen.returncode == self.STATUS_CODE['SUCCESS']:
+        code = popen.returncode
+
+        if code == self.STATUS_CODE['SUCCESS']:
             return True
+
+        # if code not in self.STATUS_CODE.values():
+        #     code = 0
 
         raise Exception(popen.returncode, popen.stdout.read())
 
     def get(self, host, path_to_program, flag, flag_id):
-        args = ('python3', path_to_program, "get", host, flag_id, flag)
+        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "get", host, flag_id, flag)
 
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
 
@@ -31,15 +36,14 @@ class Checker:
         return self.status(popen)
 
     def check(self, host, path_to_program):
-        args = ('python3', path_to_program, "check", host)
-
+        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "check", host)
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()
 
         return self.status(popen)
 
     def put(self, host, path_to_program, flag, flag_id):
-        args = ('python3', path_to_program, "put", host, flag_id, flag)
+        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "put", host, flag_id, flag)
 
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()

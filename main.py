@@ -1,33 +1,39 @@
-import functions
-
 from config.main import *
-
-import sys
-import argparse
-
-from classes.initialize import Initialize
-from classes.round import Round
-from classes.flags import Flags
-from classes.scoreboard import Scoreboard
-
 from pymongo import MongoClient
+
+import functions
+import argparse
 
 client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
 
 db = client.jury
 
 def init(parse):
+    from classes.initialize import Initialize
+
     Initialize(db, parse.type[0])
 
 
 def start(parse):
-    round = Round(db)
-    round.next()
+    if parse.slave:
+        from classes.zond import Zond
 
-    functions.set_interval(round.next, 10)
+        zond = Zond(db)
+
+        zond.run()
+
+    else:
+        from classes.round import Round
+
+        round = Round(db)
+        round.next()
+
+        functions.set_interval(round.next, 10)
 
 
 def flags(parse):
+    from classes.flags import Flags
+
     config = functions.get_config(db)
 
     flags = Flags(db, config)
@@ -35,6 +41,8 @@ def flags(parse):
 
 
 def scoreboard(parse):
+    from classes.scoreboard import Scoreboard
+
     scoreboard = Scoreboard(db)
     scoreboard.start()
 
@@ -50,6 +58,7 @@ if __name__ == '__main__':
     sp_init.set_defaults(func=init)
 
     sp_start = sp.add_parser('start', help='Run checkers and start the game.')
+    sp_start.add_argument('--slave', help='Run as slave', action='store_true')
     sp_start.set_defaults(func=start)
 
     sp_flags = sp.add_parser('flags', help='The start of the module "flags"')
