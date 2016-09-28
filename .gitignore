@@ -4,6 +4,8 @@ __pycache__/*
 classes/__pycache__/*
 checkers/*
 
+config/main.py
+
 *.pyc
 report/report.aux
 

@@ -12,6 +12,6 @@ CHECKER_METHOD = 'async' # Async or queue
 
 QUEUE = {
 	'HOST': 'localhost',
-	'USERNAME': 'keva',
-	'PASSWORD': 'keva5261VKissosecret'
+	'USERNAME': 'username',
+	'PASSWORD': 'pass'
 }
