@@ -1,4 +1,20 @@
 #!/bin/bash
+
+#
+# Support Functions
+#
+function install_python_deps {
+    echo Installing Python Deps - Sudo Required!
+    sudo pip3 install pymongo
+    sudo pip3 install requests
+    sudo pip install --upgrade pip setuptools
+    sudo pip3 install flask
+    sudo pip3 install pika
+}
+
+#
+# Main Install Logic
+#
 if [ "$(uname)" == "Darwin" ]; then
     # Install for Mac
     echo Installing for Mac!
@@ -6,11 +22,7 @@ if [ "$(uname)" == "Darwin" ]; then
     echo Installing Python 3 and Mongo
     brew install python3 mongodb
 
-    echo Installing Python Deps - sudo required
-    sudo pip3 install pymongo
-    sudo pip3 install requests
-    sudo pip install --upgrade pip setuptools
-    sudo pip3 install flask
+    install_python_deps
 
     echo Done!
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -26,11 +38,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     echo Installing Mongo
     sudo apt-get install mongodb -y
 
-    echo Installing Python Deps
-    sudo pip3 install pymongo
-    sudo pip3 install requests
-    sudo pip install --upgrade pip setuptools
-    sudo pip3 install flask
+    install_python_deps
 
     echo Done!
 fi
