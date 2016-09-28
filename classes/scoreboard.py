@@ -28,49 +28,55 @@ class Scoreboard:
     def start(self):
         @self.app.route("/")
         def index():
-            scoreboard = self.db.scoreboard.find()
+            try:
+                scoreboard = self.db.scoreboard.find()
 
-            if scoreboard.count() == 0:
-                # Хотелось бы добавить сюда время начала соревнований
-                return render_template('game_not_started.html')
+                if scoreboard.count() == 0:
+                    # Хотелось бы добавить сюда время начала соревнований
+                    return render_template('game_not_started.html')
 
-            sc = {}
-            teams = {}
+                sc = {}
+                teams = {}
 
-            color = {'UP':'success', 'DOWN':'danger', 'CORRUPT':'warning' ,'MUMBLE':'info'}
+                color = {'UP':'success', 'DOWN':'danger', 'CORRUPT':'warning' ,'MUMBLE':'info'}
 
-            visitor_team = self.db.teams.find_one({'host': request.remote_addr})
-            if visitor_team == None:
-                visitor_team = {'_id': ''}
-			
-            for item in scoreboard:
-                team_name = item['team']['name']
-                if team_name not in sc:
-                    sc[team_name] = {}
-                    teams[team_name] = item['team']
-                    teams[team_name]['score'] = 0
+                visitor_team = self.db.teams.find_one({'host': request.remote_addr})
+                if visitor_team == None:
+                    visitor_team = {'_id': ''}
 
-                sc[team_name][item['service']['name']] = {
-                    'status': item['status'],
-                    'own': item['team']['_id'] == visitor_team['_id'],
-                    'message': item['message'],
-                    'attack': str(item['attack']),
-                    'defense': str(item['defense']),
-                    'up_round': int(item['up_round'])
-                }
+                count_round = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round']
 
-                teams[team_name]['score'] += (item['attack'] + item['defense'])
+                for item in scoreboard:
+                    team_name = item['team']['name']
+                    if team_name not in sc:
+                        sc[team_name] = {}
+                        teams[team_name] = item['team']
+                        teams[team_name]['score'] = 0
 
-            sc = sorted(sc.items(), key=self.sort_team)[::-1]
+                    sc[team_name][item['service']['name']] = {
+                        'status': item['status'],
+                        'own': item['team']['_id'] == visitor_team['_id'],
+                        'message': item['message'],
+                        'attack': str(item['attack']),
+                        'defense': str(item['defense']),
+                        'up_round': int(item['up_round']),
+                        'uptime': (item['up_round'] / count_round) * 100
+                    }
+                    uptime = (item['up_round'] / count_round) * 100
 
-            round = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round']
+                    teams[team_name]['score'] += round((uptime * (item['attack'] + item['defense']) * 0.01), 2)
 
-            return render_template('index.html',
-                scoreboard=sc,
-                color=color,
-                teams=teams,
-                round=round
-            )
+                sc = sorted(sc.items(), key=self.sort_team)[::-1]
+
+
+                return render_template('index.html',
+                                       scoreboard=sc,
+                                       color=color,
+                                       teams=teams,
+                                       round=count_round
+                                       )
+            except Exception:
+                return render_template('is_not_avialable.html')
 
         @self.app.route('/api/rating')
         def api_rating():

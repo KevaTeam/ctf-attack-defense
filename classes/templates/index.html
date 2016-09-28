@@ -37,7 +37,7 @@
         	{% for service in team %}
         		<td class="{{ color[team[service].status] }} service" alt="" align="center" {% if team[service].own and team[service].status !="UP" %}data-toggle="popover" title="Описание ошибки сервиса {{ service }}" data-content="{{ team[service].message|default('Неизвестная ошибка', true) }}"{% endif %}>
                     <div class="uptime" data-toggle="tooltip" data-placement="bottom" title="Uptime сервиса">
-                        {% if team[service].up_round %}{{ ((team[service].up_round / round) * 100)|int() }}{% else %}0{% endif %}%
+                        {% if team[service].up_round %}{{ (team[service].uptime)|int() }}{% else %}0{% endif %}%
                     </div>
                     <div class="attack_defense">
                         <div class="block" data-toggle="tooltip" data-placement="bottom" title="Очки атаки"><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> {{ team[service].attack }}</div>

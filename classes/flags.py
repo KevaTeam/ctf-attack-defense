@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from classes.config.get import ConfigGet
-
+from config.main import *
 import multiprocessing
 import socket
 import sys
@@ -22,9 +22,10 @@ class Flags:
 
         self.config = ConfigGet(self.db)
 
+
         try:
-            lifetime = 4#self.config.settings["flags"]["lifetime"]
-            round_length = 10#self.config.settings["round_length"]
+            lifetime = CHECKER['LENGTH']
+            round_length = CHECKER['ROUND_LENGTH']
         except KeyError:
             Message.fail('Error with parse in response')
             sys.exit(0)
@@ -80,7 +81,7 @@ class Flags:
             data = connection.recv(1024)
             data = str(data.rstrip().decode('utf-8'))
 
-            if not re.match('^\w{33}$',data):
+            if not re.match('^\w{33}=$',data):
                 connection.send(('this is not flag\n').encode())
                 continue
 
@@ -107,12 +108,11 @@ class Flags:
                 connection.send(('Your service '+ flag['service']['name'] +' is not working\n').encode())
                 continue
 
-            round = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round']
+            count_round = self.db.flags.find().sort([ ('round', pymongo.DESCENDING) ]).limit(1)[0]['round']
 
             is_stolen = self.db.stolen_flags.find_one({
                 'team._id': team['_id'],
-                'flag._id': flag['_id'],
-                'round': round
+                'flag._id': flag['_id']
             })
 
             if is_stolen:
@@ -122,11 +122,10 @@ class Flags:
             self.db.stolen_flags.insert_one({
                 'team': team,
                 'flag': flag,
-                'round': round,
+                'round': count_round,
                 'timestamp': time.time()
             })
 
-            if not(flag['stolen']):
-                self.db.flags.update_one({'flag': data}, {"$set": {"stolen": True}})
+            self.db.flags.update_one({'flag': data}, {"$set": {"stolen": True}})
 
             connection.send(('received\n').encode())

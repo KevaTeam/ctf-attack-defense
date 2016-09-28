@@ -7,6 +7,7 @@ import pika, time, json
 from bson import json_util
 from functions import Message
 from classes.checker.main import Checker
+from config.main import QUEUE
 
 try:
     import thread
@@ -32,7 +33,9 @@ class Zond:
 
         self.checker = Checker()
         connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host='localhost'))
+            host='localhost',
+            credentials=pika.credentials.PlainCredentials(QUEUE['USERNAME'], QUEUE['PASSWORD'])
+        ))
         self.channel = connection.channel()
 
         self.channel.queue_declare(queue='tasks')

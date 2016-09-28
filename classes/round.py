@@ -40,7 +40,8 @@ class Round:
     def next(self):
         #TODO: косяк в status_service
         # Подводим итоги предыдущего раунда
-        self.statistic.summary(self.round_count, self.status_service)
+
+        self.statistic.summary(self.round_count)
         # Очищаем предыдущие задачи
         self.checkerManager.clear()
 
