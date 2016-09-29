@@ -28,7 +28,7 @@ def start(parse):
         round = Round(db)
         round.next()
 
-        functions.set_interval(round.next, 10)
+        functions.set_interval(round.next, ROUND_LENGTH)
 
 
 def flags(parse):

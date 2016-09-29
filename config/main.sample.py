@@ -15,3 +15,5 @@ QUEUE = {
 	'USERNAME': 'username',
 	'PASSWORD': 'pass'
 }
+
+ROUND_LENGTH = 60 # in seconds
