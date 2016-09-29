@@ -55,6 +55,9 @@ class Zond:
         print(" [x] Received %r %r" % (data['team']['name'],data['service']['name']))
 
         if not os.path.exists('checkers/' + data['service']['name'] + '/check'):
+            if not os.path.exists('checkers/' + data['service']['name']):
+                os.mkdir('checkers/' + data['service']['name'], mode=0o777)
+
             file = open('checkers/' + data['service']['name'] + '/check', 'w')
             file.write(data['service']['program'] + "\r\n")
             file.close()
