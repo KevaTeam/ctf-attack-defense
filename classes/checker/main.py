@@ -1,4 +1,5 @@
 import subprocess
+from config.main import BASE_PATH
 __author__ = 'dmitry'
 
 
@@ -25,7 +26,7 @@ class Checker:
         raise Exception(popen.returncode, popen.stdout.read())
 
     def get(self, host, path_to_program, flag, flag_id):
-        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "get", host, flag_id, flag)
+        args = (BASE_PATH + path_to_program, "get", host, flag_id, flag)
 
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
 
@@ -36,14 +37,14 @@ class Checker:
         return self.status(popen)
 
     def check(self, host, path_to_program):
-        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "check", host)
+        args = (BASE_PATH + path_to_program, "check", host)
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()
 
         return self.status(popen)
 
     def put(self, host, path_to_program, flag, flag_id):
-        args = ('/home/dmitry/Projects/ctf-attack-defense/' + path_to_program, "put", host, flag_id, flag)
+        args = (BASE_PATH + path_to_program, "put", host, flag_id, flag)
 
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()

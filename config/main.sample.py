@@ -1,3 +1,5 @@
+import os
+
 DATABASE = {
 	'HOST': 'localhost',
 	'PORT': 27017
@@ -17,3 +19,5 @@ QUEUE = {
 }
 
 ROUND_LENGTH = 60 # in seconds
+
+BASE_PATH = os.path.dirname(__file__) + '../'
