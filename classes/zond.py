@@ -33,7 +33,7 @@ class Zond:
 
         self.checker = Checker()
         connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host='localhost',
+            host=QUEUE['HOST'],
             credentials=pika.credentials.PlainCredentials(QUEUE['USERNAME'], QUEUE['PASSWORD'])
         ))
         self.channel = connection.channel()
