@@ -1,7 +1,7 @@
 from __future__ import print_function
 import sys
 import threading
-
+import os
 import pika, time, json
 
 from bson import json_util
@@ -53,6 +53,11 @@ class Zond:
         data = json.loads(body.decode('utf8'))
 
         print(" [x] Received %r %r" % (data['team']['name'],data['service']['name']))
+
+        if not os.path.exists('checkers/' + data['service']['name'] + '/check'):
+            file = open('checkers/' + data['service']['name'] + '/check', 'w')
+            file.write(data['service']['program'] + "\r\n")
+            file.close()
 
         self.thread.append(threading.Thread(
             name=(data['team']['name'] + data['service']['name']),
