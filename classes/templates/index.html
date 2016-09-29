@@ -2,6 +2,7 @@
 
 {% block title %}Таблица результатов{% endblock %}
 {% block body %}
+<link rel="stylesheet" href="http://sibirctf.org/css/teams.css">
 <div class="container">
   <h2>Таблица результатов тренировочной игры</h2>
     <h3>Сейчас идет {{ round }} раунд</h3>
@@ -59,6 +60,9 @@
         position: relative;
         color: #000;
         width: 250px;
+    }
+    td {
+	overflow: hidden;
     }
     .back_img {
         opacity: 0.4;
