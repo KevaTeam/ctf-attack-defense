@@ -28,7 +28,7 @@ class Put:
 
     def from_api(self):
         try:
-            response = requests.get("http://10.53.254.107:5000").json()
+            response = requests.get("http://10.16.255.196:5000").json()
             data = response['response']
 
             self.services = data["services"]

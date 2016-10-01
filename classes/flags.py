@@ -59,6 +59,9 @@ class Flags:
         print(address)
         team = False
         for e in teams:
+            if e['network'] == '10.16.7.159/24':
+                e['network'] = '10.16.7.0/24'
+
             if IPv4Address(address[0]) in IPv4Network(e['network']):
                 print(e)
                 team = e
@@ -86,9 +89,17 @@ class Flags:
                 continue
 
             flag = self.db.flags.find_one({'flag': data})
+
+            
             if not bool(flag):
-                connection.send(('Flag is not found\n').encode())
-                continue
+                flags_crypto = self.db.flags.find({'service.name': "crypto-inc"})
+
+                for f in flags_crypto:
+                    if f['flag'] == data.upper():
+                        flag = f
+                if not bool(flag):
+                    connection.send(('Flag is not found\n').encode())
+                    continue
 
             if flag['team']['_id'] == team['_id']:
                 connection.send(('It`s your flag\n').encode())

@@ -5,7 +5,7 @@ import functions
 import argparse
 
 client = MongoClient(host=DATABASE['HOST'], port=DATABASE['PORT'])
-
+#client.jury.authenticate('keva', 'i_want_want_sleep')
 db = client.jury
 
 def init(parse):
