@@ -20,4 +20,4 @@ QUEUE = {
 
 ROUND_LENGTH = 60 # in seconds
 
-BASE_PATH = os.path.dirname(__file__) + '../'
+BASE_PATH = os.path.dirname(__file__) + '/../'
