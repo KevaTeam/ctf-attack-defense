@@ -139,4 +139,4 @@ class Flags:
 
             self.db.flags.update_one({'flag': data}, {"$set": {"stolen": True}})
 
-            connection.send(('received\n').encode())
+            connection.send(('Accepted\n').encode())
