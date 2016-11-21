@@ -21,17 +21,15 @@ class Flags:
         self.address = None
 
         self.config = ConfigGet(self.db)
-
-
+        
         try:
-            lifetime = CHECKER['LENGTH']
-            round_length = CHECKER['ROUND_LENGTH']
+            lifetime, round_length = CHECKER['LENGTH'], CHECKER['ROUND_LENGTH'] 
         except KeyError:
             Message.fail('Error with parse in response')
             sys.exit(0)
 
         self.life = lifetime * round_length
-        self.port = 2605#self.config.settings['flags']['port']
+        self.port = 2605
 
     def start(self):
         Message.success('Class is initialized. Starting')
@@ -55,15 +53,10 @@ class Flags:
 
     def recv(self, connection, address):
         teams = self.db.teams.find()
-        # ip = IPv4Address()
         print(address)
         team = False
         for e in teams:
-            if e['network'] == '10.16.7.159/24':
-                e['network'] = '10.16.7.0/24'
-
             if IPv4Address(address[0]) in IPv4Network(e['network']):
-                print(e)
                 team = e
                 break
 
