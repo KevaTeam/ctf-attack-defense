@@ -23,7 +23,8 @@
 
     python3 main.py scoreboard                запуск таблицы результатов
     python3 main.py flags                     запуск приемки флагов
-    python3 main.py start                     старт чекеров
+    python3 main.py start                     запуск master-сервера для чекеров (посылает информацию в очередь)
+    python3 main.py start --slave             запуск slave-сервера 
 
 English version (sea-kg)
 ========================
@@ -44,6 +45,7 @@ The platform for the CTF-competition (Attack-Defense)
 
 ## 1. Start game
 `python3 main.py start`
+`python3 main.py start --slave`
 
 ## 2. Start sending flags
 `python3 main.py flags`
