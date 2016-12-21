@@ -27,7 +27,7 @@
 \begin{itemize}
 \item тестирование платформы;
 \item разработка сервиса для платформы;
-\item подготовка команды для участие в SibirCTF (разработка тренировочных сервисов);
+\item подготовка команды для участия в SibirCTF (разработка тренировочных сервисов);
 \end{itemize}
 
 Засыпкин Г.В. -- программист.
@@ -35,7 +35,7 @@
 Задачи:
 \begin{itemize}
 \item участие в SibirCTF;
-\item разработка сервиса для платформы;
+\item разработка сети для SibirCTF;
 \item тестирование платформы.
 \end{itemize}
 
@@ -67,39 +67,46 @@
  \input{intro}
  \newpage
  \section{Назначение и область применения}
-Разрабатываемый программно-аппаратный комплекс предназначен для проведения игр в области информационной безопасности Capture the flag по типу Attack-Defense.
+Разрабатываемый программный комплекс предназначен для проведения игр в области информационной безопасности Capture the flag по типу Attack-Defense.
 \section{Постановка задачи}
 \setcounter{figure}{0}
 \input{problem_form}
 \section{Инструменты}
 \setcounter{figure}{0}
 \subsection{Система контроля версий Git}
-\input{git}
+\input{instruments/git}
 \subsection{Система компьютерной вёрстки \TeX}
-\input{tex}
+\input{instruments/tex}
 \subsection{Язык программирования Python}
-\input{python}
+\input{instruments/python}
 \subsection{База данных MongoDB}
-\input{mongo}
-\subsection{TrackingTime - Система управления проектами и задачами}
-\input{trackingtime}
+\input{instruments/mongo}
+\subsection{Teamwork - Система управления проектами и задачами}
+\input{instruments/teamwork}
 \subsection{Flask - микрофреймворк для Python}
-\input{flask}
+\input{instruments/flask}
 \subsection{ArgParse - инструмент для создания интерфейсов коммандной строки}
-\input{argparse}
+\input{instruments/argparse}
 \subsection{Zabbix - система мониторинга сервисов компьютерной сети}
-\input{zabbix}
-
+\input{instruments/zabbix}
+\subsection{RabbitMQ - система мониторинга сервисов компьютерной сети}
+\input{instruments/rabbit}
 \newpage
 \section{Технические характеристики}
 \input{technical_attributes}
-
+\newpage
 \section{Разработка программного обеспечения}
 \setcounter{figure}{0}
- 
 \subsection{Архитектура}
 \input{individual_reports/architech}
 
+\newpage
+\section{Построение сети для организации соревнований}
+\setcounter{figure}{0}
+
+\input{individual_reports/network}
+
+\newpage
 \section{Развитие экосистемы}
 \setcounter{figure}{0}
  
