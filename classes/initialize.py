@@ -9,10 +9,10 @@ class Initialize:
     services = []
     settings = []
 
-    def __init__(self, db, type):
+    def __init__(self, db, args):
         self.db = db
         
-        self.config = ConfigPut(type)
+        self.config = ConfigPut(args)
 
         self.delete_old_data()
         self.create_teams()

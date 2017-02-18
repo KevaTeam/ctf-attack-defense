@@ -11,7 +11,7 @@ db = client.jury
 def init(parse):
     from classes.initialize import Initialize
 
-    Initialize(db, parse.type[0])
+    Initialize(db, parse)
 
 
 def start(parse):
@@ -52,7 +52,9 @@ if __name__ == '__main__':
     sp = parser.add_subparsers(help='sub-command help')
 
     sp_init = sp.add_parser('init', help='Initialize the game. Generate teams, services, statistics.')
-    sp_init.add_argument('--type', help='type of configuration file', nargs='*', default=['api', 'json'])
+    sp_init.add_argument('--type', help='type of configuration file', nargs='?', default='api')
+    sp_init.add_argument('--url', help='API server URL ', type=str, default='',)
+
     sp_init.set_defaults(func=init)
 
     sp_start = sp.add_parser('start', help='Run checkers and start the game.')

@@ -1,5 +1,6 @@
 import requests, os, sys, json
 
+from config.main import API_SERVER
 from functions import Message
 
 
@@ -15,9 +16,12 @@ class Put:
     services = {},
     teams = {},
 
-    def __init__(self, method='api'):
-        Message.info('Get config from ' + method)
-        if method == 'json':
+    def __init__(self, args):
+        self.args = args
+
+        Message.info('Get config from ' + self.args.type)
+
+        if self.args.type == 'json':
             self.from_json()
         else:
             self.from_api()
@@ -28,7 +32,15 @@ class Put:
 
     def from_api(self):
         try:
-            response = requests.get("http://10.16.255.196:5000").json()
+            # Определяем путь до API сервера (откуда мы получаем команды)
+            api_url = self.args.url if self.args.url != '' else API_SERVER
+
+            if api_url == '':
+                Message.fail('API server url is not defined in config/main.py.')
+                Message.fail('Use python3 main.py init --url=\'SOME_URL\' instead')
+                sys.exit(0)
+
+            response = requests.get(api_url).json()
             data = response['response']
 
             self.services = data["services"]
