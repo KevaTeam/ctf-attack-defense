@@ -12,6 +12,10 @@ CHECKER = {
 	'LENGTH': 4 # Время жизни флага в раундах
 }
 
+FLAGS = {
+	'PORT': 2605
+}
+
 CHECKER_METHOD = 'async' # Async or queue
 
 QUEUE = {

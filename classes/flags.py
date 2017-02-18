@@ -29,7 +29,7 @@ class Flags:
             sys.exit(0)
 
         self.life = lifetime * round_length
-        self.port = 2605
+        self.port = FLAGS['PORT']
 
     def start(self):
         Message.success('Class is initialized. Starting')
