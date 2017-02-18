@@ -27,6 +27,9 @@ if [ "$(uname)" == "Darwin" ]; then
     
     install_python_deps
 
+    echo Moving config/main.sample.py to config/main.py
+    cp config/main.sample.py config/main.py
+
     echo Done!
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     # Install for Linux
@@ -45,6 +48,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get install rabbitmq-server
     
     install_python_deps
+
+    echo Moving config/main.sample.py to config/main.py
+    cp config/main.sample.py config/main.py
 
     echo Done!
 else
