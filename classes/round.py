@@ -37,6 +37,9 @@ class Round:
 
         Message.info('\t Last round number - ' + str(self.round_count))
 
+        Message.success('All ready!')
+        Message.info('Now use python3 main.py init --slave for starting slave client')
+
     def next(self):
         #TODO: косяк в status_service
         # Подводим итоги предыдущего раунда
