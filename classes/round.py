@@ -66,7 +66,6 @@ class Round:
 
         self.checkerManager.run()
 
-
     def generate_flags(self):
         flag = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(33))
         flag += '='
