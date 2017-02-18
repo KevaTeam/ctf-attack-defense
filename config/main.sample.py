@@ -5,8 +5,10 @@ DATABASE = {
 	'PORT': 27017
 }
 
+API_SERVER = ''
+
 CHECKER = {
-	'ROUND_LENGTH': 10,
+	'ROUND_LENGTH': 60, # Длина раунда в секундах
 	'LENGTH': 4 # Время жизни флага в раундах
 }
 
@@ -17,7 +19,5 @@ QUEUE = {
 	'USERNAME': 'username',
 	'PASSWORD': 'pass'
 }
-
-ROUND_LENGTH = 60 # in seconds
 
 BASE_PATH = os.path.dirname(__file__) + '/../'
