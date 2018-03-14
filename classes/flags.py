@@ -84,15 +84,9 @@ class Flags:
             flag = self.db.flags.find_one({'flag': data})
 
             
-            if not bool(flag):
-                flags_crypto = self.db.flags.find({'service.name': "crypto-inc"})
-
-                for f in flags_crypto:
-                    if f['flag'] == data.upper():
-                        flag = f
-                if not bool(flag):
-                    connection.send(('Flag is not found\n').encode())
-                    continue
+            if not bool(flag):    
+                connection.send(('Flag is not found\n').encode())
+                continue
 
             if flag['team']['_id'] == team['_id']:
                 connection.send(('It`s your flag\n').encode())

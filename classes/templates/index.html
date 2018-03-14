@@ -3,9 +3,8 @@
 {% block title %}Таблица результатов{% endblock %}
 {% block body %}
 <div class="container">
-  <h2>Это SibirCTF 2016, детка!</h2>
+  <h2>Это SibirCTF 2017, детка!</h2>
     <h3>Сейчас идет {{ round }} раунд</h3>
-  <p>Look at my scoreboard! My scoreboard is amazing</p>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -23,7 +22,7 @@
     	{% for team_name, team  in scoreboard %}
     	<tr>
     		<td align="center" class="team">
-                <img class="back_img" src="{{teams[team_name].logo}}" />
+                <!-- <img class="back_img" src="{{teams[team_name].logo}}" /> -->
                 <div style="height: 80px;">
                     <div class="place"><span>{{ loop.index }}</span></div>
                     <div class="inform">
@@ -53,6 +52,12 @@
     	{% endfor %}
     </tbody>
   </table>
+  <div class="row desc">
+      <div class="col-md-3 success" data-toggle="tooltip" data-placement="top" title="Все работает корректно">Success</div>
+      <div class="col-md-3 warning" data-toggle="tooltip" data-placement="top" title="Флаг не найден, либо работа сервиса нарушена">Corrupt</div>
+      <div class="col-md-3 info" data-toggle="tooltip" data-placement="top" title="Невнятные ответы">Mumble</div>
+      <div class="col-md-3 danger" data-toggle="tooltip" data-placement="top" title="Сервис не отвечает">Down</div>
+  </div>
 </div>
 <style type="text/css">
     .team {
@@ -133,6 +138,11 @@
     }
     .warning {
         background-color: #F4CE43 !important;
+    }
+
+    .desc div {
+        padding: 10px;
+        cursor: pointer;
     }
 </style>
 <script type="text/javascript">
