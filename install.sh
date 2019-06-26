@@ -45,7 +45,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     sudo apt-get install mongodb -y
 
     echo Installing RabbitMQ Server
-    sudo apt-get install rabbitmq-server
+    sudo apt-get install rabbitmq-server -y
     
     install_python_deps
 
